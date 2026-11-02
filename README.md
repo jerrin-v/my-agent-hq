@@ -11,7 +11,10 @@ An interactive 3D sci-fi office floor of my Claude workspace (UI v1.0.3, Avenger
 
 | File | What it is |
 |---|---|
-| `index.html` | The whole app (Three.js r147 from jsDelivr, no build step) |
+| `index.html` | The whole app (Three.js r147 from jsDelivr), built from `src/claude-hq.html` |
+| `src/` | Artifact source as published on claude.ai |
+| `scripts/build.sh` | Rebuilds `index.html` from `src/` |
+| `CLAUDE.md` | Notes for Claude when working on this repo |
 | `roster.json` | Read-only snapshot of rooms and chats, used when the page runs outside claude.ai |
 | `versions/v1.0.2-oblivion.html` | Previous Oblivion-style UI |
 | `.gitlab-ci.yml` | GitLab Pages deploy (optional) |
