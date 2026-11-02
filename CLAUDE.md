@@ -11,8 +11,7 @@ UI v1.0.3 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, c
   - **Locked with a 6-digit site code.** `site/lock.html` (site-only, never published to the artifact) is put in front of each page by `scripts/build.sh`; it holds the app's `fetch('roster.json')` until the code decrypts the snapshot. `roster.json` is AES-GCM encrypted (`scripts/lock-roster.mjs`); the plain copy is `roster.plain.json`, git-ignored.
   - The code is NOT in the repo (the repo is public). Ask Jerrin for it; never commit it, `roster.plain.json`, or an unencrypted `roster.json` (build.sh refuses to build one).
 - **Scheduled task "Claude HQ chat sync"** (`trig_01CAoYtMU9TRwVRL3ij25fMa`, every 6 h at :23, runs on Jerrin's computer via the desktop app's built-in browser): reads claude.ai `/api/organizations/{org}/projects` + `chat_conversations`, writes the artifact db. The page's **Sync now** button fires it (meta/sync.triggerId).
-- The chat sync also refreshes the GitHub site itself as its last step (step 6 of its prompt, which holds the site code). Chaining one scheduled task to another is blocked in unattended runs, so do not rely on fire_trigger between tasks.
-- Scheduled task "Claude HQ site update" (`trig_01EeSxGcqLmNfjGrgpKq7SWy`, cloud, :38 every 6 h) is now redundant; Jerrin can pause or delete it.
+- **Scheduled task "Claude HQ site update"** (`trig_013quKQLhvpEMXZsqhCcFCZG`, cloud, every 6 h at :38 — 15 min after the chat sync): reads the artifact page + db, rebuilds and pushes the GitHub site (holds the site code in its own prompt). The chat sync runs on Jerrin's Mac and cannot push to GitHub, and one scheduled task cannot start another in unattended runs, so this schedule is how the site stays current. After a manual Sync now, the site catches up at the next :38 run (or refresh it by hand).
 - Old artifact-only task "Claude HQ roster sync" (`trig_01FWbxrBLcm2CZkgXZVLcdEk`) is obsolete — Jerrin should delete it.
 
 ## Artifact db schema
