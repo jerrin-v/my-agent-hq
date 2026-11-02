@@ -513,6 +513,8 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
   .brand .bt{min-width:0;overflow:hidden}
   .brand .date{font-size:clamp(15px,4.6vw,20px)}
   .big{flex:none;padding-left:10px}
+  .msync:not([hidden]){display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .msync b{font:400 11px var(--f-mono);color:var(--ink-2)}
   .roster{position:fixed;z-index:40;left:max(var(--x),env(safe-area-inset-left,0px));right:max(var(--x),env(safe-area-inset-right,0px));top:70px;bottom:100px;display:none}
   .roster.is-open{display:flex}
   #collapseBtn{display:none}
@@ -663,6 +665,7 @@ html.hq-intro .sign .tip-dot{animation:dotIn .6s 1.9s cubic-bezier(.22,.8,.3,1.4
       <div class="form-actions"><button class="btn" type="button" id="fCancel">Cancel</button><button class="btn solid" type="submit" id="fSave">Add to floor</button></div>
     </form>
     <div class="rfoot">
+      <div class="msync" id="mSync" hidden><span class="lbl">Last sync · <b id="mSyncTime">—</b></span><button class="btn" id="syncBtn2" type="button">Sync now</button></div>
       <button class="btn primary" id="addBtn" type="button" hidden>+ Add agent</button>
       <p class="note" id="dataNote">Linking to the live roster…</p>
     </div>
@@ -855,7 +858,7 @@ const removeAgent = a => write(db => a.source === 'sync' ? db.doc('agents/' + a.
 async function syncNow() {
   const tid = S.meta && S.meta.triggerId;
   if (!tid) return;
-  const btn = $('#syncBtn'); btn.disabled = true;
+  const btns = [$('#syncBtn'), $('#syncBtn2')]; btns.forEach(b => { b.disabled = true; });
   try {
     const mcp = window.claude && window.claude.use ? await window.claude.use('mcp') : null;
     if (!mcp) { toast('Sync now works when Claude HQ is open on claude.ai. The scheduled sync still runs.'); return; }
@@ -873,9 +876,10 @@ async function syncNow() {
       tool_error:'The sync task could not start. It may have been paused or deleted.',
     }[code] || 'Sync could not start right now. The scheduled sync still runs.';
     toast(msg);
-  } finally { btn.disabled = false; }
+  } finally { btns.forEach(b => { b.disabled = false; }); }
 }
 $('#syncBtn').addEventListener('click', syncNow);
+$('#syncBtn2').addEventListener('click', syncNow);
 function renderSync() {
   const box = $('#syncBox');
   const last = S.meta && S.meta.lastSync ? Date.parse(S.meta.lastSync) : NaN;
@@ -883,6 +887,8 @@ function renderSync() {
   $('#syncBtn').hidden = !(S.meta && S.meta.triggerId && S.canWrite);
   if (S.syncAsked && (S.meta.lastSync || null) !== S.lastSyncSeen) { S.syncAsked = 0; toast('Sync finished. The floor is up to date.'); }
   $('#syncTime').textContent = S.syncAsked ? 'Running…' : Number.isFinite(last) ? fmtDay(last) + ' · ' + fmtTime(last) : '—';
+  /* phone copy in the Rooms panel (the top bar has no room for it) */
+  $('#mSync').hidden = !isPhone() || box.hidden; $('#syncBtn2').hidden = $('#syncBtn').hidden; $('#mSyncTime').textContent = $('#syncTime').textContent;
 }
 
 /* ───────────── toast ───────────── */
