@@ -513,7 +513,7 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
   .brand .bt{min-width:0;overflow:hidden}
   .brand .date{font-size:clamp(15px,4.6vw,20px)}
   .big{flex:none;padding-left:10px}
-  .roster{position:fixed;z-index:40;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));top:70px;bottom:100px;display:none}
+  .roster{position:fixed;z-index:40;left:max(var(--x),env(safe-area-inset-left,0px));right:max(var(--x),env(safe-area-inset-right,0px));top:70px;bottom:100px;display:none}
   .roster.is-open{display:flex}
   #collapseBtn{display:none}
   .stage{grid-row:2;grid-column:1}
