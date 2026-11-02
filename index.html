@@ -346,7 +346,7 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
   background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);box-shadow:inset 3px 0 0 var(--c)}
 .room-row .idx{font:700 25px/1 var(--f-cond);color:var(--ink);text-align:center;font-variant-numeric:tabular-nums}
 .room-row .ct{display:none}
-.room-name{display:grid;gap:1px;min-width:0;border:0;background:none;padding:2px 0;cursor:pointer;text-align:left}
+.room-name{display:grid;gap:5px;min-width:0;border:0;background:none;padding:2px 0;cursor:pointer;text-align:left}
 .room-name i{display:none}
 .room-name span{font:600 14px/1.1 var(--f-cond);letter-spacing:.04em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .room-name::after{content:attr(data-sub);font:400 9px/1 var(--f-mono);letter-spacing:.08em;color:var(--signal-2);text-transform:uppercase}
@@ -687,7 +687,7 @@ const isPhone = () => matchMedia('(max-width: 860px)').matches;
 /* ───────────── state ───────────── */
 const S = { roomDocs:null, agentDocs:null, meta:{}, rooms:[], agents:[], roomById:new Map(), agentById:new Map(),
             db:null, canWrite:false, link:'connecting', syncAsked:0, lastSyncSeen:null };
-const UI = { sel:null, hover:null, hidden:new Set(store.get('hq.hidden') || []), folded:new Set(store.get('hq.folded') || []), q:'' };
+const UI = { sel:null, hover:null, hidden:new Set(store.get('hq.hidden') || []), open:new Set(), q:'' };
 let engine = null;
 
 function derive() {
@@ -882,7 +882,7 @@ function renderTree() {
     const list = r.list.filter(a => roomHit || (a.title + ' ' + a.call + ' ' + a.role).toLowerCase().includes(q));
     if (q && !list.length) return;
     shown += list.length;
-    const off = UI.hidden.has(r.id), folded = UI.folded.has(r.id) && !q;
+    const off = UI.hidden.has(r.id), folded = !UI.open.has(r.id) && !q;
     const row = el('div', { class:'room-row', style:'--c:' + r.color },
       el('span', { class:'idx', text:pad(r.list.length) }),
       el('button', { class:'room-name', type:'button', onclick:() => select('room', r.id), title:'Focus ' + r.name, 'data-sub':r.code + ' · ' + r.list.length + (r.list.length === 1 ? ' agent' : ' agents') + ' · ' + STATUS[r.status].label }, el('i'), el('span', { text:r.name })),
@@ -919,7 +919,7 @@ function toggleRoom(id) {
   if (UI.hidden.has(id) && UI.sel && ((UI.sel.kind === 'room' && UI.sel.id === id) || (selAgent && selAgent.room.id === id))) select(null);
   renderTree(); if (engine) engine.setHidden(UI.hidden);
 }
-function toggleFold(id) { if (UI.folded.has(id)) UI.folded.delete(id); else UI.folded.add(id); store.set('hq.folded', [...UI.folded]); renderTree(); }
+function toggleFold(id) { if (UI.open.has(id)) UI.open.delete(id); else UI.open.add(id); renderTree(); }
 $('#allRooms').addEventListener('click', () => {
   const allOn = S.rooms.every(r => !UI.hidden.has(r.id));
   UI.hidden = new Set(allOn ? S.rooms.map(r => r.id) : []);
@@ -1135,7 +1135,9 @@ function select(kind, id) {
   UI.sel = kind ? { kind, id:id || null } : null;
   confirmOpen = false;
   if (kind && roster.classList.contains('is-open')) { roster.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded', 'false'); }
-  syncTree(); renderInspector(); renderSector();
+  const selAg = kind === 'agent' ? S.agentById.get(id) : null;
+  if (selAg && !UI.open.has(selAg.room.id)) { UI.open.add(selAg.room.id); renderTree(); } else syncTree();
+  renderInspector(); renderSector();
   if (engine) engine.select(UI.sel);
 }
 function setHover(h) {
