@@ -1,0 +1,639 @@
+{
+ "rooms": {
+  "figma-plugin": {
+   "color": "#4FE0C8",
+   "name": "Figma Plugin",
+   "order": 4
+  },
+  "alpha-ds": {
+   "color": "#38D9FF",
+   "name": "Alpha Design System",
+   "order": 2
+  },
+  "dfs": {
+   "color": "#FF6B7A",
+   "name": "Drone For Surveillance (DFS)",
+   "order": 0
+  },
+  "portfolio": {
+   "color": "#FF5FD2",
+   "name": "Portfolio",
+   "order": 5
+  },
+  "archive": {
+   "color": "#7EC8FF",
+   "name": "Archive",
+   "order": 8
+  },
+  "house": {
+   "color": "#B9F35B",
+   "name": "Home",
+   "order": 6
+  },
+  "dash": {
+   "color": "#A77BFF",
+   "name": "Other",
+   "order": 7
+  },
+  "eftpos": {
+   "color": "#FF9A4D",
+   "name": "EFTPOS",
+   "order": 1
+  },
+  "alphax": {
+   "color": "#5B7CFF",
+   "name": "Alpha X",
+   "order": 3
+  }
+ },
+ "agents": {
+  "chat-8f881b91-2be4-4c7a-aebe-f9d192728ba6": {
+   "call": "DFS-MARK 1 v1.05 (Fusion)",
+   "createdAt": "2026-11-02T10:23:42.041707Z",
+   "kind": "chat",
+   "lastActive": "2026-11-02T10:23:42.041707Z",
+   "role": "Chat",
+   "room": "dfs",
+   "source": "sync",
+   "title": "DFS-MARK 1 v1.05 (Fusion)",
+   "url": "https://claude.ai/chat/8f881b91-2be4-4c7a-aebe-f9d192728ba6"
+  },
+  "chat-98a62b63-1a66-486c-8aef-f9ad7d3d9fa9": {
+   "call": "Claude and Figma integration",
+   "createdAt": "2026-10-23T09:39:56.588108Z",
+   "kind": "chat",
+   "lastActive": "2026-10-23T09:39:56.588108Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Claude and Figma integration",
+   "url": "https://claude.ai/chat/98a62b63-1a66-486c-8aef-f9ad7d3d9fa9"
+  },
+  "chat-af5ae0dd-7868-49e2-8946-ea25ea2ebb27": {
+   "call": "DFS-MARK 1 v1.01 (Fusion)",
+   "createdAt": "2026-10-21T06:21:53.211483Z",
+   "kind": "chat",
+   "lastActive": "2026-10-21T06:21:53.211483Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "DFS-MARK 1 v1.01 (Fusion)",
+   "url": "https://claude.ai/chat/af5ae0dd-7868-49e2-8946-ea25ea2ebb27"
+  },
+  "chat-6bf0e4a0-28b0-4f55-9bd3-c0977038bc5b": {
+   "call": "AlphaX Website",
+   "createdAt": "2026-10-24T20:07:17.644043Z",
+   "kind": "chat",
+   "lastActive": "2026-10-24T20:07:17.644043Z",
+   "role": "Chat",
+   "room": "alphax",
+   "source": "sync",
+   "title": "AlphaX Website",
+   "url": "https://claude.ai/chat/6bf0e4a0-28b0-4f55-9bd3-c0977038bc5b"
+  },
+  "chat-dc00f327-5851-41fb-bcb7-9e3fb99a21fb": {
+   "call": "Drone design regeneration in Photoshop",
+   "createdAt": "2026-10-18T16:48:01.239499Z",
+   "kind": "chat",
+   "lastActive": "2026-10-18T16:48:01.239499Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Drone design regeneration in Photoshop",
+   "url": "https://claude.ai/chat/dc00f327-5851-41fb-bcb7-9e3fb99a21fb"
+  },
+  "chat-09926429-924f-45b0-8b6b-be405635da85": {
+   "call": "Blender-Rendering",
+   "createdAt": "2026-10-16T08:41:03.104845Z",
+   "kind": "chat",
+   "lastActive": "2026-10-16T08:41:03.104845Z",
+   "role": "Chat",
+   "room": "eftpos",
+   "source": "sync",
+   "title": "Blender-Rendering",
+   "url": "https://claude.ai/chat/09926429-924f-45b0-8b6b-be405635da85"
+  },
+  "chat-fe142cc3-458f-459a-af77-849296dfe952": {
+   "call": "Plan Design - P1 (Rainbow)",
+   "createdAt": "2026-10-27T05:04:31.977010Z",
+   "kind": "chat",
+   "lastActive": "2026-10-27T05:04:31.977010Z",
+   "role": "Chat",
+   "room": "house",
+   "source": "sync",
+   "title": "Plan Design - P1 (Rainbow)",
+   "url": "https://claude.ai/chat/fe142cc3-458f-459a-af77-849296dfe952"
+  },
+  "chat-38c84d51-d906-4843-9e95-4e3b63fd43c9": {
+   "call": "Asset Portal (01-Archived)",
+   "createdAt": "2026-10-26T09:00:20.523862Z",
+   "kind": "chat",
+   "lastActive": "2026-10-26T09:00:20.523862Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Asset Portal (01-Archived)",
+   "url": "https://claude.ai/chat/38c84d51-d906-4843-9e95-4e3b63fd43c9"
+  },
+  "chat-1a79593f-6363-4f51-a7e4-a318c989e5ed": {
+   "call": "Alpha DS (Figma) (02)",
+   "createdAt": "2026-10-31T13:44:28.607659Z",
+   "kind": "chat",
+   "lastActive": "2026-10-31T13:44:28.607659Z",
+   "role": "Chat",
+   "room": "alpha-ds",
+   "source": "sync",
+   "title": "Alpha DS (Figma) (02)",
+   "url": "https://claude.ai/chat/1a79593f-6363-4f51-a7e4-a318c989e5ed"
+  },
+  "chat-6678ea24-c593-4973-b707-971e8925df41": {
+   "call": "Home design tools with MCP",
+   "createdAt": "2026-10-15T11:36:17.914024Z",
+   "kind": "chat",
+   "lastActive": "2026-10-15T11:36:17.914024Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Home design tools with MCP",
+   "url": "https://claude.ai/chat/6678ea24-c593-4973-b707-971e8925df41"
+  },
+  "chat-6bf81639-6d72-4034-8fce-8cf77318c3ea": {
+   "call": "Alpha DS Website-(02)",
+   "createdAt": "2026-10-30T11:05:34.368060Z",
+   "kind": "chat",
+   "lastActive": "2026-10-30T11:05:34.368060Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Alpha DS Website-(02)",
+   "url": "https://claude.ai/chat/6bf81639-6d72-4034-8fce-8cf77318c3ea"
+  },
+  "chat-1b503e3e-1315-463b-9fb9-4eff5b361b46": {
+   "call": "Alpha DS Website-(01-Archived)",
+   "createdAt": "2026-10-26T09:37:49.131056Z",
+   "kind": "chat",
+   "lastActive": "2026-10-26T09:37:49.131056Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Alpha DS Website-(01-Archived)",
+   "url": "https://claude.ai/chat/1b503e3e-1315-463b-9fb9-4eff5b361b46"
+  },
+  "chat-c64f03f2-133d-4e1a-8bf6-66bfd7e35834": {
+   "call": "Latch/Joint Test",
+   "createdAt": "2026-10-21T13:17:09.608798Z",
+   "kind": "chat",
+   "lastActive": "2026-10-21T13:17:09.608798Z",
+   "role": "Chat",
+   "room": "dfs",
+   "source": "sync",
+   "title": "Latch/Joint Test",
+   "url": "https://claude.ai/chat/c64f03f2-133d-4e1a-8bf6-66bfd7e35834"
+  },
+  "chat-09d4f26e-d8d5-4ae8-bf0c-b827127cdb18": {
+   "call": "ADX-Pattern Regeneration",
+   "createdAt": "2026-10-29T13:21:35.533514Z",
+   "kind": "chat",
+   "lastActive": "2026-10-29T13:21:35.533514Z",
+   "role": "Chat",
+   "room": "figma-plugin",
+   "source": "sync",
+   "title": "ADX-Pattern Regeneration",
+   "url": "https://claude.ai/chat/09d4f26e-d8d5-4ae8-bf0c-b827127cdb18"
+  },
+  "chat-b16255d9-24e3-4081-9cb6-d135e9628b06": {
+   "call": "Alpha DS 45s video",
+   "createdAt": "2026-10-24T10:20:29.291290Z",
+   "kind": "chat",
+   "lastActive": "2026-10-24T10:20:29.291290Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Alpha DS 45s video",
+   "url": "https://claude.ai/chat/b16255d9-24e3-4081-9cb6-d135e9628b06"
+  },
+  "chat-73c60b02-18ef-4974-a0c8-223d25b1c38a": {
+   "call": "DFS-MARK 2 v1.01 (Fusion)",
+   "createdAt": "2026-10-27T09:47:04.801541Z",
+   "kind": "chat",
+   "lastActive": "2026-10-27T09:47:04.801541Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "DFS-MARK 2 v1.01 (Fusion)",
+   "url": "https://claude.ai/chat/73c60b02-18ef-4974-a0c8-223d25b1c38a"
+  },
+  "chat-fbcf61dd-463f-4bb8-be34-56a361825a05": {
+   "call": "Plan Design - P0 (D-Cube)(B)",
+   "createdAt": "2026-10-28T08:08:02.743209Z",
+   "kind": "chat",
+   "lastActive": "2026-10-28T08:08:02.743209Z",
+   "role": "Chat",
+   "room": "house",
+   "source": "sync",
+   "title": "Plan Design - P0 (D-Cube)(B)",
+   "url": "https://claude.ai/chat/fbcf61dd-463f-4bb8-be34-56a361825a05"
+  },
+  "chat-533d535c-a56e-4065-a2d1-6a1f9fa11215": {
+   "call": "DFS-MARK 1 v1.03 (Fusion)",
+   "createdAt": "2026-10-27T10:46:38.208663Z",
+   "kind": "chat",
+   "lastActive": "2026-10-27T10:46:38.208663Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "DFS-MARK 1 v1.03 (Fusion)",
+   "url": "https://claude.ai/chat/533d535c-a56e-4065-a2d1-6a1f9fa11215"
+  },
+  "chat-8fcf9831-3043-4f3a-84b1-85bd6cf45600": {
+   "call": "Autodesk Fusion",
+   "createdAt": "2026-10-27T05:30:24.241772Z",
+   "kind": "chat",
+   "lastActive": "2026-10-27T05:30:24.241772Z",
+   "role": "Chat",
+   "room": "eftpos",
+   "source": "sync",
+   "title": "Autodesk Fusion",
+   "url": "https://claude.ai/chat/8fcf9831-3043-4f3a-84b1-85bd6cf45600"
+  },
+  "chat-d77d746a-ebca-4193-84de-9e4462393990": {
+   "call": "ADX-Design System",
+   "createdAt": "2026-10-30T16:07:58.234007Z",
+   "kind": "chat",
+   "lastActive": "2026-10-30T16:07:58.234007Z",
+   "role": "Chat",
+   "room": "figma-plugin",
+   "source": "sync",
+   "title": "ADX-Design System",
+   "url": "https://claude.ai/chat/d77d746a-ebca-4193-84de-9e4462393990"
+  },
+  "chat-948f1939-f6e0-41c2-b640-0b0ee8bdc0fc": {
+   "call": "Resume",
+   "createdAt": "2026-11-01T06:27:18.899501Z",
+   "kind": "chat",
+   "lastActive": "2026-11-01T06:27:18.899501Z",
+   "role": "Chat",
+   "room": "portfolio",
+   "source": "sync",
+   "title": "Resume",
+   "url": "https://claude.ai/chat/948f1939-f6e0-41c2-b640-0b0ee8bdc0fc"
+  },
+  "chat-dcda4d7e-5604-479b-8ab3-c0e215803479": {
+   "call": "Simulation (CFD + FEA)",
+   "createdAt": "2026-10-30T11:16:19.937827Z",
+   "kind": "chat",
+   "lastActive": "2026-10-30T11:16:20.937827Z",
+   "role": "Chat",
+   "room": "dfs",
+   "source": "sync",
+   "title": "Simulation (CFD + FEA)",
+   "url": "https://claude.ai/chat/dcda4d7e-5604-479b-8ab3-c0e215803479"
+  },
+  "chat-316d0368-edde-4c9f-ace3-835af02cf0a1": {
+   "call": "Bambu Lab 3D printer parts list",
+   "createdAt": "2026-10-20T10:59:44.322544Z",
+   "kind": "chat",
+   "lastActive": "2026-10-20T10:59:44.322544Z",
+   "role": "Chat",
+   "room": "dash",
+   "source": "sync",
+   "title": "Bambu Lab 3D printer parts list",
+   "url": "https://claude.ai/chat/316d0368-edde-4c9f-ace3-835af02cf0a1"
+  },
+  "chat-b926ce51-02a8-424b-b2e2-48c0cc0fc966": {
+   "call": "Building plan in SketchUp",
+   "createdAt": "2026-10-16T05:20:14.205006Z",
+   "kind": "chat",
+   "lastActive": "2026-10-16T05:20:14.205006Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Building plan in SketchUp",
+   "url": "https://claude.ai/chat/b926ce51-02a8-424b-b2e2-48c0cc0fc966"
+  },
+  "chat-bc9dcf7d-d4ac-4a3b-b18d-26250a202be5": {
+   "call": "Wix Code Doubts",
+   "createdAt": "2026-11-01T06:03:06.987541Z",
+   "kind": "chat",
+   "lastActive": "2026-11-01T06:03:06.987541Z",
+   "role": "Chat",
+   "room": "portfolio",
+   "source": "sync",
+   "title": "Wix Code Doubts",
+   "url": "https://claude.ai/chat/bc9dcf7d-d4ac-4a3b-b18d-26250a202be5"
+  },
+  "chat-71b7b9cb-339b-4159-abe4-f9fd2f275972": {
+   "call": "Drone concept design",
+   "createdAt": "2026-10-17T14:10:57.242441Z",
+   "kind": "chat",
+   "lastActive": "2026-10-17T14:10:57.242441Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Drone concept design",
+   "url": "https://claude.ai/chat/71b7b9cb-339b-4159-abe4-f9fd2f275972"
+  },
+  "chat-742af9fe-62d1-4069-b145-9bc6d02af119": {
+   "call": "ADX-Swapper",
+   "createdAt": "2026-10-29T13:06:43.743231Z",
+   "kind": "chat",
+   "lastActive": "2026-10-29T13:06:43.743231Z",
+   "role": "Chat",
+   "room": "figma-plugin",
+   "source": "sync",
+   "title": "ADX-Swapper",
+   "url": "https://claude.ai/chat/742af9fe-62d1-4069-b145-9bc6d02af119"
+  },
+  "chat-74d33c8f-d494-4ce4-bcb9-25ba1eda3af8": {
+   "call": "Asset Portal -User (02)",
+   "createdAt": "2026-10-30T10:24:14.458181Z",
+   "kind": "chat",
+   "lastActive": "2026-10-30T10:24:14.458181Z",
+   "role": "Chat",
+   "room": "alphax",
+   "source": "sync",
+   "title": "Asset Portal -User (02)",
+   "url": "https://claude.ai/chat/74d33c8f-d494-4ce4-bcb9-25ba1eda3af8"
+  },
+  "chat-15ff8af0-ecd7-45f3-88c2-10bd44a020ce": {
+   "call": "Workarea",
+   "createdAt": "2026-10-15T05:00:27.036897Z",
+   "kind": "chat",
+   "lastActive": "2026-10-15T05:00:27.036897Z",
+   "role": "Chat",
+   "room": "eftpos",
+   "source": "sync",
+   "title": "Workarea",
+   "url": "https://claude.ai/chat/15ff8af0-ecd7-45f3-88c2-10bd44a020ce"
+  },
+  "chat-e942687c-79f1-46b1-80d5-62f2b4960c86": {
+   "call": "Fusion Doubts",
+   "createdAt": "2026-10-21T05:16:12.184231Z",
+   "kind": "chat",
+   "lastActive": "2026-10-21T05:16:12.184231Z",
+   "role": "Chat",
+   "room": "dash",
+   "source": "sync",
+   "title": "Fusion Doubts",
+   "url": "https://claude.ai/chat/e942687c-79f1-46b1-80d5-62f2b4960c86"
+  },
+  "chat-f2c114d3-10b6-4415-b9f4-94a0139ddd07": {
+   "call": "DFS-MARK 1 (Ideation)",
+   "createdAt": "2026-10-21T06:22:05.829395Z",
+   "kind": "chat",
+   "lastActive": "2026-10-21T06:22:05.829395Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "DFS-MARK 1 (Ideation)",
+   "url": "https://claude.ai/chat/f2c114d3-10b6-4415-b9f4-94a0139ddd07"
+  },
+  "chat-1d2003e5-883c-4b44-9d62-93c9310a5c25": {
+   "call": "Dragon egg Blender model",
+   "createdAt": "2026-10-19T07:34:29.369350Z",
+   "kind": "chat",
+   "lastActive": "2026-10-19T07:34:29.369350Z",
+   "role": "Chat",
+   "room": "dash",
+   "source": "sync",
+   "title": "Dragon egg Blender model",
+   "url": "https://claude.ai/chat/1d2003e5-883c-4b44-9d62-93c9310a5c25"
+  },
+  "chat-bc600e50-35b6-468a-9d1d-d5548fa5163f": {
+   "call": "Photorealistic image rendering",
+   "createdAt": "2026-10-18T02:52:25.732706Z",
+   "kind": "chat",
+   "lastActive": "2026-10-18T02:52:25.732706Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Photorealistic image rendering",
+   "url": "https://claude.ai/chat/bc600e50-35b6-468a-9d1d-d5548fa5163f"
+  },
+  "chat-a09e26c7-833a-4399-b4c0-495e45af4a74": {
+   "call": "DFS-MARK 1 v1.04 (Fusion)",
+   "createdAt": "2026-11-02T06:13:16.278969Z",
+   "kind": "chat",
+   "lastActive": "2026-11-02T10:20:52.527263Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "DFS-MARK 1 v1.04 (Fusion)",
+   "url": "https://claude.ai/chat/a09e26c7-833a-4399-b4c0-495e45af4a74"
+  },
+  "chat-323b1360-77ae-447b-a72d-eba695261b4d": {
+   "call": "Plan Design - P2 (Jain)",
+   "createdAt": "2026-10-24T18:18:28.497908Z",
+   "kind": "chat",
+   "lastActive": "2026-10-24T18:18:28.497908Z",
+   "role": "Chat",
+   "room": "house",
+   "source": "sync",
+   "title": "Plan Design - P2 (Jain)",
+   "url": "https://claude.ai/chat/323b1360-77ae-447b-a72d-eba695261b4d"
+  },
+  "chat-6a766fc6-2b70-4ffb-aefe-8e1d9512e0f7": {
+   "call": "Ugov Projects (01-Archive)",
+   "createdAt": "2026-10-26T09:53:22.651819Z",
+   "kind": "chat",
+   "lastActive": "2026-10-26T09:53:22.651819Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Ugov Projects (01-Archive)",
+   "url": "https://claude.ai/chat/6a766fc6-2b70-4ffb-aefe-8e1d9512e0f7"
+  },
+  "chat-a9791552-9661-4ad7-be05-9b16a0464673": {
+   "call": "Ugov Projects (02)",
+   "createdAt": "2026-10-30T05:54:22.753339Z",
+   "kind": "chat",
+   "lastActive": "2026-10-30T05:54:22.753339Z",
+   "role": "Chat",
+   "room": "alphax",
+   "source": "sync",
+   "title": "Ugov Projects (02)",
+   "url": "https://claude.ai/chat/a9791552-9661-4ad7-be05-9b16a0464673"
+  },
+  "chat-b46d4121-4b46-44a4-83b9-8058813aaf95": {
+   "call": "Alpha DS Migration-(01)",
+   "createdAt": "2026-10-31T11:24:02.743713Z",
+   "kind": "chat",
+   "lastActive": "2026-10-31T11:24:02.743713Z",
+   "role": "Chat",
+   "room": "alpha-ds",
+   "source": "sync",
+   "title": "Alpha DS Migration-(01)",
+   "url": "https://claude.ai/chat/b46d4121-4b46-44a4-83b9-8058813aaf95"
+  },
+  "chat-d9219499-7bd7-4c2e-bc6f-5a108fe280d7": {
+   "call": "2-floor house design Kottayam",
+   "createdAt": "2026-10-18T04:05:24.421687Z",
+   "kind": "chat",
+   "lastActive": "2026-10-18T04:05:24.421687Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "2-floor house design Kottayam",
+   "url": "https://claude.ai/chat/d9219499-7bd7-4c2e-bc6f-5a108fe280d7"
+  },
+  "chat-bf7c911c-e5e5-4fa6-8b1b-ee1f20bf14ab": {
+   "call": "Resin and PLA purchase order",
+   "createdAt": "2026-10-17T12:40:06.257790Z",
+   "kind": "chat",
+   "lastActive": "2026-10-17T12:40:06.257790Z",
+   "role": "Chat",
+   "room": "dash",
+   "source": "sync",
+   "title": "Resin and PLA purchase order",
+   "url": "https://claude.ai/chat/bf7c911c-e5e5-4fa6-8b1b-ee1f20bf14ab"
+  },
+  "chat-784a5665-948f-4567-b9f2-47de4de54fe3": {
+   "call": "ADX-Dev Tool",
+   "createdAt": "2026-10-29T13:06:15.623522Z",
+   "kind": "chat",
+   "lastActive": "2026-10-29T13:06:15.623522Z",
+   "role": "Chat",
+   "room": "figma-plugin",
+   "source": "sync",
+   "title": "ADX-Dev Tool",
+   "url": "https://claude.ai/chat/784a5665-948f-4567-b9f2-47de4de54fe3"
+  },
+  "chat-d0cbab78-a911-4f17-9495-80e6e90ddba0": {
+   "call": "EFTPOS machine concept design",
+   "createdAt": "2026-10-15T05:00:13.423674Z",
+   "kind": "chat",
+   "lastActive": "2026-10-15T05:00:13.423674Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "EFTPOS machine concept design",
+   "url": "https://claude.ai/chat/d0cbab78-a911-4f17-9495-80e6e90ddba0"
+  },
+  "chat-c5f1ffa2-b5fd-451a-8b8e-72c77257f704": {
+   "call": "Blender model cleanup for printing",
+   "createdAt": "2026-10-18T02:52:00.933009Z",
+   "kind": "chat",
+   "lastActive": "2026-10-18T02:52:00.933009Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Blender model cleanup for printing",
+   "url": "https://claude.ai/chat/c5f1ffa2-b5fd-451a-8b8e-72c77257f704"
+  },
+  "chat-07a880cb-c32e-49b1-8b27-272d9ef14ed8": {
+   "call": "Alpha DS (Figma) (01)",
+   "createdAt": "2026-10-30T10:55:24.414724Z",
+   "kind": "chat",
+   "lastActive": "2026-10-30T10:55:24.414724Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Alpha DS (Figma) (01)",
+   "url": "https://claude.ai/chat/07a880cb-c32e-49b1-8b27-272d9ef14ed8"
+  },
+  "chat-b27d08b1-eaa6-4014-a13a-1d537ef787d5": {
+   "call": "Plan Design - P0 (D-Cube)(A)",
+   "createdAt": "2026-10-25T06:36:49.558903Z",
+   "kind": "chat",
+   "lastActive": "2026-10-25T06:36:49.558903Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Plan Design - P0 (D-Cube)(A)",
+   "url": "https://claude.ai/chat/b27d08b1-eaa6-4014-a13a-1d537ef787d5"
+  },
+  "chat-3b83d4ab-2166-455e-bf53-4c43a1c73b79": {
+   "call": "Asset Portal -Admin (01)",
+   "createdAt": "2026-10-30T10:34:18.020764Z",
+   "kind": "chat",
+   "lastActive": "2026-10-30T10:34:18.020764Z",
+   "role": "Chat",
+   "room": "alphax",
+   "source": "sync",
+   "title": "Asset Portal -Admin (01)",
+   "url": "https://claude.ai/chat/3b83d4ab-2166-455e-bf53-4c43a1c73b79"
+  },
+  "chat-eb496923-d2a4-4c96-8a55-a3bd3ade4180": {
+   "call": "DFS-MARK 1 v1.02 (Fusion)",
+   "createdAt": "2026-10-21T06:21:45.858396Z",
+   "kind": "chat",
+   "lastActive": "2026-10-21T06:21:45.858396Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "DFS-MARK 1 v1.02 (Fusion)",
+   "url": "https://claude.ai/chat/eb496923-d2a4-4c96-8a55-a3bd3ade4180"
+  },
+  "chat-89776fa7-8f21-4e6b-b3ed-8c9acbd39ab1": {
+   "call": "Serene-Studio",
+   "createdAt": "2026-10-16T10:16:48.087003Z",
+   "kind": "chat",
+   "lastActive": "2026-10-16T10:16:48.087003Z",
+   "role": "Chat",
+   "room": "dash",
+   "source": "sync",
+   "title": "Serene-Studio",
+   "url": "https://claude.ai/chat/89776fa7-8f21-4e6b-b3ed-8c9acbd39ab1"
+  },
+  "chat-f1478b08-c7b1-421c-be6d-ae31a1b49872": {
+   "call": "3D Printing Doubts",
+   "createdAt": "2026-10-21T09:57:01.772374Z",
+   "kind": "chat",
+   "lastActive": "2026-10-21T09:57:01.772374Z",
+   "role": "Chat",
+   "room": "dash",
+   "source": "sync",
+   "title": "3D Printing Doubts",
+   "url": "https://claude.ai/chat/f1478b08-c7b1-421c-be6d-ae31a1b49872"
+  },
+  "chat-ed731a90-e338-4ad0-9ee3-790989e575a3": {
+   "call": "Portfolio 8.0 (Wix) (01)",
+   "createdAt": "2026-11-01T12:44:24.862127Z",
+   "kind": "chat",
+   "lastActive": "2026-11-01T12:44:24.862127Z",
+   "role": "Chat",
+   "room": "archive",
+   "source": "sync",
+   "title": "Portfolio 8.0 (Wix) (01)",
+   "url": "https://claude.ai/chat/ed731a90-e338-4ad0-9ee3-790989e575a3"
+  },
+  "chat-b776c953-4609-4860-8bd7-60c0b9152149": {
+   "call": "Alpha DS Website-(03)",
+   "createdAt": "2026-10-31T19:05:14.388491Z",
+   "kind": "chat",
+   "lastActive": "2026-10-31T19:05:14.388491Z",
+   "role": "Chat",
+   "room": "alpha-ds",
+   "source": "sync",
+   "title": "Alpha DS Website-(03)",
+   "url": "https://claude.ai/chat/b776c953-4609-4860-8bd7-60c0b9152149"
+  },
+  "chat-6d6e00ef-4139-4311-b583-3fcb886254b5": {
+   "call": "Xable (LMS Platform)",
+   "createdAt": "2026-10-29T06:12:24.405109Z",
+   "kind": "chat",
+   "lastActive": "2026-10-29T06:12:24.405109Z",
+   "role": "Chat",
+   "room": "alphax",
+   "source": "sync",
+   "title": "Xable (LMS Platform)",
+   "url": "https://claude.ai/chat/6d6e00ef-4139-4311-b583-3fcb886254b5"
+  },
+  "chat-6c0aa0a7-b7e4-49a4-84ee-12f8dd6ed2ad": {
+   "call": "Portfolio 8.0 (Wix) (02)",
+   "createdAt": "2026-11-02T08:14:43.156504Z",
+   "kind": "chat",
+   "lastActive": "2026-11-02T10:04:48.872769Z",
+   "role": "Chat",
+   "room": "portfolio",
+   "source": "sync",
+   "title": "Portfolio 8.0 (Wix) (02)",
+   "url": "https://claude.ai/chat/6c0aa0a7-b7e4-49a4-84ee-12f8dd6ed2ad"
+  }
+ },
+ "meta": {
+  "lastSync": "2026-11-02T10:31:00Z",
+  "chats": 53,
+  "source": "claude.ai projects + chats"
+ }
+}
