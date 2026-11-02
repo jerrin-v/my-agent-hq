@@ -554,15 +554,22 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 .hud::before{display:none!important}
 .insp,.key,.minimap,.toast,.top,.roster,.rail{box-shadow:none!important}
 /* popup open: shorter floor plan, camera buttons in a row above it, popup fills down to the buttons (same 8px gap) */
-@keyframes inspIn{from{opacity:0;transform:translateY(-10px)}}
+/* popup reveal: orange strip grows from the left, then the panel unfolds down (same chamfered outline throughout) */
+@keyframes inspIn{
+  0%{clip-path:polygon(0 0,0 0,0 var(--hh),0 var(--hh),0 var(--hh),0 0);animation-timing-function:cubic-bezier(.3,.7,.2,1)}
+  38%{clip-path:polygon(var(--cut) 0,100% 0,100% var(--hh),100% var(--hh),0 var(--hh),0 var(--cut));animation-timing-function:cubic-bezier(.25,.8,.25,1)}
+  100%{clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))}}
+@keyframes inspBody{0%,38%{opacity:0}100%{opacity:1}}
+.insp{--hh:40px}
+.insp:not([hidden]){animation:inspIn .62s both}
+.insp:not([hidden])>:not(.ihead){animation:inspBody .62s ease-out both}
 @media (min-width:861px){
   .stage .minimap{transition:height .45s cubic-bezier(.2,.7,.2,1)}
-  .stage .insp:not([hidden]){animation:inspIn .4s cubic-bezier(.2,.7,.2,1)}
   .stage.insp-open .minimap{height:116px}
   .stage.insp-open .cam{flex-direction:row;align-items:center;bottom:calc(116px + var(--x))}
   .stage.insp-open .insp{bottom:calc(116px + 34px + 2 * var(--x));max-height:none}
 }
-@media (prefers-reduced-motion:reduce){ .stage .minimap{transition:none} .stage .insp:not([hidden]){animation:none} }
+@media (prefers-reduced-motion:reduce){ .stage .minimap{transition:none} .insp:not([hidden]),.insp:not([hidden])>*{animation:none!important} }
 </style>
 
 <div id="app">
