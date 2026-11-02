@@ -322,12 +322,16 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 /* strokes off */
 .hud::before{display:none!important}
 .insp,.key,.minimap,.toast,.top,.roster,.rail{box-shadow:none!important}
-/* popup open: shorter floor plan, camera buttons in a row above it, popup takes the freed height */
+/* popup open: shorter floor plan, camera buttons in a row above it, popup fills down to the buttons (same 8px gap) */
+@keyframes inspIn{from{opacity:0;transform:translateY(-10px)}}
 @media (min-width:861px){
-  .stage:has(.insp:not([hidden])) .minimap{height:116px}
-  .stage:has(.insp:not([hidden])) .cam{flex-direction:row;align-items:center;bottom:calc(116px + var(--x))}
-  .stage:has(.insp:not([hidden])) .insp{max-height:max(220px,calc(100% - 116px - 34px - 3 * var(--x)))}
+  .stage .minimap{transition:height .45s cubic-bezier(.2,.7,.2,1)}
+  .stage .insp:not([hidden]){animation:inspIn .4s cubic-bezier(.2,.7,.2,1)}
+  .stage.insp-open .minimap{height:116px}
+  .stage.insp-open .cam{flex-direction:row;align-items:center;bottom:calc(116px + var(--x))}
+  .stage.insp-open .insp{bottom:calc(116px + 34px + 2 * var(--x));max-height:none}
 }
+@media (prefers-reduced-motion:reduce){ .stage .minimap{transition:none} .stage .insp:not([hidden]){animation:none} }
 </style>
 
 <div id="app">
@@ -1966,6 +1970,26 @@ function start3D() {
     },
   };
 }
+
+/* ───────────── popup open/close: glide the camera buttons between layouts ───────────── */
+(() => {
+  const stageEl = $('#stage'), camBtns = [...document.querySelectorAll('.cam .btn')];
+  const apply = () => {
+    const open = !insp.hidden;
+    if (stageEl.classList.contains('insp-open') === open) return;
+    camBtns.forEach(b => b.getAnimations().forEach(a => a.cancel()));
+    const before = camBtns.map(b => b.getBoundingClientRect());
+    stageEl.classList.toggle('insp-open', open);
+    if (reduceMotion) return;
+    camBtns.forEach((b, i) => {
+      const a = b.getBoundingClientRect(), dx = before[i].left - a.left, dy = before[i].top - a.top;
+      if (dx || dy) b.animate([{ transform:'translate(' + dx + 'px,' + dy + 'px)' }, { transform:'none' }],
+        { duration:460, delay:(open ? i : camBtns.length - 1 - i) * 30, easing:'cubic-bezier(.2,.7,.2,1)', fill:'backwards' });
+    });
+  };
+  new MutationObserver(apply).observe(insp, { attributes:true, attributeFilter:['hidden'] });
+  apply();
+})();
 
 /* ───────────── boot ───────────── */
 renderTop(); renderTree(); renderRail(); renderNote();
