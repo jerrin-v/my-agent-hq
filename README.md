@@ -20,7 +20,7 @@ An interactive 3D sci-fi office floor of my Claude workspace (UI v1.0.3, Avenger
 ## Live vs. snapshot
 
 On claude.ai the page reads the live roster (kept in sync every 6 hours by the *Claude HQ chat sync* scheduled task, or on demand with **Sync now**).
-Anywhere else, such as GitHub Pages (https://jerrin-designer.github.io/my-agent-hq/), GitLab Pages or opening `index.html` from a local server, it shows the `roster.json` snapshot, read-only. Replace `roster.json` to refresh it.
+Anywhere else, such as GitHub Pages (https://jerrin-v.github.io/my-agent-hq/), GitLab Pages or opening `index.html` from a local server, it shows the `roster.json` snapshot, read-only. Replace `roster.json` to refresh it.
 
 ## Run locally
 
