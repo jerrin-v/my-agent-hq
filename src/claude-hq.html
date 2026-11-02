@@ -322,23 +322,69 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 /* strokes off */
 .hud::before{display:none!important}
 .insp,.key,.minimap,.toast,.top,.roster,.rail{box-shadow:none!important}
-/* popup open: shorter floor plan, camera buttons in a row above it, popup fills down to the buttons (same 8px gap) */
-/* popup reveal: orange strip grows from the left, then the panel unfolds down (same chamfered outline throughout) */
-@keyframes inspIn{
-  0%{clip-path:polygon(0 0,0 0,0 var(--hh),0 var(--hh),0 var(--hh),0 0);animation-timing-function:cubic-bezier(.3,.7,.2,1)}
-  38%{clip-path:polygon(var(--cut) 0,100% 0,100% var(--hh),100% var(--hh),0 var(--hh),0 var(--cut));animation-timing-function:cubic-bezier(.25,.8,.25,1)}
+/* ───── motion system ─────
+   Panels appear as "strip grows in from the left, then the panel unfolds down" (chamfered outline kept),
+   their content fades up behind it. Small things fade/slide; every state change eases. */
+@keyframes hudIn{
+  0%{clip-path:polygon(0 0,0 0,0 var(--hh),0 var(--hh),0 var(--hh),0 0);animation-timing-function:cubic-bezier(.65,0,.35,1)}
+  36%{clip-path:polygon(var(--cut) 0,100% 0,100% var(--hh),100% var(--hh),0 var(--hh),0 var(--cut));animation-timing-function:cubic-bezier(.22,.8,.3,1)}
   100%{clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))}}
-@keyframes inspBody{0%,38%{opacity:0}100%{opacity:1}}
+@keyframes hudBody{0%,40%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-8px)}}
+@keyframes rowIn{from{opacity:0;transform:translateX(-12px)}}
+.top,.roster,.rail,.key,.minimap,.insp,.toast{--hh:var(--cut)}
+.roster{--hh:39px}
 .insp{--hh:40px}
-.insp:not([hidden]){animation:inspIn .62s both}
-.insp:not([hidden])>:not(.ihead){animation:inspBody .62s ease-out both}
+/* page load, staggered (unhurried: panels first, then every item inside them) */
+@keyframes dotIn{from{opacity:0;transform:scale(0)}}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes growDown{from{transform:scaleY(0)}}
+.top{animation:hudIn 1.6s backwards}
+.roster{animation:hudIn 1.6s .18s backwards}
+.rail{animation:hudIn 1.6s .36s backwards}
+.key{animation:hudIn 1.5s .6s backwards}
+.minimap{animation:hudIn 1.5s .72s backwards}
+.top>*{animation:hudBody 1.6s ease-out backwards}
+.top>.brand{animation:fadeUp .9s .7s cubic-bezier(.22,.8,.3,1) backwards}
+.top>.ver{animation:fadeUp .9s .8s cubic-bezier(.22,.8,.3,1) backwards}
+.top>.sync{animation:fadeUp .9s .9s cubic-bezier(.22,.8,.3,1) backwards}
+.top>.clock{animation:fadeUp .9s 1s cubic-bezier(.22,.8,.3,1) backwards}
+.top>.big{animation:fadeUp .9s 1.1s cubic-bezier(.22,.8,.3,1) backwards}
+.roster>:not(.bar-title){animation:hudBody 1.6s .18s ease-out backwards}
+.rail>*{animation:hudBody 1.6s .36s ease-out backwards}
+.minimap>*{animation:hudBody 1.5s .72s ease-out backwards}
+.key>.lbl{animation:fadeUp .8s 1.05s cubic-bezier(.22,.8,.3,1) backwards}
+.key>.k{animation:rowIn .8s cubic-bezier(.22,.8,.3,1) backwards}
+.key>.k:nth-of-type(1){animation-delay:1.15s}.key>.k:nth-of-type(2){animation-delay:1.25s}.key>.k:nth-of-type(3){animation-delay:1.35s}
+.sector{animation:fadeDown 1s .85s cubic-bezier(.22,.8,.3,1) backwards}
+.cam .btn{animation:fadeUp .8s cubic-bezier(.22,.8,.3,1) backwards}
+.cam .btn:nth-child(1){animation-delay:1s}.cam .btn:nth-child(2){animation-delay:1.08s}.cam .btn:nth-child(3){animation-delay:1.16s}.cam .btn:nth-child(4){animation-delay:1.24s}.cam .btn:nth-child(5){animation-delay:1.32s}
+.st-tab.intro{animation:fadeDown .9s calc(.7s + var(--i) * 90ms) cubic-bezier(.22,.8,.3,1) backwards}
+.room.intro{animation:rowIn .9s calc(.8s + var(--i) * 75ms) cubic-bezier(.22,.8,.3,1) backwards}
+#plot svg.intro>:not(circle){animation:fadeIn 1.2s 1s ease-out backwards}
+#plot svg.intro circle{transform-box:fill-box;transform-origin:center;animation:dotIn .7s calc(1.2s + var(--i) * 22ms) cubic-bezier(.22,.8,.3,1.4) backwards}
+html.hq-intro .sign .plate{animation:fadeDown .9s 1.3s cubic-bezier(.22,.8,.3,1) backwards}
+html.hq-intro .sign .leader{transform-origin:top;animation:growDown .8s 1.5s cubic-bezier(.22,.8,.3,1) backwards}
+html.hq-intro .sign .tip-dot{animation:dotIn .6s 1.9s cubic-bezier(.22,.8,.3,1.4) backwards}
+/* popup: same reveal, slower and smoother; content fades in behind the unfold */
+.insp:not([hidden]){animation:hudIn 1.2s backwards}
+.insp.opening>:not(.ihead){animation:hudBody 1.2s ease-out backwards}
+/* small things */
+.toast:not([hidden]){animation:hudIn .8s backwards}
+.form:not([hidden]),.confirm{animation:fadeDown .5s cubic-bezier(.22,.8,.3,1) backwards}
+.rail-v{animation:fadeUp .5s .2s cubic-bezier(.22,.8,.3,1) backwards}
+#app{transition:grid-template-columns .6s cubic-bezier(.65,0,.35,1)}
+.btn,.icon-btn,.st-tab,.agent,.mates button,.room-name{transition:color .25s,opacity .3s,transform .2s cubic-bezier(.22,.8,.3,1)}
+.btn:active,.icon-btn:active,.st-tab:active,.agent:active,.mates button:active{transform:scale(.96)}
+/* popup open: shorter floor plan, camera buttons in a row above it, popup fills down to the buttons (same 8px gap) */
 @media (min-width:861px){
-  .stage .minimap{transition:height .45s cubic-bezier(.2,.7,.2,1)}
+  .stage .minimap{transition:height .65s cubic-bezier(.65,0,.35,1)}
   .stage.insp-open .minimap{height:116px}
   .stage.insp-open .cam{flex-direction:row;align-items:center;bottom:calc(116px + var(--x))}
   .stage.insp-open .insp{bottom:calc(116px + 34px + 2 * var(--x));max-height:none}
 }
-@media (prefers-reduced-motion:reduce){ .stage .minimap{transition:none} .insp:not([hidden]),.insp:not([hidden])>*{animation:none!important} }
+@media (prefers-reduced-motion:reduce){ #app,#app *{animation:none!important;transition:none!important} }
 </style>
 
 <div id="app">
@@ -474,6 +520,9 @@ const isPhone = () => matchMedia('(max-width: 860px)').matches;
 const S = { roomDocs:null, agentDocs:null, meta:{}, rooms:[], agents:[], roomById:new Map(), agentById:new Map(),
             db:null, canWrite:false, link:'connecting', syncAsked:0, lastSyncSeen:null };
 const UI = { sel:null, hover:null, hidden:new Set(store.get('hq.hidden') || []), open:new Set(), q:'' };
+const EASE = 'cubic-bezier(.65,0,.35,1)', EASE_OUT = 'cubic-bezier(.22,.8,.3,1)';
+let intro = true; /* first render with data plays the staggered entrance */
+document.documentElement.classList.add('hq-intro');
 let engine = null;
 
 function derive() {
@@ -513,6 +562,7 @@ function applyData() {
   if (UI.sel && UI.sel.kind === 'room' && !S.roomById.has(UI.sel.id)) UI.sel = null;
   renderTop(); renderTree(); renderRail(); renderInspector(); renderNote(); renderSync();
   if (engine) { engine.sync(S.rooms, S.agents); engine.setHidden(UI.hidden); }
+  if (S.rooms.length && intro) { intro = false; setTimeout(() => document.documentElement.classList.remove('hq-intro'), 5000); }
 }
 let applyQueued = false;
 function queueApply() { if (applyQueued) return; applyQueued = true; requestAnimationFrame(() => { applyQueued = false; if (S.roomDocs && S.agentDocs) { S.link = 'ready'; applyData(); } }); }
@@ -618,7 +668,7 @@ function renderTop() {
   $('#rosterCount').textContent = S.agents.length ? pad(S.rooms.length) : '';
   $('#bigNum').textContent = pad(S.agents.length); $('#activeBox').textContent = pad(cnt('active'));
   const st = $('#stations'); st.textContent = '';
-  S.rooms.forEach((r, i) => st.append(el('button', { class:'st-tab' + (UI.hidden.has(r.id) ? ' off' : ''), type:'button', style:'--c:' + r.color, title:r.name, 'data-room':r.id,
+  S.rooms.forEach((r, i) => st.append(el('button', { class:'st-tab' + (UI.hidden.has(r.id) ? ' off' : '') + (intro ? ' intro' : ''), type:'button', style:'--c:' + r.color + ';--i:' + i, title:r.name, 'data-room':r.id,
     'aria-current':UI.sel && UI.sel.kind === 'room' && UI.sel.id === r.id ? 'true' : null, onclick:() => select('room', r.id) },
     el('b', { text:pad(r.list.length) }), el('span', { text:r.name }), el('em', { text:r.code + ' · ' + STATUS[r.status].label }))));
   renderSector();
@@ -686,7 +736,7 @@ function renderTree() {
       refs.agents[a.id] = b;
       ul.append(el('li', {}, b));
     });
-    tree.append(el('div', { class:'room' + (off ? ' off' : '') + (folded ? ' folded' : '') }, row, ul));
+    tree.append(el('div', { class:'room' + (off ? ' off' : '') + (folded ? ' folded' : '') + (intro ? ' intro' : ''), style:'--i:' + i }, row, ul));
   });
   if (!shown && q) tree.append(el('div', { class:'empty', text:'No agents match “' + UI.q.trim() + '”.' }));
   syncTree();
@@ -705,7 +755,31 @@ function toggleRoom(id) {
   if (UI.hidden.has(id) && UI.sel && ((UI.sel.kind === 'room' && UI.sel.id === id) || (selAgent && selAgent.room.id === id))) select(null);
   renderTree(); if (engine) engine.setHidden(UI.hidden);
 }
-function toggleFold(id) { if (UI.open.has(id)) UI.open.delete(id); else UI.open.add(id); renderTree(); }
+/* room expand/collapse: the agent list grows/shrinks, the chevron turns, rows slide in one after another */
+function animateRoomOpen(id) {
+  const wrap = refs.rooms[id] && refs.rooms[id].parentElement; if (!wrap || reduceMotion) return;
+  const ul = wrap.querySelector('.agents'), chev = wrap.querySelector('.chev svg');
+  if (chev) chev.animate([{ transform:'rotate(-90deg)' }, { transform:'none' }], { duration:500, easing:EASE });
+  if (!ul) return;
+  const h = ul.scrollHeight; ul.style.overflow = 'hidden';
+  ul.animate([{ height:'0px', opacity:0 }, { height:h + 'px', opacity:1 }], { duration:560, easing:EASE_OUT }).onfinish = () => { ul.style.overflow = ''; };
+  [...ul.children].forEach((li, i) => li.animate([{ opacity:0, transform:'translateX(-8px)' }, { opacity:1, transform:'none' }], { duration:460, delay:120 + i * 45, easing:EASE_OUT, fill:'backwards' }));
+}
+function toggleFold(id) {
+  const opening = !UI.open.has(id);
+  const wrap = refs.rooms[id] && refs.rooms[id].parentElement, ul = wrap && wrap.querySelector('.agents');
+  if (!opening && ul && ul.offsetHeight && !reduceMotion) {
+    if (wrap.dataset.closing) return; wrap.dataset.closing = '1';
+    const chev = wrap.querySelector('.chev svg'); if (chev) chev.animate([{ transform:'none' }, { transform:'rotate(-90deg)' }], { duration:460, easing:EASE, fill:'forwards' });
+    ul.style.overflow = 'hidden';
+    ul.animate([{ height:ul.offsetHeight + 'px', opacity:1 }, { height:'0px', opacity:0 }], { duration:460, easing:EASE, fill:'forwards' })
+      .onfinish = () => { UI.open.delete(id); renderTree(); };
+    return;
+  }
+  if (opening) UI.open.add(id); else UI.open.delete(id);
+  renderTree();
+  if (opening) animateRoomOpen(id);
+}
 $('#allRooms').addEventListener('click', () => {
   const allOn = S.rooms.every(r => !UI.hidden.has(r.id));
   UI.hidden = new Set(allOn ? S.rooms.map(r => r.id) : []);
@@ -880,7 +954,7 @@ function renderRail() {
   const W = Math.max(600, host.clientWidth), H = 74, padL = 52, padR = 44, base = 48;
   const end = Date.now(), start = end - 21 * DAY;
   const X = ms => padL + (Math.max(start, ms) - start) / (end - start) * (W - padL - padR);
-  const svg = svgEl('svg', { width:W, height:H, viewBox:`0 0 ${W} ${H}`, role:'img', 'aria-label':'Timeline of last activity per agent' });
+  const svg = svgEl('svg', { width:W, height:H, viewBox:`0 0 ${W} ${H}`, role:'img', 'aria-label':'Timeline of last activity per agent', class:intro ? 'intro' : '' });
   const bands = [['dormant', start, end - 14.5 * DAY], ['roaming', end - 14.5 * DAY, end - 2.5 * DAY], ['active', end - 2.5 * DAY, end + DAY]];
   bands.forEach(([k, a, b]) => {
     const x0 = Math.max(padL, X(a)), x1 = Math.min(W - padR + 14, X(b));
@@ -904,7 +978,7 @@ function renderRail() {
     const old = a.ms < start, key = old ? 'old' : new Date(a.ms).toDateString();
     const i = stack[key] = (stack[key] || 0) + 1;
     const cx = old ? padL - 22 : X(a.ms);
-    const c = svgEl('circle', { cx, cy:base - (i - 1) * 10.5, r:4.2, fill:a.room.color, stroke:'none', tabindex:0, 'aria-label':a.call + ', ' + a.room.name + ', ' + fmtDay(a.ms) });
+    const c = svgEl('circle', { cx, cy:base - (i - 1) * 10.5, r:4.2, fill:a.room.color, stroke:'none', tabindex:0, style:'--i:' + Object.keys(railDots).length, 'aria-label':a.call + ', ' + a.room.name + ', ' + fmtDay(a.ms) });
     const tt = svgEl('title'); tt.textContent = a.call + ' · ' + a.room.name + ' · ' + fmtDay(a.ms); c.append(tt);
     c.addEventListener('click', () => select('agent', a.id));
     c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select('agent', a.id); } });
@@ -917,13 +991,33 @@ function renderRail() {
 new ResizeObserver(() => renderRail()).observe($('#plot'));
 
 /* ───────────── selection + hover ───────────── */
+let inspClosing = null;
 function select(kind, id) {
+  if (inspClosing) { inspClosing.cancel(); inspClosing = null; }
+  /* closing the popup: fold it back up into the strip, then the strip retracts to the left */
+  if (!kind && UI.sel && !insp.hidden && !reduceMotion) {
+    const w = insp.offsetWidth, h = insp.offsetHeight, c = 14, hh = 40;
+    const P = pts => 'polygon(' + pts.map(p => p[0] + 'px ' + p[1] + 'px').join(',') + ')';
+    inspClosing = insp.animate([
+      { clipPath:P([[c, 0], [w, 0], [w, h - c], [w - c, h], [0, h], [0, c]]) },
+      { clipPath:P([[c, 0], [w, 0], [w, hh], [w, hh], [0, hh], [0, c]]), offset:.62 },
+      { clipPath:P([[0, 0], [0, 0], [0, hh], [0, hh], [0, hh], [0, 0]]) }], { duration:760, easing:EASE, fill:'forwards' });
+    [...insp.children].forEach(ch => { if (!ch.classList.contains('ihead')) ch.animate([{ opacity:1 }, { opacity:0 }], { duration:280, easing:'ease-out', fill:'forwards' }); });
+    inspClosing.onfinish = () => { const a = inspClosing; inspClosing = null; selectNow(null); if (a) a.cancel(); };
+    return;
+  }
+  selectNow(kind, id);
+}
+function selectNow(kind, id) {
+  const switching = !!(kind && UI.sel && !insp.hidden && (UI.sel.kind !== kind || UI.sel.id !== (id || null)));
   UI.sel = kind ? { kind, id:id || null } : null;
   confirmOpen = false;
   if (kind && roster.classList.contains('is-open')) { roster.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded', 'false'); }
   const selAg = kind === 'agent' ? S.agentById.get(id) : null;
-  if (selAg && !UI.open.has(selAg.room.id)) { UI.open.add(selAg.room.id); renderTree(); } else syncTree();
+  if (selAg && !UI.open.has(selAg.room.id)) { UI.open.add(selAg.room.id); renderTree(); animateRoomOpen(selAg.room.id); } else syncTree();
   renderInspector(); renderSector();
+  /* switching between robots/rooms while the popup is open: the new content fades up in sequence */
+  if (switching && !reduceMotion) [...insp.children].forEach((ch, i) => ch.animate([{ opacity:0, transform:'translateY(8px)' }, { opacity:1, transform:'none' }], { duration:520, delay:i * 45, easing:EASE_OUT, fill:'backwards' }));
   if (engine) engine.select(UI.sel);
 }
 function setHover(h) {
@@ -1988,10 +2082,11 @@ function start3D() {
     const before = camBtns.map(b => b.getBoundingClientRect());
     stageEl.classList.toggle('insp-open', open);
     if (reduceMotion) return;
+    if (open) { insp.classList.add('opening'); clearTimeout(insp._ot); insp._ot = setTimeout(() => insp.classList.remove('opening'), 1600); }
     camBtns.forEach((b, i) => {
       const a = b.getBoundingClientRect(), dx = before[i].left - a.left, dy = before[i].top - a.top;
       if (dx || dy) b.animate([{ transform:'translate(' + dx + 'px,' + dy + 'px)' }, { transform:'none' }],
-        { duration:460, delay:(open ? i : camBtns.length - 1 - i) * 30, easing:'cubic-bezier(.2,.7,.2,1)', fill:'backwards' });
+        { duration:720, delay:(open ? i : camBtns.length - 1 - i) * 45, easing:EASE, fill:'backwards' });
     });
   };
   new MutationObserver(apply).observe(insp, { attributes:true, attributeFilter:['hidden'] });

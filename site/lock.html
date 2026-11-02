@@ -66,6 +66,8 @@
 @keyframes hqlShake{20%,80%{transform:translateX(-2px)}30%,70%{transform:translateX(5px)}40%,60%{transform:translateX(-7px)}50%{transform:translateX(7px)}}
 @media (max-height:600px){.hql-pad{display:none}.hql-title{margin-top:14px}}
 @media (prefers-reduced-motion:reduce){#hqLock,#hqLock *{animation:none!important;transition:none!important}}
+/* hold the app's entrance animations behind the lock; they play once the floor opens */
+html.hq-locked #app,html.hq-locked #app *{animation-play-state:paused!important}
 </style>
 
 <div id="hqLock" role="dialog" aria-modal="true" aria-labelledby="hqlTitle">
@@ -109,6 +111,7 @@
   const goBtn = lock.querySelector('[data-k="go"]');
   const coarse = matchMedia('(pointer: coarse)').matches;
   const realFetch = window.fetch.bind(window);
+  const root = document.documentElement; root.classList.add('hq-locked');
 
   /* The app asks for roster.json; hold that request until the floor is unlocked, then answer with the decrypted snapshot. */
   let release;
@@ -163,7 +166,7 @@
     lock.classList.remove('busy'); lock.classList.add('ok'); paint();
     say('Access granted', 'ok');
     setTimeout(() => {
-      release(text); setInert(false);
+      release(text); setInert(false); root.classList.remove('hq-locked');
       lock.classList.add('gone');
       setTimeout(() => lock.remove(), 600);
     }, reduce() ? 0 : 420);
@@ -211,7 +214,7 @@
   }, true);
 
   /* an unencrypted snapshot (local development) opens straight away */
-  doc.then(t => { const j = parse(t); if (j && j.hq !== 'locked' && !done) { done = true; release(t); setInert(false); lock.remove(); } }, () => {});
+  doc.then(t => { const j = parse(t); if (j && j.hq !== 'locked' && !done) { done = true; release(t); setInert(false); root.classList.remove('hq-locked'); lock.remove(); } }, () => {});
 
   let saved = null;
   try { saved = sessionStorage.getItem(SAVED); } catch (e) {}
