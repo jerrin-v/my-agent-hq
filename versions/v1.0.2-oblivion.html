@@ -3,9 +3,232 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
 <style>html,body{margin:0;height:100%;background:#04060A}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
+<!-- Site-only lock screen for the public copy (GitHub / GitLab Pages). scripts/build.sh puts this before the app;
+     it is NOT part of the claude.ai artifact. roster.json on the site is AES-GCM encrypted with the site code
+     (scripts/lock-roster.mjs); this screen asks for the code, decrypts the snapshot and hands it to the app. -->
+<style>
+#hqLock{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;overflow:auto;box-sizing:border-box;
+  padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));
+  background:radial-gradient(rgba(190,215,230,.10) .7px,transparent 1.1px) 0 0/7px 7px,
+             radial-gradient(ellipse 70% 55% at 50% 45%,rgba(245,128,37,.16),transparent 70%),rgba(5,5,5,.78);
+  -webkit-backdrop-filter:blur(22px) saturate(1.2);backdrop-filter:blur(22px) saturate(1.2);
+  color:#ECEAE4;font:500 14px/1.4 "Rajdhani","Barlow Condensed",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  transition:opacity .55s ease,visibility 0s linear .55s}
+#hqLock.gone{opacity:0;visibility:hidden}
+#hqLock *{box-sizing:border-box}
+.hql-panel{position:relative;width:min(360px,100%);
+  background:linear-gradient(180deg,rgba(44,48,53,.72),rgba(14,15,17,.7));
+  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);
+  transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+#hqLock.gone .hql-panel{transform:scale(1.04)}
+.hql-head{display:flex;align-items:center;gap:8px;padding:8px 14px 7px 22px;background:linear-gradient(180deg,#FF9440,#F58025);color:#130800;
+  font:700 15px/1 "Barlow Condensed","Rajdhani",sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.hql-head span{font-weight:400;opacity:.75}
+.hql-head i{margin-left:auto;width:8px;height:8px;background:#130800;transform:rotate(45deg);animation:hqlBlink 1.6s steps(2,start) infinite}
+.hql-body{padding:18px 20px 18px}
+.hql-brand{display:flex;align-items:center;gap:12px}
+.hql-brand svg{width:40px;height:40px;flex:none}
+.hql-brand b{display:block;font:600 19px/1 "Barlow Condensed","Rajdhani",sans-serif;letter-spacing:.03em}
+.hql-mono{font:400 10px/1.3 "Share Tech Mono",ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:#6E6C66}
+.hql-brand .hql-mono{display:block;margin-top:4px;color:#ABA9A2}
+.hql-title{margin:20px 0 4px;font:600 27px/1.05 "Barlow Condensed","Rajdhani",sans-serif;letter-spacing:.01em}
+.hql-cells{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin:16px 0 10px}
+.hql-cell{position:relative;height:56px;display:grid;place-items:center;background:rgba(0,0,0,.45);
+  clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);
+  box-shadow:inset 0 -2px 0 rgba(255,255,255,.14);transition:box-shadow .15s,background .15s}
+.hql-cell::before{content:"";width:11px;height:11px;background:#F58025;transform:rotate(45deg) scale(0);transition:transform .14s cubic-bezier(.3,1.6,.5,1)}
+.hql-cell.filled::before{transform:rotate(45deg) scale(1)}
+.hql-cell.cur{box-shadow:inset 0 -2px 0 #F58025;background:rgba(245,128,37,.08)}
+.hql-cell.cur::after{content:"";position:absolute;left:50%;top:50%;width:2px;height:24px;margin:-12px 0 0 -1px;background:#FFA54A;animation:hqlBlink 1s steps(2,start) infinite}
+#hqLock.busy .hql-cell.cur::after,#hqLock.ok .hql-cell::after{display:none}
+#hqLock.busy .hql-cell::before{animation:hqlPulse .8s ease-in-out infinite alternate}
+#hqLock.busy .hql-cell:nth-child(2)::before{animation-delay:.1s}#hqLock.busy .hql-cell:nth-child(3)::before{animation-delay:.2s}
+#hqLock.busy .hql-cell:nth-child(4)::before{animation-delay:.3s}#hqLock.busy .hql-cell:nth-child(5)::before{animation-delay:.4s}
+#hqLock.busy .hql-cell:nth-child(6)::before{animation-delay:.5s}
+#hqLock.err .hql-cell{box-shadow:inset 0 -2px 0 #FF6B5A;background:rgba(255,107,90,.08)}
+#hqLock.err .hql-cell::before{background:#FF6B5A}
+#hqLock.err .hql-cells{animation:hqlShake .42s cubic-bezier(.36,.07,.19,.97)}
+#hqLock.ok .hql-cell{box-shadow:inset 0 -2px 0 #CFC93C}
+#hqLock.ok .hql-cell::before{background:#CFC93C;transform:rotate(45deg) scale(1)}
+.hql-cells input{position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;padding:0;margin:0;font-size:16px;color:transparent;background:none;caret-color:transparent;cursor:text}
+.hql-status{min-height:14px;margin:0;color:#ABA9A2}
+.hql-status.err{color:#FF9A85}
+.hql-status.ok{color:#CFC93C}
+.hql-pad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:16px}
+.hql-pad button{height:48px;border:0;padding:0;display:grid;place-items:center;cursor:pointer;color:#ECEAE4;
+  background:linear-gradient(180deg,#3A3D42,#25282C);font:600 23px/1 "Barlow Condensed","Rajdhani",sans-serif;font-variant-numeric:tabular-nums;
+  clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px);-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.hql-pad button:hover{background:linear-gradient(180deg,#4A4E54,#2E3135)}
+.hql-pad button:active{background:linear-gradient(180deg,#C3D2DB,#8FA3B0);color:#0B0D0F}
+.hql-pad button svg{width:20px;height:20px}
+.hql-pad .go{background:linear-gradient(180deg,#FF9440,#F58025);color:#120700}
+.hql-pad .go:hover{background:linear-gradient(180deg,#FFA65E,#FF8A30)}
+.hql-pad .go:disabled{opacity:.4;cursor:default;background:linear-gradient(180deg,#FF9440,#F58025)}
+.hql-pad button:focus-visible{outline:1px solid #F58025;outline-offset:2px}
+.hql-foot{margin:14px 0 0;text-align:center}
+@keyframes hqlBlink{to{visibility:hidden}}
+@keyframes hqlPulse{from{opacity:1}to{opacity:.25}}
+@keyframes hqlShake{20%,80%{transform:translateX(-2px)}30%,70%{transform:translateX(5px)}40%,60%{transform:translateX(-7px)}50%{transform:translateX(7px)}}
+@media (max-height:600px){.hql-pad{display:none}.hql-title{margin-top:14px}}
+@media (prefers-reduced-motion:reduce){#hqLock,#hqLock *{animation:none!important;transition:none!important}}
+</style>
+
+<div id="hqLock" role="dialog" aria-modal="true" aria-labelledby="hqlTitle">
+  <div class="hql-panel">
+    <div class="hql-head">Access <span>control</span><i aria-hidden="true"></i></div>
+    <div class="hql-body">
+      <div class="hql-brand">
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#1E2023" stroke="#5A5E64" stroke-width="2"/><circle cx="24" cy="24" r="17" stroke="#8C9298" stroke-width="1"/><path d="M24 9l12 7v16l-12 7-12-7V16z" stroke="#ECEAE4" stroke-width="1.6"/><path d="M24 15l7 4v10l-7 4-7-4V19z" fill="#F58025"/><path d="M2 24h6M40 24h6M24 2v6M24 40v6" stroke="#ECEAE4" stroke-opacity=".5"/></svg>
+        <div><b>Claude HQ</b><span class="hql-mono">Bridge floor 01 · Restricted</span></div>
+      </div>
+      <h1 class="hql-title" id="hqlTitle">Enter clearance code</h1>
+      <span class="hql-mono">6-digit code to open the floor</span>
+      <div class="hql-cells" id="hqlCells">
+        <div class="hql-cell"></div><div class="hql-cell"></div><div class="hql-cell"></div>
+        <div class="hql-cell"></div><div class="hql-cell"></div><div class="hql-cell"></div>
+        <input id="hqlCode" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="current-password" aria-label="Clearance code, 6 digits" aria-describedby="hqlStatus">
+      </div>
+      <p class="hql-status hql-mono" id="hqlStatus" role="status" aria-live="polite">Awaiting code</p>
+      <div class="hql-pad" id="hqlPad">
+        <button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button>
+        <button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button>
+        <button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button>
+        <button type="button" data-k="del" aria-label="Delete last digit"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4h10v12H7l-5-6z"/><path d="M10 7.5l5 5M15 7.5l-5 5"/></svg></button>
+        <button type="button" data-k="0">0</button>
+        <button type="button" data-k="go" class="go" aria-label="Unlock" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h11M11 5l5 5-5 5"/></svg></button>
+      </div>
+      <p class="hql-foot hql-mono">Stays unlocked until this tab is closed</p>
+    </div>
+  </div>
+</div>
+
+<script data-roster="../roster.json">
+(() => {
+  'use strict';
+  const SRC = (document.currentScript && document.currentScript.dataset.roster) || 'roster.json';
+  const SAVED = 'hq.siteCode';
+  const lock = document.getElementById('hqLock');
+  const field = document.getElementById('hqlCode');
+  const cells = Array.from(lock.querySelectorAll('.hql-cell'));
+  const status = document.getElementById('hqlStatus');
+  const goBtn = lock.querySelector('[data-k="go"]');
+  const coarse = matchMedia('(pointer: coarse)').matches;
+  const realFetch = window.fetch.bind(window);
+
+  /* The app asks for roster.json; hold that request until the floor is unlocked, then answer with the decrypted snapshot. */
+  let release;
+  const gate = new Promise(res => { release = res; });
+  window.fetch = (req, init) => {
+    const url = typeof req === 'string' ? req : (req && req.url) || '';
+    if (/(^|\/)roster\.json([?#]|$)/.test(url)) return gate.then(t => new Response(t, { status:200, headers:{ 'content-type':'application/json' } }));
+    return realFetch(req, init);
+  };
+
+  const doc = realFetch(SRC, { cache:'no-store' })
+    .then(r => (r.ok ? r.text() : Promise.reject(new Error('HTTP ' + r.status))))
+    .catch(() => { throw Object.assign(new Error('unavailable'), { net:true }); });
+  doc.catch(() => {});
+
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const parse = t => { try { return JSON.parse(t); } catch (e) { return null; } };
+  async function open(code) {
+    const text = await doc;
+    const j = parse(text);
+    if (!j) throw Object.assign(new Error('bad roster'), { net:true });
+    if (j.hq !== 'locked') return text;
+    if (!window.crypto || !crypto.subtle) throw Object.assign(new Error('insecure'), { insecure:true });
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(code), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey({ name:'PBKDF2', hash:'SHA-256', salt:b64(j.salt), iterations:j.iter }, base, { name:'AES-GCM', length:256 }, false, ['decrypt']);
+    return new TextDecoder().decode(await crypto.subtle.decrypt({ name:'AES-GCM', iv:b64(j.iv) }, key, b64(j.ct)));
+  }
+
+  /* keep the app behind the lock out of reach until unlocked */
+  const setInert = on => { const a = document.getElementById('app'); if (a) { if (on) a.setAttribute('inert', ''); else a.removeAttribute('inert'); } };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => { if (lock.isConnected && !lock.classList.contains('gone')) setInert(true); });
+  else setInert(true);
+
+  let busy = false, done = false, tries = 0;
+  const say = (msg, tone) => { status.textContent = msg; status.className = 'hql-status hql-mono' + (tone ? ' ' + tone : ''); };
+  function paint() {
+    const n = field.value.length;
+    cells.forEach((c, i) => { c.classList.toggle('filled', i < n); c.classList.toggle('cur', i === n && !busy && !done); });
+    goBtn.disabled = n !== 6 || busy || done;
+  }
+  function setCode(v) {
+    if (busy || done) return;
+    lock.classList.remove('err');
+    field.value = String(v).replace(/\D/g, '').slice(0, 6);
+    if (status.classList.contains('err') && field.value) say('Awaiting code');
+    paint();
+    if (field.value.length === 6) submit(false);
+  }
+
+  function grant(text) {
+    done = true; busy = false;
+    lock.classList.remove('busy'); lock.classList.add('ok'); paint();
+    say('Access granted', 'ok');
+    setTimeout(() => {
+      release(text); setInert(false);
+      lock.classList.add('gone');
+      setTimeout(() => lock.remove(), 600);
+    }, reduce() ? 0 : 420);
+  }
+  const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  async function submit(resume) {
+    const code = field.value;
+    if (busy || done || code.length !== 6) return;
+    busy = true; lock.classList.add('busy'); paint();
+    say(resume ? 'Resuming session…' : 'Verifying clearance…');
+    try {
+      const text = await open(code);
+      try { sessionStorage.setItem(SAVED, code); } catch (e) {}
+      grant(text);
+    } catch (e) {
+      busy = false; lock.classList.remove('busy');
+      if (e && e.net) { field.value = ''; paint(); say('Floor data unavailable. Check your connection and reload.', 'err'); return; }
+      if (e && e.insecure) { field.value = ''; paint(); say('Open the site over https to unlock.', 'err'); return; }
+      try { sessionStorage.removeItem(SAVED); } catch (e2) {}
+      field.value = ''; paint();
+      if (resume) { say('Awaiting code'); return; }
+      tries += 1;
+      lock.classList.remove('err'); void lock.offsetWidth; lock.classList.add('err');
+      say(tries > 1 ? 'Code rejected · attempt ' + tries : 'Code rejected · try again', 'err');
+      if (!coarse) field.focus();
+    }
+  }
+
+  field.addEventListener('input', () => setCode(field.value));
+  field.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); submit(false); } });
+  document.getElementById('hqlPad').addEventListener('click', e => {
+    const b = e.target.closest('button[data-k]'); if (!b) return;
+    const k = b.dataset.k;
+    if (k === 'del') setCode(field.value.slice(0, -1));
+    else if (k === 'go') submit(false);
+    else setCode(field.value + k);
+  });
+  /* typing anywhere on the lock screen goes into the code */
+  document.addEventListener('keydown', e => {
+    if (done || !lock.isConnected || e.target === field || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (/^\d$/.test(e.key)) { e.preventDefault(); setCode(field.value + e.key); }
+    else if (e.key === 'Backspace') { e.preventDefault(); setCode(field.value.slice(0, -1)); }
+    else if (e.key === 'Enter' && !(e.target.closest && e.target.closest('#hqlPad'))) { e.preventDefault(); submit(false); }
+  }, true);
+
+  /* an unencrypted snapshot (local development) opens straight away */
+  doc.then(t => { const j = parse(t); if (j && j.hq !== 'locked' && !done) { done = true; release(t); setInert(false); lock.remove(); } }, () => {});
+
+  let saved = null;
+  try { saved = sessionStorage.getItem(SAVED); } catch (e) {}
+  paint();
+  if (saved && /^\d{6}$/.test(saved)) { field.value = saved; paint(); submit(true); }
+  else if (!coarse) field.focus();
+})();
+</script>
 <title>Claude HQ</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">

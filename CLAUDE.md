@@ -8,6 +8,8 @@ UI v1.0.3 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, c
   - Capabilities: `db`, `user`, `mcp` (server "Claude Code Remote", tool `fire_trigger`). Publish with the Artifact tool using that `url` (read it first).
   - `src/claude-hq.html` = the artifact page as published (body fragment, no doctype). Edit this, publish it to the artifact, then run `scripts/build.sh` for GitHub.
 - **GitHub Pages copy:** https://jerrin-v.github.io/my-agent-hq/ (branch `main`, root). Read-only snapshot: when `window.claude` has no db, the page loads `roster.json`.
+  - **Locked with a 6-digit site code.** `site/lock.html` (site-only, never published to the artifact) is put in front of each page by `scripts/build.sh`; it holds the app's `fetch('roster.json')` until the code decrypts the snapshot. `roster.json` is AES-GCM encrypted (`scripts/lock-roster.mjs`); the plain copy is `roster.plain.json`, git-ignored.
+  - The code is NOT in the repo (the repo is public). Ask Jerrin for it; never commit it, `roster.plain.json`, or an unencrypted `roster.json` (build.sh refuses to build one).
 - **Scheduled task "Claude HQ chat sync"** (`trig_01CAoYtMU9TRwVRL3ij25fMa`, every 6 h at :23, runs on Jerrin's computer via the desktop app's built-in browser): reads claude.ai `/api/organizations/{org}/projects` + `chat_conversations`, writes the artifact db. The page's **Sync now** button fires it (meta/sync.triggerId).
 - Old artifact-only task "Claude HQ roster sync" (`trig_01FWbxrBLcm2CZkgXZVLcdEk`) is obsolete — Jerrin should delete it.
 
@@ -25,5 +27,5 @@ UI v1.0.3 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, c
 
 ## Refreshing the GitHub site
 1. Read the artifact (Artifact `read` on the URL above) and save the page to `src/claude-hq.html` if it changed.
-2. Export the db (ArtifactData list `rooms`, `agents`, get `meta/sync`) into `roster.json` as `{rooms:{id:data}, agents:{id:data}, meta:{lastSync, chats, source}}`.
-3. `sh scripts/build.sh`, commit, push to `main`. Pages redeploys in 1–2 minutes.
+2. Export the db (ArtifactData list `rooms`, `agents`, get `meta/sync`) into `roster.plain.json` as `{rooms:{id:data}, agents:{id:data}, meta:{lastSync, chats, source}}`.
+3. `HQ_PASSWORD=<site code> sh scripts/build.sh` (encrypts into `roster.json`, rebuilds the pages), commit, push to `main`. Pages redeploys in 1–2 minutes.
