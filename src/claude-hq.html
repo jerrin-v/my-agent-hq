@@ -322,6 +322,12 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 /* strokes off */
 .hud::before{display:none!important}
 .insp,.key,.minimap,.toast,.top,.roster,.rail{box-shadow:none!important}
+/* popup open: shorter floor plan, camera buttons in a row above it, popup takes the freed height */
+@media (min-width:861px){
+  .stage:has(.insp:not([hidden])) .minimap{height:116px}
+  .stage:has(.insp:not([hidden])) .cam{flex-direction:row;align-items:center;bottom:calc(116px + var(--x))}
+  .stage:has(.insp:not([hidden])) .insp{max-height:max(220px,calc(100% - 116px - 34px - 3 * var(--x)))}
+}
 </style>
 
 <div id="app">
@@ -925,7 +931,7 @@ function drawMinimap() {
   if (!engine || $('#minimap').offsetParent === null) return;
   const d = engine.mapData(); if (!d) return;
   const dpr = Math.min(2, window.devicePixelRatio || 1), w = mm.clientWidth, h = mm.clientHeight;
-  if (mm.width !== Math.round(w * dpr)) { mm.width = Math.round(w * dpr); mm.height = Math.round(h * dpr); }
+  if (mm.width !== Math.round(w * dpr) || mm.height !== Math.round(h * dpr)) { mm.width = Math.round(w * dpr); mm.height = Math.round(h * dpr); }
   mmx.setTransform(dpr, 0, 0, dpr, 0, 0); mmx.clearRect(0, 0, w, h);
   const b = d.bounds, padX = 14, padTop = 24, padB = 10;
   const s = Math.min((w - padX * 2) / (b.maxX - b.minX), (h - padTop - padB) / (b.maxZ - b.minZ));
