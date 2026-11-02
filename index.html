@@ -1192,7 +1192,6 @@ function renderRail() {
   const bands = [['dormant', start, end - 14.5 * DAY], ['roaming', end - 14.5 * DAY, end - 2.5 * DAY], ['active', end - 2.5 * DAY, end + DAY]];
   bands.forEach(([k, a, b]) => {
     const x0 = Math.max(padL, X(a)), x1 = Math.min(W - padR + 14, X(b));
-    svg.append(svgEl('rect', { x:x0, y:3, width:Math.max(0, x1 - x0 - 2), height:54, fill:STATUS[k].color, 'fill-opacity':k === 'active' ? .08 : .045 }));
     svg.append(svgEl('line', { x1:x0, x2:x0, y1:3, y2:57, stroke:STATUS[k].color, 'stroke-opacity':.5 }));
     const t = svgEl('text', { x:x0 + 6, y:13, fill:STATUS[k].color, 'font-family':'Share Tech Mono, monospace', 'font-size':9, 'letter-spacing':1.5, 'fill-opacity':.9 });
     t.textContent = STATUS[k].label.toUpperCase(); svg.append(t);
