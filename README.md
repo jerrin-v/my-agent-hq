@@ -14,12 +14,13 @@ An interactive 3D sci-fi office floor of my Claude workspace (UI v1.0.3, Avenger
 | `index.html` | The whole app (Three.js r147 from jsDelivr, no build step) |
 | `roster.json` | Read-only snapshot of rooms and chats, used when the page runs outside claude.ai |
 | `versions/v1.0.2-oblivion.html` | Previous Oblivion-style UI |
-| `.gitlab-ci.yml` | GitLab Pages deploy |
+| `.gitlab-ci.yml` | GitLab Pages deploy (optional) |
+| `.nojekyll` | Serves the files as-is on GitHub Pages |
 
 ## Live vs. snapshot
 
 On claude.ai the page reads the live roster (kept in sync every 6 hours by the *Claude HQ chat sync* scheduled task, or on demand with **Sync now**).
-Anywhere else, such as GitLab Pages or opening `index.html` from a local server, it shows the `roster.json` snapshot, read-only. Replace `roster.json` to refresh it.
+Anywhere else, such as GitHub Pages (https://jerrin-designer.github.io/my-agent-hq/), GitLab Pages or opening `index.html` from a local server, it shows the `roster.json` snapshot, read-only. Replace `roster.json` to refresh it.
 
 ## Run locally
 
