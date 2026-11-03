@@ -631,13 +631,13 @@ html.hq-intro .sign .tip-dot{animation:dotIn .6s 1.9s cubic-bezier(.22,.8,.3,1.4
   <header class="top hud">
     <div class="brand">
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#1E2023" stroke="#5A5E64" stroke-width="2"/><circle cx="24" cy="24" r="17" stroke="#8C9298" stroke-width="1"/><path d="M24 9l12 7v16l-12 7-12-7V16z" stroke="#ECEAE4" stroke-width="1.6"/><path d="M24 15l7 4v10l-7 4-7-4V19z" fill="#F58025"/><path d="M2 24h6M40 24h6M24 2v6M24 40v6" stroke="#ECEAE4" stroke-opacity=".5"/></svg>
-      <div class="bt"><div class="date"><span id="dateLbl">—</span><i id="activeBox" title="Active agents">00</i></div><span class="op">Station · <b>Claude HQ</b></span><span class="op">Operator · <b>Bridge floor 01</b></span></div>
+      <div class="bt"><div class="date"><span>My Agent HQ</span><i id="activeBox" title="Active agents">00</i></div><span class="op">Station · <b>Claude HQ</b></span><span class="op">Operator · <b>Bridge floor 01</b></span></div>
     </div>
     <span class="ver">v1.0.3</span>
     <nav class="stations" id="stations" aria-label="Rooms"></nav>
     <div class="tape" id="tape"></div>
     <div class="sync" id="syncBox" hidden><div><span class="lbl">Last sync</span><b id="syncTime">—</b></div><button class="btn" id="syncBtn" type="button">Sync now</button></div>
-    <div class="clock"><span class="lbl">Local time</span><b id="clock">--:--:--</b></div>
+    <div class="clock"><span class="lbl"><span id="dateLbl">—</span> · Local time</span><b id="clock">--:--:--</b></div>
     <div class="big"><b id="bigNum">00</b><span>Units online</span></div>
     <button class="btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="roster">Rooms</button>
   </header>
