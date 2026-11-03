@@ -308,6 +308,8 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 @media (prefers-reduced-motion:reduce){ .hud::before{animation:none} }
 /* no backdrop root on the stage, so its overlays blur the 3D floor */
 #app>.stage{clip-path:none!important}
+/* window frame: the 3D canvas is full-window and the glow pass smears colours at the very edge, so the outer gutter shows the plain page background instead (sits above the canvas, below the panels) */
+body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;border:solid var(--bg);border-width:var(--x) max(var(--x),env(safe-area-inset-right,0px)) var(--x) max(var(--x),env(safe-area-inset-left,0px))}
 /* the roster touches the window edge: a big blur radius samples past the edge and some browsers paint a light band there, so it gets a small radius and a slightly denser tint */
 .roster{background:linear-gradient(180deg,rgba(24,27,31,.66),rgba(8,9,11,.62))!important;-webkit-backdrop-filter:blur(10px) saturate(1.4)!important;backdrop-filter:blur(10px) saturate(1.4)!important}
 .key,.minimap{background:linear-gradient(180deg,rgba(24,27,31,.5),rgba(8,9,11,.46))!important;-webkit-backdrop-filter:blur(40px) saturate(1.5)!important;backdrop-filter:blur(40px) saturate(1.5)!important}
