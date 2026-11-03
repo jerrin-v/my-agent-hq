@@ -399,7 +399,7 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 .gwrap{background:rgba(0,0,0,.35)!important}
 .mates button{background:linear-gradient(180deg,rgba(60,64,70,.45),rgba(24,26,29,.45))!important}
 .stage::after{display:none}
-#gl{position:fixed;inset:0;z-index:0}
+#gl{position:fixed;inset:-48px;z-index:0} /* 48px overscan: the glow pass smears the image edge, so the edge is rendered off screen */
 #app>*{pointer-events:auto}
 #app>.stage{pointer-events:none;background:none!important;border:1px solid rgba(255,255,255,.14)}
 .stage>*:not(.sector){pointer-events:auto}
@@ -542,8 +542,6 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 @media (prefers-reduced-motion:reduce){ .hud::before{animation:none} }
 /* no backdrop root on the stage, so its overlays blur the 3D floor */
 #app>.stage{clip-path:none!important}
-/* window frame: the 3D canvas is full-window and the glow pass smears colours at the very edge, so the outer gutter shows the plain page background instead (sits above the canvas, below the panels) */
-body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;border:solid var(--bg);border-width:var(--x) max(var(--x),env(safe-area-inset-right,0px)) var(--x) max(var(--x),env(safe-area-inset-left,0px))}
 /* the roster touches the window edge: a big blur radius samples past the edge and some browsers paint a light band there, so it gets a small radius and a slightly denser tint */
 .roster{background:linear-gradient(180deg,rgba(24,27,31,.66),rgba(8,9,11,.62))!important;-webkit-backdrop-filter:blur(10px) saturate(1.4)!important;backdrop-filter:blur(10px) saturate(1.4)!important}
 .key,.minimap{background:linear-gradient(180deg,rgba(24,27,31,.5),rgba(8,9,11,.46))!important;-webkit-backdrop-filter:blur(40px) saturate(1.5)!important;backdrop-filter:blur(40px) saturate(1.5)!important}
@@ -2241,18 +2239,19 @@ function start3D() {
 
   /* ───── view offset so the focus clears the inspector ───── */
   const shift = { x:0, y:0 }, goal = { x:0, y:0 }; let vw = 1, vh = 1;
+  const OS = 48; /* overscan in px on every side, matches #gl inset */
   function updateGoal() { const open = !insp.hidden, phone = isPhone(), r = stage.getBoundingClientRect();
     let gx = r.left + r.width / 2 - vw / 2, gy = r.top + r.height / 2 - vh / 2;
     if (open && !phone) gx -= Math.min(insp.offsetWidth + 24, r.width * .45) / 2;
     if (open && phone) gy -= Math.min(insp.offsetHeight * .8, r.height * .5) / 2;
     goal.x = gx; goal.y = gy; }
   function applyShift() { const ax = Math.abs(shift.x), ay = Math.abs(shift.y);
-    if (ax < .5 && ay < .5) { camera.clearViewOffset(); return; }
-    camera.setViewOffset(vw + 2 * ax, vh + 2 * ay, shift.x > 0 ? 0 : 2 * ax, shift.y > 0 ? 0 : 2 * ay, vw, vh); }
+    camera.setViewOffset(vw + 2 * ax, vh + 2 * ay, (shift.x > 0 ? 0 : 2 * ax) - OS, (shift.y > 0 ? 0 : 2 * ay) - OS, vw + 2 * OS, vh + 2 * OS); }
   function resize() {
     const w = Math.max(1, window.innerWidth), h = Math.max(1, window.innerHeight);
-    renderer.setSize(w, h); composer.setSize(w, h); labels.setSize(w, h);
-    const pr = renderer.getPixelRatio(); reflector.getRenderTarget().setSize(Math.max(2, Math.round(w * pr * .5)), Math.max(2, Math.round(h * pr * .5)));
+    const W2 = w + 2 * OS, H2 = h + 2 * OS;
+    renderer.setSize(W2, H2); composer.setSize(W2, H2); labels.setSize(W2, H2);
+    const pr = renderer.getPixelRatio(); reflector.getRenderTarget().setSize(Math.max(2, Math.round(W2 * pr * .5)), Math.max(2, Math.round(H2 * pr * .5)));
     vw = w; vh = h; updateGoal(); shift.x = goal.x; shift.y = goal.y; camera.aspect = w / h; applyShift(); camera.updateProjectionMatrix();
     if (camReady && !UI.sel && !userTouched && !tween) { const o = overview(); camera.position.copy(o.pos); controls.target.copy(o.target); }
   }
