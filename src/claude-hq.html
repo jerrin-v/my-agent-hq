@@ -1107,7 +1107,7 @@ function start3D() {
   scene.fog = new THREE.Fog('#03060A', 80, 170);
   const camera = new THREE.PerspectiveCamera(34, 1, .1, 500);
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true; controls.dampingFactor = .07; controls.maxPolarAngle = 1.32; controls.minDistance = 2.5; controls.maxDistance = 160;
+  controls.enableDamping = true; controls.dampingFactor = .07; controls.maxPolarAngle = 1.22; controls.screenSpacePanning = false; /* never tilt up to the horizon; panning slides along the floor, never below it */ controls.minDistance = 2.5; controls.maxDistance = 160;
   controls.autoRotate = !reduceMotion; controls.autoRotateSpeed = .25;
   const labels = new THREE.CSS2DRenderer(); labels.domElement.className = 'labels'; glWrap.append(labels.domElement);
   const pmrem = new THREE.PMREMGenerator(renderer);
@@ -2045,7 +2045,11 @@ function start3D() {
     if (!UI.sel && orbitWanted && !controls.autoRotate && !tween && !dragging) { idle += dt; if (idle > 12) { controls.autoRotate = true; idle = 0; } }
     updateGoal();
     if (Math.abs(shift.x - goal.x) > .5 || Math.abs(shift.y - goal.y) > .5) { const k = reduceMotion ? 1 : .12; shift.x += (goal.x - shift.x) * k; shift.y += (goal.y - shift.y) * k; applyShift(); camera.updateProjectionMatrix(); }
+    { const tg = controls.target, b = world.bounds, m = 8; /* keep the view over the floor */
+      tg.y = Math.min(Math.max(tg.y, 0), 4);
+      tg.x = Math.min(Math.max(tg.x, b.minX - m), b.maxX + m); tg.z = Math.min(Math.max(tg.z, b.minZ - m), b.maxZ + m); }
     controls.update();
+    if (camera.position.y < .6) camera.position.y = .6;
     world.rooms.forEach(r => { r.group.children.forEach(o => { if (o.userData.spin) o.rotation.y += dt * .6 * mo; }); });
     orb.rotation.set(t * .3 * mo, t * .45 * mo, 0); cage.rotation.set(-t * .15 * mo, -t * .2 * mo, 0);
     orb.position.y = cage.position.y = 2.1 + Math.sin(t * 1.2) * .07 * mo;
