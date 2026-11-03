@@ -542,7 +542,9 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 @media (prefers-reduced-motion:reduce){ .hud::before{animation:none} }
 /* no backdrop root on the stage, so its overlays blur the 3D floor */
 #app>.stage{clip-path:none!important}
-.key,.minimap,.roster{background:linear-gradient(180deg,rgba(24,27,31,.5),rgba(8,9,11,.46))!important;-webkit-backdrop-filter:blur(40px) saturate(1.5)!important;backdrop-filter:blur(40px) saturate(1.5)!important}
+/* the roster touches the window edge: a big blur radius samples past the edge and some browsers paint a light band there, so it gets a small radius and a slightly denser tint */
+.roster{background:linear-gradient(180deg,rgba(24,27,31,.66),rgba(8,9,11,.62))!important;-webkit-backdrop-filter:blur(10px) saturate(1.4)!important;backdrop-filter:blur(10px) saturate(1.4)!important}
+.key,.minimap{background:linear-gradient(180deg,rgba(24,27,31,.5),rgba(8,9,11,.46))!important;-webkit-backdrop-filter:blur(40px) saturate(1.5)!important;backdrop-filter:blur(40px) saturate(1.5)!important}
 /* chamfer every small box */
 .sector b,.brand .date i,.ver,.big span,.search,.field input,.field select,.gwrap,.mates button,.confirm,.tip .in,.sign .plate em,.agent,.nums div,.segbar b,.kv,.sub{--k:5px;clip-path:polygon(var(--k) 0,100% 0,100% calc(100% - var(--k)),calc(100% - var(--k)) 100%,0 100%,0 var(--k))}
 .kv,.sub,.segbar b{clip-path:none}
