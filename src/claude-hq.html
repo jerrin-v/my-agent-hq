@@ -1117,6 +1117,8 @@ function start3D() {
   const composer = new THREE.EffectComposer(renderer, rt);
   composer.addPass(new THREE.RenderPass(scene, camera));
   const bloom = new THREE.UnrealBloomPass(new THREE.Vector2(256, 256), .65, .12, .98); /* tight radius: the coarse bloom mips showed as blocky squares */
+  /* only the three finest bloom layers: the two coarsest (1/16 and 1/32 res) drew stepped rings across the sky */
+  bloom.compositeMaterial.uniforms.bloomFactors.value = [1, .7, .35, 0, 0];
   composer.addPass(bloom);
   composer.addPass(new THREE.ShaderPass({
     uniforms:{ tDiffuse:{ value:null } },
