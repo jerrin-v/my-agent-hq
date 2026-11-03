@@ -1456,7 +1456,7 @@ function start3D() {
         float hg = 0.12 + 0.55 * (0.55 + 0.45 * sin(tt * 0.9 + bi * 1.3 + uSeed * 5.0)) * (0.4 + 0.6 * h(bi + 3.0));
         c = 0.85 * step(0.0, bx) * step(bx, n) * step(0.22, bf) * step(bf, 0.78) * step(0.1, uv.y) * step(uv.y, 0.1 + hg * 0.6);
         float ly = 0.6 + 0.15 * sin(uv.x * 8.0 + tt + uSeed * 3.0) + 0.05 * sin(uv.x * 21.0 - tt * 1.7);
-        c += smoothstep(0.022, 0.0, abs(uv.y - ly)) * step(0.08, uv.x) * step(uv.x, 0.92); c += step(0.9, uv.y) * step(uv.y, 0.94) * step(0.07, uv.x) * step(uv.x, 0.4);
+        c += 1.0 - smoothstep(0.0, 0.022, abs(uv.y - ly)) * step(0.08, uv.x) * step(uv.x, 0.92); c += step(0.9, uv.y) * step(uv.y, 0.94) * step(0.07, uv.x) * step(uv.x, 0.4);
       } else {
         vec2 g = vec2(3.0, 2.0); vec2 cu = (uv - vec2(0.07, 0.09)) / vec2(0.86, 0.74) * g; vec2 ci = floor(cu); vec2 cf = fract(cu);
         float inG = step(0.0, cu.x) * step(cu.x, g.x) * step(0.0, cu.y) * step(cu.y, g.y);
@@ -1478,7 +1478,8 @@ function start3D() {
     fragmentShader:`uniform vec3 uColor; uniform float uCell; uniform float uS; uniform float uFade; varying vec3 vW;
       float gl(vec2 p, float w){ float d = length(fract(p) - 0.5); float px = fwidth(p.x) * 0.9; float r = 0.055 * w; return 1.0 - smoothstep(r - px, r + px, d); }
       void main(){ float a = gl(vW.xz / uCell, 1.0) * 0.6;
-        float f = uFade > 0.0 ? smoothstep(uFade, uFade * 0.3, length(vW.xz * vec2(0.75, 1.2))) : 1.0;
+        a *= 1.0 - smoothstep(0.3, 0.7, fwidth(vW.x / uCell) + fwidth(vW.z / uCell)); /* dots too small to draw: fade instead of greying out */
+        float f = uFade > 0.0 ? 1.0 - smoothstep(uFade * 0.3, uFade, length(vW.xz * vec2(0.75, 1.2))) : 1.0; /* edge0 < edge1: reversed smoothstep is undefined on some GPUs */
         a *= uS * f; gl_FragColor = vec4(uColor * a, 1.0); }`,
     transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, toneMapped:false, extensions:{ derivatives:true } });
 
