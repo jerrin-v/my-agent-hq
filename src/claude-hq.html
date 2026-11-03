@@ -1959,8 +1959,8 @@ function start3D() {
     world.rooms.forEach(r => { r.ledMat.color.copy(r.ledBase); });
     reticle.visible = !!(s && s.kind === 'agent' && robots.has(s.id));
     world.folders.forEach((f, id) => { const on = s && s.kind === 'agent' && s.id === id; f.mat.color.setScalar(on ? 2.1 : 1); f.mesh.scale.setScalar(on ? 1.12 : 1); });
-    if (!s) { controls.autoRotate = orbitWanted; return; }
-    controls.autoRotate = false;
+    if (!s) return;
+    setOrbit(false); /* selecting something stops the orbit (button turns off) */
     if (s.kind === 'agent' && world.folders.has(s.id)) { const f = world.folders.get(s.id), wr = world.rooms.get(f.room);
       if (wr) wr.ledMat.color.copy(wr.ledBase).multiplyScalar(1.5);
       if (fly) { const n = camera.aspect < 1 ? 1.7 : 1; flyTo(f.pos.clone().addScaledVector(f.nrm, 6 * n).add(V(0, 2 * n, 0)), f.pos.clone().add(V(0, -.2, 0))); }
@@ -1974,12 +1974,15 @@ function start3D() {
   }
 
   let orbitWanted = controls.autoRotate, idle = 0, dragging = false, userTouched = false;
-  const orbitBtn = $('#orbitBtn'); orbitBtn.setAttribute('aria-pressed', String(orbitWanted));
-  orbitBtn.addEventListener('click', () => { orbitWanted = !orbitWanted; controls.autoRotate = orbitWanted && !UI.sel; orbitBtn.setAttribute('aria-pressed', String(orbitWanted)); });
-  controls.addEventListener('start', () => { tween = null; dragging = true; userTouched = true; controls.autoRotate = false; idle = 0; });
+  const orbitBtn = $('#orbitBtn');
+  /* the button shows whether the floor is actually orbiting; any interaction stops it, only the button starts it again */
+  function setOrbit(on) { orbitWanted = !!on; controls.autoRotate = orbitWanted; orbitBtn.setAttribute('aria-pressed', String(orbitWanted)); }
+  setOrbit(orbitWanted);
+  orbitBtn.addEventListener('click', () => { const on = !orbitWanted; if (on && UI.sel) select(null); setOrbit(on); });
+  controls.addEventListener('start', () => { tween = null; dragging = true; userTouched = true; setOrbit(false); idle = 0; });
   controls.addEventListener('end', () => { dragging = false; idle = 0; });
   $('#fitBtn').addEventListener('click', () => { select(null); flyOverview(); });
-  const dolly = k => { const t = controls.target, off = camera.position.clone().sub(t).multiplyScalar(k), d = off.length(); if (d < controls.minDistance || d > controls.maxDistance) return; flyTo(t.clone().add(off), t.clone(), 380); };
+  const dolly = k => { setOrbit(false); const t = controls.target, off = camera.position.clone().sub(t).multiplyScalar(k), d = off.length(); if (d < controls.minDistance || d > controls.maxDistance) return; flyTo(t.clone().add(off), t.clone(), 380); };
   $('#zoomIn').addEventListener('click', () => dolly(.72));
   $('#zoomOut').addEventListener('click', () => dolly(1.38));
 
@@ -2048,7 +2051,6 @@ function start3D() {
     if (follow) { const R = robots.get(follow.id); if (R) { const p = R.root.position; if (!tween && !dragging) { camera.position.x += p.x - follow.last.x; camera.position.z += p.z - follow.last.z; controls.target.x += p.x - follow.last.x; controls.target.z += p.z - follow.last.z; } follow.last.copy(p); } }
     if (reticle.visible && UI.sel) { const R = robots.get(UI.sel.id); if (R) { reticle.position.set(R.root.position.x, .012, R.root.position.z); reticle.rotation.z += dt * .5; } }
     if (tip.visible && UI.hover) { const R = robots.get(UI.hover.id); if (R) tip.position.copy(R.root.position).add(V(0, 2.55, 0)); }
-    if (!UI.sel && orbitWanted && !controls.autoRotate && !tween && !dragging) { idle += dt; if (idle > 12) { controls.autoRotate = true; idle = 0; } }
     updateGoal();
     if (Math.abs(shift.x - goal.x) > .5 || Math.abs(shift.y - goal.y) > .5) { const k = reduceMotion ? 1 : .12; shift.x += (goal.x - shift.x) * k; shift.y += (goal.y - shift.y) * k; applyShift(); camera.updateProjectionMatrix(); }
     { const tg = controls.target, b = world.bounds, m = 8; /* keep the view over the floor */
