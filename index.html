@@ -716,8 +716,8 @@ html.hq-intro .sign .tip-dot{animation:dotIn .6s 1.9s cubic-bezier(.22,.8,.3,1.4
 /* ───────────── constants ───────────── */
 const DAY = 864e5;
 const STATUS = {
-  active:  { label:'Active',  word:'ACTIVE',  rule:'≤ 2 days · at desk',  color:'#FF7A3D', cls:'active' },
-  roaming: { label:'Roaming', word:'ROAMING', rule:'3–14 days · wanders', color:'#BFE6F5', cls:'roaming' },
+  active:  { label:'Active',  word:'ACTIVE',  rule:'In use at last sync · at desk',  color:'#FF7A3D', cls:'active' },
+  roaming: { label:'Roaming', word:'ROAMING', rule:'Up to 14 days · wanders', color:'#BFE6F5', cls:'roaming' },
   dormant: { label:'Asleep',  word:'ASLEEP',  rule:'15+ days · asleep',   color:'#5B7080', cls:'dormant' },
 };
 const ORDER = ['active', 'roaming', 'dormant'];
@@ -746,7 +746,10 @@ const hex = v => (typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v) ? v : null)
 const safeUrl = v => (typeof v === 'string' && /^https:\/\/[^\s]+$/i.test(v) ? v : '');
 const isML = s => /[ഀ-ൿ]/.test(s);
 const parseWhen = s => { if (typeof s !== 'string') return NaN; if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return Date.UTC(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10), 12); return Date.parse(s); };
-const statusFor = d => d <= 2 ? 'active' : d <= 14 ? 'roaming' : 'dormant';
+/* active = the chat was in use at the time of the last sync (updated within the hour before it); everything else roams (up to 14 days) or sleeps */
+const ACTIVE_WINDOW = 60 * 60 * 1000;
+const syncRef = () => { const t = S.meta && S.meta.lastSync ? Date.parse(S.meta.lastSync) : NaN; return Number.isFinite(t) ? t : Date.now(); };
+const statusFor = (ms, d) => Number.isFinite(ms) && ms >= syncRef() - ACTIVE_WINDOW ? 'active' : d <= 14 ? 'roaming' : 'dormant';
 const fmtDay = ms => { const d = new Date(ms); return d.getDate() + ' ' + MONTHS[d.getMonth()]; };
 const fmtFull = ms => { const d = new Date(ms); return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); };
 const fmtTime = ms => { const d = new Date(ms); return pad(d.getHours()) + ':' + pad(d.getMinutes()); };
@@ -784,7 +787,7 @@ function derive() {
       if (!room) { room = { id:'_unassigned', name:'Unassigned', color:'#8FA6B8', order:1e9, list:[], synthetic:true }; rooms.push(room); byId.set(room.id, room); }
     }
     const a = { id:d.id, title:str(d.title, 'Untitled'), role:str(d.role, ''), kind:KINDS[d.kind] ? d.kind : 'other',
-      url:safeUrl(d.url), ms, days, status:statusFor(days), source:d.source === 'sync' ? 'sync' : 'manual', created:str(d.createdAt, ''), room };
+      url:safeUrl(d.url), ms, days, status:statusFor(ms, days), source:d.source === 'sync' ? 'sync' : 'manual', created:str(d.createdAt, ''), room };
     a.call = a.title;
     room.list.push(a); agents.push(a);
   });
@@ -836,7 +839,7 @@ async function initData() {
   const docsOf = snap => snap.docs.map(d => Object.assign({ id:d.id }, d.data()));
   db.collection('rooms').onSnapshot(snap => { S.roomDocs = docsOf(snap); if (!snap.metadata || !snap.metadata.fromCache) clearTimeout(timer); queueApply(); }, onErr);
   db.collection('agents').onSnapshot(snap => { S.agentDocs = docsOf(snap); if (!snap.metadata || !snap.metadata.fromCache) clearTimeout(timer); queueApply(); }, onErr);
-  db.doc('meta/sync').onSnapshot(snap => { S.meta = snap.exists ? Object.assign({}, snap.data()) : {}; renderSync(); }, () => {});
+  db.doc('meta/sync').onSnapshot(snap => { S.meta = snap.exists ? Object.assign({}, snap.data()) : {}; renderSync(); queueApply(); }, () => {});
   renderNote();
 }
 async function write(fn) {
@@ -1201,7 +1204,8 @@ function renderRail() {
   const end = Date.now(), start = end - 21 * DAY;
   const X = ms => padL + (Math.max(start, ms) - start) / (end - start) * (W - padL - padR);
   const svg = svgEl('svg', { width:W, height:H, viewBox:`0 0 ${W} ${H}`, role:'img', 'aria-label':'Timeline of last activity per agent', class:intro ? 'intro' : '' });
-  const bands = [['dormant', start, end - 14.5 * DAY], ['roaming', end - 14.5 * DAY, end - 2.5 * DAY], ['active', end - 2.5 * DAY, end + DAY]];
+  const actStart = Math.min(syncRef() - ACTIVE_WINDOW, end - .6 * DAY); /* active band: from an hour before the last sync (shown at least ~half a day wide so its label fits) */
+  const bands = [['dormant', start, end - 14.5 * DAY], ['roaming', end - 14.5 * DAY, actStart], ['active', actStart, end + DAY]];
   bands.forEach(([k, a, b]) => {
     const x0 = Math.max(padL, X(a)), x1 = Math.min(W - padR + 14, X(b));
     svg.append(svgEl('line', { x1:x0, x2:x0, y1:3, y2:57, stroke:STATUS[k].color, 'stroke-opacity':.5 }));

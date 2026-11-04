@@ -22,7 +22,7 @@ UI v1.0.3 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, c
 
 ## Behaviour rules (from Jerrin)
 - Exact project names for rooms and exact chat titles for robots. Rooms grow with chats; each room has its own colour.
-- Active ≤ 2 days work at desk; roaming 3–14 days wander office/lounge; dormant 15+ days sleep at desk.
+- Active = chat in use at the time of the last sync (lastActive within 60 min before meta/sync.lastSync) → works at desk. Everything else: roaming (up to 14 days) wanders office/lounge; dormant 15+ days sleeps at desk. (Changed 4 Nov; was "≤ 2 days".)
 - Room show/hide toggles repack rooms with no gaps. Claude core sits in an open centre plaza.
 - Archive room: normal room size, ONE desk + "Archivist" robot, digital library walls with one clickable folder per archived chat (opens chat details).
 - No floor rail lines, no strokes, small dot grid only on the floor.
