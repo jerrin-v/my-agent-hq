@@ -338,6 +338,17 @@ button,input,select{font:inherit;color:inherit}
 .sync div{display:grid;gap:4px}
 .sync b{font:400 12px/1 var(--f-mono);color:var(--ink-2)}
 .clock{text-align:right}
+.tok{display:grid;gap:5px;align-content:center;padding-left:14px;border-left:1px solid var(--line-2);white-space:nowrap}
+.tok .row{display:flex;gap:12px}
+.tok .c{display:grid;gap:2px}
+.tok .c b{font:600 17px/1 var(--f-cond);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.tok .c span{font:400 8.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--signal-2)}
+.top>.tok{animation:fadeUp .9s .95s cubic-bezier(.22,.8,.3,1) backwards}
+.mtok:not([hidden]){display:grid;gap:6px}
+.mtok .row{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.mtok .c{display:grid;gap:2px;padding:6px 8px;background:rgba(255,255,255,.04)}
+.mtok .c b{font:600 16px/1 var(--f-cond);font-variant-numeric:tabular-nums}
+.mtok .c span{font:400 8.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--signal-2)}
 .clock b{font:600 24px/1 var(--f-cond);letter-spacing:.06em;font-variant-numeric:tabular-nums}
 .menu-btn{display:none!important}
 
@@ -517,7 +528,7 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
   #app{grid-template-columns:minmax(0,1fr);gap:6px;padding-block:6px}
   .top{gap:10px;padding:6px 10px}
   .brand svg{width:36px;height:36px}
-  .brand .op,.sync,.clock,.ver{display:none}
+  .brand .op,.sync,.clock,.ver,.top>.tok{display:none}
   .big b{font-size:32px}
   .menu-btn{display:inline-flex!important;align-self:center;margin-left:auto;flex:none}
   .brand{min-width:0;flex:0 1 auto}
@@ -654,6 +665,7 @@ html.hq-intro .sign .tip-dot{animation:dotIn .6s 1.9s cubic-bezier(.22,.8,.3,1.4
     </div>
     <div class="tape" id="tape"></div>
     <div class="sync" id="syncBox" hidden><div><span class="lbl">Last sync</span><b id="syncTime">—</b></div><button class="btn" id="syncBtn" type="button">Sync now</button></div>
+    <div class="tok" id="tokBox" hidden title="Estimated from the text of your project chats (about 4 characters per token). Files, tool results and Claude's thinking are not counted, so real usage is higher. Windows: today, last 7, 30 and 365 days."><span class="lbl">≈ Tokens · estimate</span><div class="row" id="tokRow"></div></div>
     <div class="clock"><span class="lbl"><span id="dateLbl">—</span> · Local time</span><b id="clock">--:--:--</b></div>
     <div class="big"><b id="bigNum">00</b><span>Units online</span></div>
     <button class="btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="roster">Rooms</button>
@@ -682,6 +694,7 @@ html.hq-intro .sign .tip-dot{animation:dotIn .6s 1.9s cubic-bezier(.22,.8,.3,1.4
       <div class="form-actions"><button class="btn" type="button" id="fCancel">Cancel</button><button class="btn solid" type="submit" id="fSave">Add to floor</button></div>
     </form>
     <div class="rfoot">
+      <div class="mtok" id="mTok" hidden><span class="lbl">≈ Tokens · estimate</span><div class="row" id="mTokRow"></div></div>
       <div class="msync" id="mSync" hidden><span class="lbl">Last sync · <b id="mSyncTime">—</b></span><button class="btn" id="syncBtn2" type="button">Sync now</button></div>
       <button class="btn primary" id="addBtn" type="button" hidden>+ Add agent</button>
       <p class="note" id="dataNote">Linking to the live roster…</p>
@@ -804,6 +817,8 @@ function derive() {
     const a = { id:d.id, title:str(d.title, 'Untitled'), role:str(d.role, ''), kind:KINDS[d.kind] ? d.kind : 'other',
       url:safeUrl(d.url), ms, days, status:statusFor(ms, days), source:d.source === 'sync' ? 'sync' : 'manual', created:str(d.createdAt, ''), room };
     a.call = a.title;
+    a.tokDays = d.tokensDays && typeof d.tokensDays === 'object' ? d.tokensDays : null;
+    a.tokens = Number.isFinite(+d.tokens) && d.tokens !== null && d.tokens !== '' ? +d.tokens : a.tokDays ? Object.values(a.tokDays).reduce((s, n) => s + (+n || 0), 0) : null;
     room.list.push(a); agents.push(a);
   });
   rooms.forEach((r, i) => {
@@ -821,7 +836,7 @@ function applyData() {
   derive();
   if (UI.sel && UI.sel.kind === 'agent' && !S.agentById.has(UI.sel.id)) UI.sel = null;
   if (UI.sel && UI.sel.kind === 'room' && !S.roomById.has(UI.sel.id)) UI.sel = null;
-  renderTop(); renderTree(); renderRail(); renderInspector(); renderNote(); renderSync();
+  renderTop(); renderTree(); renderRail(); renderInspector(); renderNote(); renderSync(); renderTokens();
   if (engine) { engine.sync(S.rooms, S.agents); engine.setHidden(UI.hidden); }
   if (S.rooms.length && intro) { intro = false; setTimeout(() => document.documentElement.classList.remove('hq-intro'), 5000); }
 }
@@ -900,6 +915,25 @@ async function syncNow() {
 }
 $('#syncBtn').addEventListener('click', syncNow);
 $('#syncBtn2').addEventListener('click', syncNow);
+/* token usage: estimates written by the sync (agents/*.tokens + tokensDays {YYYY-MM-DD UTC: n}) */
+const fmtTok = n => !Number.isFinite(n) ? '—' : n < 1000 ? String(Math.round(n)) : n < 1e6 ? (n / 1e3).toFixed(n < 1e4 ? 1 : 0) + 'K' : (n / 1e6).toFixed(n < 1e7 ? 2 : 1) + 'M';
+const TOK_WINDOWS = [['Day', 1], ['Week', 7], ['Month', 30], ['Year', 365]];
+function tokWindow(list, days) {
+  const today = new Date(); today.setUTCHours(0, 0, 0, 0); const from = today.getTime() - (days - 1) * DAY; let s = 0;
+  list.forEach(a => { if (!a.tokDays) return; for (const k in a.tokDays) { const t = Date.parse(k + 'T00:00:00Z'); if (t >= from) s += +a.tokDays[k] || 0; } });
+  return s;
+}
+function renderTokens() {
+  const has = S.agents.some(a => a.tokDays), cells = () => TOK_WINDOWS.map(([l, n]) => el('div', { class:'c', title:n === 1 ? 'Today (UTC)' : 'Last ' + n + ' days' }, el('b', { text:fmtTok(tokWindow(S.agents, n)) }), el('span', { text:l })));
+  $('#tokBox').hidden = !has; $('#mTok').hidden = !has || !isPhone();
+  if (!has) return;
+  $('#tokRow').replaceChildren(...cells()); $('#mTokRow').replaceChildren(...cells());
+}
+function tokLine(list) {
+  if (!list.some(a => a.tokDays || Number.isFinite(a.tokens))) return 'Counted at the next sync';
+  const total = list.reduce((s, a) => s + (Number.isFinite(a.tokens) ? a.tokens : 0), 0);
+  return '≈ ' + fmtTok(total) + ' total · ' + fmtTok(tokWindow(list, 1)) + ' today · ' + fmtTok(tokWindow(list, 7)) + ' this week';
+}
 function renderSync() {
   const box = $('#syncBox');
   const last = S.meta && S.meta.lastSync ? Date.parse(S.meta.lastSync) : NaN;
@@ -1185,7 +1219,8 @@ function renderInspector() {
     insp.append(el('dl', { class:'kv' },
       el('dt', { text:'Role' }), el('dd', { text:a.role || '—' }),
       el('dt', { text:'Type' }), el('dd', { text:KINDS[a.kind] + (a.source === 'sync' ? ' · synced' : ' · added by hand') }),
-      el('dt', { text:'Last active' }), el('dd', { text:Number.isFinite(a.ms) ? fmtFull(a.ms) + ' · ' + (a.days === 0 ? 'today' : a.days === 1 ? '1 day ago' : a.days + ' days ago') : 'Unknown' })));
+      el('dt', { text:'Last active' }), el('dd', { text:Number.isFinite(a.ms) ? fmtFull(a.ms) + ' · ' + (a.days === 0 ? 'today' : a.days === 1 ? '1 day ago' : a.days + ' days ago') : 'Unknown' }),
+      el('dt', { text:'Tokens' }), el('dd', { text:tokLine([a]), title:'Estimate from the chat text (about 4 characters per token). Files, tool results and thinking are not counted.' })));
     if (a.url) insp.append(el('a', { class:'btn solid wide', href:a.url, target:'_blank', rel:'noopener' }, a.kind === 'chat' ? 'Open chat ↗' : 'Open artifact ↗'));
     if (S.canWrite && S.db) {
       const moveSel = el('select', { 'aria-label':'Move to room' }, el('option', { value:'', text:'Move to room…' }),
@@ -1215,7 +1250,8 @@ function renderInspector() {
       S.canWrite && S.db && !r.synthetic ? (() => { const inp = el('input', { value:r.name, maxlength:'80', 'aria-label':'Room name' }); const save = el('button', { class:'btn', type:'button', onclick:() => { const v = inp.value.trim(); if (v && v !== r.name) write(db => db.doc('rooms/' + r.id).update({ name:v })).then(ok => ok && toast('Room renamed to ' + v + '.')); } }, 'Rename');
         return el('div', { class:'actions' }, el('label', { class:'field' }, inp), save); })() : null,
       el('dl', { class:'kv' }, el('dt', { text:'Room state' }), el('dd', { text:STATUS[r.status].label }),
-        el('dt', { text:'Last activity' }), el('dd', { text:r.last ? fmtFull(r.last) : '—' })),
+        el('dt', { text:'Last activity' }), el('dd', { text:r.last ? fmtFull(r.last) : '—' }),
+        el('dt', { text:'Tokens' }), el('dd', { text:tokLine(r.list), title:'Estimate from the chat text (about 4 characters per token).' })),
       seg, lgd, el('div', { class:'lbl sub', text:'Agents' }), mateList(r.list));
   } else if (UI.sel.kind === 'core') {
     insp.style.setProperty('--c', '#FF7A3D');

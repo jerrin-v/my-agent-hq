@@ -17,7 +17,8 @@ UI v1.0.3 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, c
 
 ## Artifact db schema
 - `rooms/<id>` {name, color, order, projectUuid?}. Ids: dfs, eftpos, alpha-ds, alphax, figma-plugin, portfolio, house (Home), dash (Other), archive.
-- `agents/chat-<uuid>` {title, call, role:"Chat", kind:"chat", room, url, lastActive (ISO), source:"sync"|"manual", createdAt, removed?}
+- `agents/chat-<uuid>` {title, call, role:"Chat", kind:"chat", room, url, lastActive (ISO), source:"sync"|"manual", createdAt, removed?, tokens?, tokensDays? {YYYY-MM-DD (UTC): n}}
+  - tokens are ESTIMATES (chat text chars / 4, counted by the sync, step 1f). The page shows Day/Week/Month/Year (today, last 7/30/365 days) in the top bar and per agent/room in the popup, always labelled "≈ … estimate".
 - `meta/sync` {lastSync, chats, artifacts:0, source, triggerId}
 
 ## Behaviour rules (from Jerrin)
