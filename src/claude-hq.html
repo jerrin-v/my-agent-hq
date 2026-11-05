@@ -1386,7 +1386,7 @@ function start3D() {
     return fx;
   })();
   /* charging docks: hex pads on the plaza around the core; roaming robots come here to charge for 2-4 min */
-  const chargePads = [0, 60, 180, 240].map(deg => {
+  const chargePads = [0, 90, 180, 270].map(deg => {
     const an = deg * Math.PI / 180, x = Math.cos(an) * 3.75, z = Math.sin(an) * 3.75, g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = -an; core.add(g);
     g.add(P3(mesh(new THREE.CylinderGeometry(.5, .56, .05, 6), M.graphite, false, true), V(0, .025, 0)));
     const ringMat = glow('#7FE3FF', 1.4); const ring = new THREE.Mesh(new THREE.TorusGeometry(.43, .018, 6, 6), ringMat); ring.rotation.x = Math.PI / 2; ring.position.y = .055; g.add(ring);
@@ -1636,7 +1636,7 @@ function start3D() {
     { const col = Math.floor(n / 2), bottom = n % 2 === 1, x = colX(col);
       if (bottom) maxBot = Math.max(maxBot, 9);
       world.lounge = buildLounge({ x, z:bottom ? CZ + 4.5 : -(CZ + 4.5), flip:bottom }); }
-    for (let i = 0; i < 6; i++) { const an = i / 6 * Math.PI * 2 + Math.PI / 6, x = Math.cos(an) * 2.85, z = Math.sin(an) * 2.85;
+    for (let i = 0; i < 4; i++) { const an = i / 4 * Math.PI * 2 + Math.PI / 4, x = Math.cos(an) * 2.85, z = Math.sin(an) * 2.85;
       addSpot({ id:'core-' + i, type:'core', region:'core', label:'the Claude core', owner:null, stand:V(x, 0, z), heading:Math.atan2(-x, -z), approach:[V(x, 0, z)] }); }
     chargePads.forEach((p, i) => addSpot({ id:'charge-' + i, type:'charge', region:'core', label:'the charging dock', owner:null, stand:V(p.x, 0, p.z), heading:Math.atan2(-p.x, -p.z), approach:[V(p.x * 1.18, 0, p.z * 1.18), V(p.x, 0, p.z)], pad:p }));
     const half = CG + (L - 1) * PITCH + W / 2 + .5;
