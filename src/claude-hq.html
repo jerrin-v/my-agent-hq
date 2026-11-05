@@ -1385,6 +1385,18 @@ function start3D() {
       halo.position.y = 3.15 + Math.sin(t * 1.4) * .05; };
     return fx;
   })();
+  /* charging docks: hex pads on the plaza around the core; roaming robots come here to charge for 2-4 min */
+  const chargePads = [0, 60, 180, 240].map(deg => {
+    const an = deg * Math.PI / 180, x = Math.cos(an) * 3.75, z = Math.sin(an) * 3.75, g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = -an; core.add(g);
+    g.add(P3(mesh(new THREE.CylinderGeometry(.5, .56, .05, 6), M.graphite, false, true), V(0, .025, 0)));
+    const ringMat = glow('#7FE3FF', 1.4); const ring = new THREE.Mesh(new THREE.TorusGeometry(.43, .018, 6, 6), ringMat); ring.rotation.x = Math.PI / 2; ring.position.y = .055; g.add(ring);
+    const coreMat = glow('#7FE3FF', .9, { transparent:true, opacity:.35, blending:THREE.AdditiveBlending, depthWrite:false }); const disk = new THREE.Mesh(new THREE.CircleGeometry(.34, 6), coreMat); disk.rotation.x = -Math.PI / 2; disk.position.y = .056; g.add(disk);
+    [-1, 1].forEach(sd => { const post = mesh(new THREE.BoxGeometry(.05, .5, .05), M.alu); post.position.set(.42 * sd, .25, -.3); g.add(post);
+      const tip = new THREE.Mesh(new THREE.BoxGeometry(.06, .06, .06), glow('#6EF0A0', 2)); tip.position.set(.42 * sd, .52, -.3); g.add(tip); });
+    const beamMat = glow('#6EF0A0', 1.2, { transparent:true, opacity:0, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide });
+    const beam = new THREE.Mesh(new THREE.CylinderGeometry(.3, .36, 1.7, 6, 1, true), beamMat); beam.position.y = .9; g.add(beam);
+    return { x, z, ringMat, coreMat, beamMat, on:0, k:0 };
+  });
   const css2d = (node, pos) => { const o = new THREE.CSS2DObject(node); o.position.copy(pos); scene.add(o); return o; };
   const signEl = (cls, color, text, count, onclick) => el('div', { class:'sign ' + (cls || '') },
     el('button', { class:'in', type:'button', style:'--c:' + color, onclick, tabindex:onclick ? null : -1 },
@@ -1626,6 +1638,7 @@ function start3D() {
       world.lounge = buildLounge({ x, z:bottom ? CZ + 4.5 : -(CZ + 4.5), flip:bottom }); }
     for (let i = 0; i < 6; i++) { const an = i / 6 * Math.PI * 2 + Math.PI / 6, x = Math.cos(an) * 2.85, z = Math.sin(an) * 2.85;
       addSpot({ id:'core-' + i, type:'core', region:'core', label:'the Claude core', owner:null, stand:V(x, 0, z), heading:Math.atan2(-x, -z), approach:[V(x, 0, z)] }); }
+    chargePads.forEach((p, i) => addSpot({ id:'charge-' + i, type:'charge', region:'core', label:'the charging dock', owner:null, stand:V(p.x, 0, p.z), heading:Math.atan2(-p.x, -p.z), approach:[V(p.x * 1.18, 0, p.z * 1.18), V(p.x, 0, p.z)], pad:p }));
     const half = CG + (L - 1) * PITCH + W / 2 + .5;
     world.bounds = { minX:-half - 1, maxX:half + 1, minZ:-(CZ + maxTop) - 1, maxZ:CZ + Math.max(maxBot, 2) + 1 };
     while (rails.children.length) disposeGroup(rails.children[0]);
@@ -1728,13 +1741,13 @@ function start3D() {
     if (spot !== R.home) spot.owner = R.id;
     if (spot.sit) { R.root.position.copy(spot.sit.pos); R.heading = spot.sit.heading; R.pose.sit = 1; R.state = 'seated'; }
     else { R.root.position.copy(spot.stand); R.heading = spot.heading; R.pose.sit = 0; R.state = 'standing'; }
-    R.timer = spot === R.home ? rand(5, 16) : rand(6, 18);
+    R.timer = spot === R.home ? rand(5, 16) : spot.type === 'charge' ? rand(120, 240) : rand(6, 18); R.chargeTotal = R.timer;
   }
   function release(R) { [R.spot, R.dest].forEach(s => { if (s && s.owner === R.id) s.owner = null; }); }
   const visibleRegion = region => region === 'core' || region === 'lounge' || !UI.hidden.has(region);
   function pickDest(R) {
     const pongTaken = world.spots.some(s => s.type === 'pong' && s.owner);
-    const W8 = { sofa:3, pong:2.4, core:2, look:1.2, visit:1.6, holo:1.6 };
+    const W8 = { sofa:3, pong:2.4, core:2, look:1.2, visit:1.6, holo:1.6, charge:2.4 };
     const c = world.spots.filter(s => s.type !== 'desk' && !s.owner && visibleRegion(s.region) && s !== R.lastDest);
     if (!c.length) return null;
     const w = c.map(s => (W8[s.type] || 1) * (s.type === 'pong' && pongTaken ? 3 : 1) * (s.region === R.agent.room.id ? .6 : 1));
@@ -1756,7 +1769,7 @@ function start3D() {
     if (!d) { R.state = 'standing'; R.timer = 2; return; }
     if (d.type === 'desk' && d !== R.home) { leaveFor(R, R.home); return; }
     if (d.sit) { R.state = 'settle'; R.tt = 0; R.from = R.root.position.clone(); R.to = d.sit.pos.clone(); R.hFrom = R.heading; R.hTo = d.sit.heading; }
-    else { R.state = 'standing'; R.timer = d.type === 'pong' ? rand(12, 24) : rand(7, 16); }
+    else { R.state = 'standing'; R.timer = d.type === 'pong' ? rand(12, 24) : d.type === 'charge' ? rand(120, 240) : rand(7, 16); R.chargeTotal = R.timer; }
   }
   const angDiff = (a, b) => { let d = a - b; while (d > Math.PI) d -= Math.PI * 2; while (d < -Math.PI) d += Math.PI * 2; return d; };
   const easeIO = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -1801,7 +1814,7 @@ function start3D() {
     let act = 'stand';
     if (R.state === 'walk') act = 'walk';
     else if (R.state === 'seated') act = R.spot === R.home ? (R.agent.status === 'active' ? 'type' : R.agent.status === 'dormant' ? 'sleep' : 'idle') : 'sofa';
-    else if (R.state === 'standing' && R.spot) act = { pong:'pong', core:'core', holo:'holo', visit:'chat', look:'look' }[R.spot.type] || 'look';
+    else if (R.state === 'standing' && R.spot) act = { pong:'pong', core:'core', holo:'holo', visit:'chat', look:'look', charge:'charge' }[R.spot.type] || 'look';
     R.act = act;
     const tt = t + R.phase, s = Math.sin; let lean = 0, aL, aR, hd;
     switch (act) {
@@ -1814,6 +1827,7 @@ function start3D() {
       case 'core': case 'holo': aL = [-.3, -.05]; aR = [-1.5 + s(tt * 1.4) * .12, -.12]; hd = [-.26, s(tt * .5) * .1, 0]; lean = -.03; break;
       case 'chat': aL = [-.25, -.08]; aR = [-.75 + s(tt * 2.6) * .28, -.15]; hd = [.04, s(tt * .8) * .22, s(tt * 1.1) * .06]; break;
       case 'look': { const lk = s(tt * .28); aL = [-.05, -.08]; aR = [-.05, .08]; hd = [-.1, lk * .9, 0]; break; }
+      case 'charge': aL = [-.08, .12]; aR = [-.08, -.12]; hd = [.22 + s(tt * .6) * .02, 0, 0]; lean = .04; break;
       default: aL = [-.15, -.05]; aR = [-.15, .05]; hd = [0, 0, 0];
     }
     const P = R.pose, k = 1 - Math.exp(-dt * 7);
@@ -1834,7 +1848,9 @@ function start3D() {
     R.root.scale.setScalar(Math.max(.001, R.scale));
     const asleep = act === 'sleep', blink = !asleep && ((tt % 4.3) < .13);
     R.eyes.forEach(e => { e.scale.y = asleep ? .2 : blink ? .15 : 1; });
-    R.bulb.scale.setScalar(act === 'type' ? .8 + .3 * (.5 + .5 * s(tt * 7)) : asleep ? .7 : .9);
+    R.bulb.scale.setScalar(act === 'type' ? .8 + .3 * (.5 + .5 * s(tt * 7)) : act === 'charge' ? .85 + .25 * (.5 + .5 * s(tt * 3)) : asleep ? .7 : .9);
+    if (act === 'charge') { R.charging = true; const gl = .55 + .45 * (.5 + .5 * s(tt * 3)); R.mats.bulb.color.copy(C('#6EF0A0')).multiplyScalar(2.6 * gl); R.mats.eye.color.copy(C('#6EF0A0')).multiplyScalar(1.4); if (R.spot && R.spot.pad) R.spot.pad.on = 1; }
+    else if (R.charging) { R.charging = false; setEyes(R); }
     R.zz.forEach((z, i) => { if (!asleep) { z.material.opacity = 0; return; } const q = (tt * .25 + i * .5) % 1;
       z.position.set(.2 + q * .25, 1.5 + q * .7, .35); z.material.opacity = s(Math.PI * q) * .85; z.scale.setScalar(.12 + q * .14); });
     const target = (UI.hover && UI.hover.kind === 'agent' && UI.hover.id === R.id) || (UI.sel && UI.sel.kind === 'agent' && UI.sel.id === R.id) ? 1 : 0;
@@ -1860,6 +1876,7 @@ function start3D() {
     if (st === 'settle') return sp === R.home ? 'Sitting down at its desk' : 'Sitting down';
     if (sp === R.home) return R.agent.status === 'active' ? 'At desk · working' : R.agent.status === 'dormant' ? 'Asleep at desk' : 'At desk · idle';
     if (!sp) return 'On the floor';
+    if (sp.type === 'charge') return 'Charging at the Claude core · ' + Math.min(100, Math.round(20 + 80 * (1 - Math.max(0, R.timer) / (R.chargeTotal || 1)))) + '%';
     return { sofa:'Relaxing on the lounge sofa', pong:'Playing table tennis', core:'Checking in at the Claude core', holo:'Studying the holo table in ' + sp.label, visit:'Visiting ' + sp.label, look:'Looking out from the lounge' }[sp.type] || 'Standing';
   }
 
@@ -1873,7 +1890,7 @@ function start3D() {
         R = makeRobot(a); robots.set(a.id, R); R.home = home; if (a.virtual) R.hit.userData = { kind:'room', id:a.room.id };
         if (first || hiddenOut.has(a.id)) {
           hiddenOut.delete(a.id);
-          if (a.status === 'roaming' && !reduceMotion && Math.random() < .45) { const d = pickDest(R); if (d) { placeAt(R, d); R.timer = rand(3, 14); return; } }
+          if (a.status === 'roaming' && !reduceMotion && Math.random() < .45) { const d = pickDest(R); if (d) { placeAt(R, d); if (d.type !== 'charge') R.timer = rand(3, 14); return; } }
           placeAt(R, home); R.timer = rand(2, 12);
         } else {
           const cs = world.spots.filter(s => s.type === 'core'); const c = cs[Math.floor(Math.random() * cs.length)];
@@ -2051,7 +2068,10 @@ function start3D() {
     T.value = t * mo;
     if (tween) { const k = Math.min(1, (performance.now() - tween.s) / tween.ms), e = easeIO(k);
       camera.position.lerpVectors(tween.p0, tween.p1, e); controls.target.lerpVectors(tween.t0, tween.t1, e); if (k >= 1) tween = null; }
+    chargePads.forEach(p => { p.on = 0; });
     robots.forEach(R => updateRobot(R, dt, t));
+    chargePads.forEach(p => { p.k += (p.on - p.k) * Math.min(1, dt * 2.5); const pu = .5 + .5 * Math.sin(t * 3);
+      p.beamMat.opacity = p.k * (.16 + .1 * pu); p.ringMat.color.copy(C(p.k > .05 ? '#6EF0A0' : '#7FE3FF')).multiplyScalar(1.4 + p.k * (1.2 + .8 * pu)); p.coreMat.opacity = .25 + p.k * .35 * (.6 + .4 * pu); });
     if (follow) { const R = robots.get(follow.id); if (R) { const p = R.root.position; if (!tween && !dragging) { camera.position.x += p.x - follow.last.x; camera.position.z += p.z - follow.last.z; controls.target.x += p.x - follow.last.x; controls.target.z += p.z - follow.last.z; } follow.last.copy(p); } }
     if (reticle.visible && UI.sel) { const R = robots.get(UI.sel.id); if (R) { reticle.position.set(R.root.position.x, .012, R.root.position.z); reticle.rotation.z += dt * .5; } }
     if (tip.visible && UI.hover) { const R = robots.get(UI.hover.id); if (R) tip.position.copy(R.root.position).add(V(0, 2.55, 0)); }
