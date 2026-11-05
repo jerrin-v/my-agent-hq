@@ -307,8 +307,21 @@ button,input,select{font:inherit;color:inherit}
 .brand .op{font:400 10px/1.2 var(--f-mono);letter-spacing:.1em;color:var(--ink-2);text-transform:uppercase}
 .brand .op b{color:var(--ink);font-weight:400}
 .ver{font:400 10px/1 var(--f-mono);color:var(--signal-2);background:rgba(245,128,37,.16);padding:4px 7px;align-self:center}
-.stations{display:flex;gap:4px;margin-left:auto;min-width:0;overflow:hidden;align-items:center;align-self:center}
-.st-tab{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:1fr 1fr;height:48px;box-sizing:border-box;align-items:center;column-gap:6px;padding:4px 14px 4px 9px;min-width:92px;border:0;cursor:pointer;color:var(--ink);text-align:left;
+.stwrap{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:4px;align-self:center}
+.stations{display:flex;gap:4px;min-width:0;overflow-x:auto;overflow-y:hidden;align-items:center;scrollbar-width:none;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.stations::-webkit-scrollbar{display:none}
+.stwrap.ovf .stations{-webkit-mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent)}
+.stwrap.ovf.at-start .stations{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 14px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 14px),transparent)}
+.stwrap.ovf.at-end .stations{-webkit-mask-image:linear-gradient(90deg,transparent,#000 14px);mask-image:linear-gradient(90deg,transparent,#000 14px)}
+.st-arrow{display:none;flex:none;width:28px;height:48px;border:0;padding:0;cursor:pointer;place-items:center;color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));transition:color .25s,background .25s,opacity .3s,transform .2s cubic-bezier(.22,.8,.3,1)}
+.st-arrow svg{width:14px;height:14px}
+.stwrap.ovf .st-arrow{display:grid;animation:fadeUp .4s cubic-bezier(.22,.8,.3,1)}
+.st-arrow:hover:not(:disabled){background:linear-gradient(180deg,#C3D2DB,#8FA3B0);color:#0B0D0F}
+.st-arrow:active:not(:disabled){transform:scale(.94)}
+.st-arrow:disabled{opacity:.3;cursor:default}
+#stPrev{clip-path:polygon(10px 0,100% 0,100% 100%,0 100%,0 10px)}
+#stNext{clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)}
+.st-tab{flex:none;scroll-snap-align:start;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:1fr 1fr;height:48px;box-sizing:border-box;align-items:center;column-gap:6px;padding:4px 14px 4px 9px;min-width:92px;border:0;cursor:pointer;color:var(--ink);text-align:left;
   background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);box-shadow:inset 0 -2px 0 var(--c,#555)}
 .st-tab b{grid-row:span 2;font:700 26px/1 var(--f-cond);font-variant-numeric:tabular-nums}
 .st-tab span{align-self:end;font:600 12px/1.05 var(--f-cond);letter-spacing:.03em;max-width:118px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -499,9 +512,7 @@ kbd{font:400 10px var(--f-mono);color:var(--mute);border:1px solid var(--line-2)
 #plot circle.hov{stroke:#fff;stroke-width:1.5}
 #plot circle:focus{outline:none;stroke:#fff}
 
-@media (max-width:1500px){ .stations .st-tab:nth-child(n+6){display:none} }
-@media (max-width:1320px){ .stations .st-tab:nth-child(n+4){display:none} }
-@media (max-width:1060px){ .stations{display:none} }
+@media (max-width:1060px){ .stwrap{display:none} }
 @media (max-width:860px){
   #app{grid-template-columns:minmax(0,1fr);gap:6px;padding-block:6px}
   .top{gap:10px;padding:6px 10px}
@@ -636,7 +647,11 @@ html.hq-intro .sign .tip-dot{animation:dotIn .6s 1.9s cubic-bezier(.22,.8,.3,1.4
       <div class="bt"><div class="date"><span>My Agent HQ</span><i id="activeBox" title="Active agents">00</i></div><span class="op">Station · <b>Claude HQ</b></span><span class="op">Operator · <b>Bridge floor 01</b></span></div>
     </div>
     <span class="ver">v1.0.3</span>
-    <nav class="stations" id="stations" aria-label="Rooms"></nav>
+    <div class="stwrap" id="stWrap">
+      <button class="st-arrow" id="stPrev" type="button" aria-label="Scroll rooms left"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg></button>
+      <nav class="stations" id="stations" aria-label="Rooms"></nav>
+      <button class="st-arrow" id="stNext" type="button" aria-label="Scroll rooms right"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l5 5-5 5"/></svg></button>
+    </div>
     <div class="tape" id="tape"></div>
     <div class="sync" id="syncBox" hidden><div><span class="lbl">Last sync</span><b id="syncTime">—</b></div><button class="btn" id="syncBtn" type="button">Sync now</button></div>
     <div class="clock"><span class="lbl"><span id="dateLbl">—</span> · Local time</span><b id="clock">--:--:--</b></div>
@@ -920,7 +935,31 @@ function renderTop() {
   S.rooms.forEach((r, i) => st.append(el('button', { class:'st-tab' + (UI.hidden.has(r.id) ? ' off' : '') + (intro ? ' intro' : ''), type:'button', style:'--c:' + r.color + ';--i:' + i, title:r.name, 'data-room':r.id,
     'aria-current':UI.sel && UI.sel.kind === 'room' && UI.sel.id === r.id ? 'true' : null, onclick:() => select('room', r.id) },
     el('b', { text:pad(r.list.length) }), el('span', { text:r.name }), el('em', { text:r.code + ' · ' + STATUS[r.status].label }))));
+  stInit(); stArrows();
   renderSector();
+}
+function stArrows() {
+  const st = $('#stations'), w = $('#stWrap'); if (!st || !w) return;
+  const ovf = st.scrollWidth > st.clientWidth + 1, start = st.scrollLeft <= 1, end = st.scrollLeft + st.clientWidth >= st.scrollWidth - 1;
+  w.classList.toggle('ovf', ovf); w.classList.toggle('at-start', ovf && start); w.classList.toggle('at-end', ovf && end);
+  $('#stPrev').disabled = !ovf || start; $('#stNext').disabled = !ovf || end;
+}
+function stShow(btn) {
+  const st = $('#stations'); if (!btn || !st || st.scrollWidth <= st.clientWidth + 1) return;
+  const l = btn.offsetLeft - st.offsetLeft, r = l + btn.offsetWidth;
+  if (l < st.scrollLeft) st.scrollTo({ left:l - 16, behavior:'smooth' });
+  else if (r > st.scrollLeft + st.clientWidth) st.scrollTo({ left:r - st.clientWidth + 16, behavior:'smooth' });
+}
+function stInit() {
+  const st = $('#stations'); if (!st || st.dataset.init) return; st.dataset.init = '1';
+  const step = dir => { const tabs = [...st.children].filter(b => b.offsetWidth); const x = st.scrollLeft, base = st.offsetLeft;
+    const t = dir > 0 ? tabs.find(b => b.offsetLeft - base > x + 2) && tabs.find(b => b.offsetLeft - base + b.offsetWidth > x + st.clientWidth + 2) : [...tabs].reverse().find(b => b.offsetLeft - base < x - 2);
+    const left = dir > 0 ? (t ? t.offsetLeft - base - 16 : st.scrollWidth) : (t ? t.offsetLeft - base + t.offsetWidth - st.clientWidth + 16 : 0);
+    st.scrollTo({ left:Math.max(0, dir > 0 ? Math.max(left, x + 120) : Math.min(left, x - 120)), behavior:'smooth' }); };
+  $('#stPrev').onclick = () => step(-1); $('#stNext').onclick = () => step(1);
+  st.addEventListener('scroll', stArrows, { passive:true });
+  st.addEventListener('wheel', e => { if (st.scrollWidth > st.clientWidth + 1 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) { e.preventDefault(); st.scrollBy({ left:e.deltaY }); } }, { passive:false });
+  if (window.ResizeObserver) new ResizeObserver(stArrows).observe(st); else addEventListener('resize', stArrows);
 }
 function renderSector() {
   const s = UI.sel; let code = 'F1', name = 'Sector F1 · Overview', on = 0;
@@ -930,7 +969,7 @@ function renderSector() {
   else on = S.agents.filter(a => a.status === 'active').length;
   $('#sectorBadge').textContent = code; $('#sectorName').textContent = name;
   const ch = $('#sectorChips'); ch.textContent = ''; for (let i = 0; i < 8; i++) ch.append(el('i', { class:i < on ? 'on' : null }));
-  document.querySelectorAll('.st-tab').forEach(b => b.setAttribute('aria-current', String(!!(s && s.kind === 'room' && s.id === b.dataset.room))));
+  document.querySelectorAll('.st-tab').forEach(b => { const on = !!(s && s.kind === 'room' && s.id === b.dataset.room); b.setAttribute('aria-current', String(on)); if (on) stShow(b); });
 }
 function tick() {
   const d = new Date();
