@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 07 Nov 2026, 00:56:57 UAE<br><sub>Fri 06 Nov 2026, 20:56:57 UTC</sub> | v1.0.35: point Sync now and the schedule card at the recreated HQ Sync (Home) | v1.0.35 | [`2795f4d`](https://github.com/jerrin-v/my-agent-hq/commit/2795f4d3599074350741834442abae2047e00f9a) |
 | Sat 07 Nov 2026, 00:55:55 UAE<br><sub>Fri 06 Nov 2026, 20:55:55 UTC</sub> | Chat sync: new floor snapshot | v1.0.34 | [`92a7765`](https://github.com/jerrin-v/my-agent-hq/commit/92a77659027f2f0a3ba16c54997a856e0a76f6fb) |
 | Sat 07 Nov 2026, 00:50:24 UAE<br><sub>Fri 06 Nov 2026, 20:50:24 UTC</sub> | v1.0.34: Sync now starts whichever sync computer is online; schedule card for HQ Sync (Office) and HQ Sync (Home) | v1.0.34 | [`6ccdbaf`](https://github.com/jerrin-v/my-agent-hq/commit/6ccdbaf9321b202a6501214739348da0647684d9) |
-| Sat 07 Nov 2026, 00:19:20 UAE<br><sub>Fri 06 Nov 2026, 20:19:20 UTC</sub> | Full site refresh: v1.0.33 page + snapshot (2026-11-06T20:17:45.705Z) | v1.0.33 | [`f2bb25c`](https://github.com/jerrin-v/my-agent-hq/commit/f2bb25c65023bec08426758cfcc7e6ef77813645) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
