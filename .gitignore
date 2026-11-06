@@ -1,1 +1,7 @@
+# Readable copies stay local; the repo holds only the encrypted backup (backup/*.age).
+src/
 roster.plain.json
+roster.json
+_site/
+SITE_BACKUP_KEY.txt
+*.key
