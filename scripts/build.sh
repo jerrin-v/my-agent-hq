@@ -23,9 +23,10 @@ wrap() { # $1 = source fragment, $2 = path to roster.json from the built page
     '<meta name="robots" content="noindex,nofollow">' \
     '<style>html,body{margin:0;height:100%;background:#04060A}img{max-width:100%}[hidden]{display:none!important}</style>' \
     '</head>' '<body>'
-  sed "s#__ROSTER__#$2#" site/lock.html
+  sed -e "s#__ROSTER__#$2#" -e "s#__BUILT__#$BUILT#" site/lock.html
   cat "$1"; printf '\n%s\n' '</body>' '</html>'
 }
+BUILT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 wrap src/claude-hq.html roster.json > index.html
 wrap src/claude-hq-v1.0.2.html ../roster.json > versions/v1.0.2-oblivion.html
 echo "built index.html and versions/v1.0.2-oblivion.html (locked)"

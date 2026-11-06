@@ -70,6 +70,7 @@
 .hql-pad .go:disabled{opacity:.4;cursor:default;background:linear-gradient(180deg,#FF9440,#F58025)}
 .hql-pad button:focus-visible{outline:1px solid #F58025;outline-offset:2px}
 .hql-foot{margin:14px 0 0;text-align:center}
+.hql-built{position:absolute;left:0;right:0;bottom:max(10px,env(safe-area-inset-bottom,0px));margin:0;text-align:center;font-size:9px;color:#5A5852;pointer-events:none}
 @keyframes hqlBlink{to{visibility:hidden}}
 @keyframes hqlPulse{from{opacity:1}to{opacity:.25}}
 @keyframes hqlShake{20%,80%{transform:translateX(-2px)}30%,70%{transform:translateX(5px)}40%,60%{transform:translateX(-7px)}50%{transform:translateX(7px)}}
@@ -106,6 +107,7 @@ html.hq-locked #app,html.hq-locked #app *{animation-play-state:paused!important}
       <p class="hql-foot hql-mono">Stays unlocked until this tab is closed</p>
     </div>
   </div>
+  <p class="hql-built hql-mono" id="hqlBuilt" data-t="2026-11-06T04:39:28Z"></p>
 </div>
 
 <script data-roster="../roster.json">
@@ -121,6 +123,10 @@ html.hq-locked #app,html.hq-locked #app *{animation-play-state:paused!important}
   const coarse = matchMedia('(pointer: coarse)').matches;
   const realFetch = window.fetch.bind(window);
   const root = document.documentElement; root.classList.add('hq-locked');
+  /* small "last published" stamp (build time, shown in local time) */
+  const built = document.getElementById('hqlBuilt'), bt = Date.parse(built.dataset.t);
+  if (Number.isFinite(bt)) { const d = new Date(bt), p2 = n => String(n).padStart(2, '0');
+    built.textContent = 'Published ' + d.getDate() + ' ' + d.toLocaleString('en-GB', { month:'short' }) + ' ' + d.getFullYear() + ' · ' + p2(d.getHours()) + ':' + p2(d.getMinutes()); }
 
   /* The app asks for roster.json; hold that request until the floor is unlocked, then answer with the decrypted snapshot. */
   let release;
