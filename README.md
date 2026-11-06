@@ -1,4 +1,4 @@
-# Jerrin Varghese — Claude HQ (password-protected copy)
+# Jerrin Varghese — Claude HQ (password-protected)
 
 Website: **https://jerrin-v.github.io/my-agent-hq/** — a password-protected copy of Claude HQ (My Agent HQ), an interactive 3D sci-fi office floor of my Claude workspace: every room is a project, every robot is a chat. The live version is a private claude.ai artifact.
 
