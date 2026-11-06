@@ -1,7 +1,7 @@
 # Claude HQ (my-agent-hq) — notes for Claude
 
 Jerrin's 3D sci-fi "office floor" of his Claude workspace. Rooms = Claude projects (exact names), robots = chats (exact titles).
-UI v1.0.3 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, chamfered corners, no strokes, uniform 8px gaps). v1.0.2 (Oblivion style) is kept in `versions/`.
+UI v1.0.4 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, chamfered corners, no strokes, uniform 8px gaps). v1.0.2 (Oblivion style) is kept in `versions/`.
 
 ## Where things live
 - **Live app (source of truth):** claude.ai artifact https://claude.ai/artifact/Co8EyXDcY3wQyAjimbr4ob
@@ -20,6 +20,10 @@ UI v1.0.3 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, c
 - `agents/chat-<uuid>` {title, call, role:"Chat", kind:"chat", room, url, lastActive (ISO), source:"sync"|"manual", createdAt, removed?, tokens?, tokensDays? {YYYY-MM-DD (UTC): n}}
   - tokens are ESTIMATES (chat text chars / 4, counted by the sync, step 1f). The page shows Day/Week/Month/Year (today, last 7/30/365 days) in the top bar and per agent/room in the popup, always labelled "≈ … estimate".
 - `meta/sync` {lastSync, chats, artifacts:0, source, triggerId}
+
+## Working rules (from Jerrin, 6 Nov)
+- **Version bump:** every update to the app increments the version by 1 in the last place (v1.0.4 → v1.0.5 → …): the `.ver` badge in the top bar and the header comment in `src/claude-hq.html`.
+- **Push to GitHub only when Jerrin says "Push".** Publish updates to the claude.ai artifact as usual, but do not commit+push design/code changes to GitHub until he asks. (The scheduled chat sync still pushes data snapshots on its own.)
 
 ## Behaviour rules (from Jerrin)
 - Archived chats (is_archived true on claude.ai) are never shown: the sync skips them and deletes their agents (since 5 Nov).

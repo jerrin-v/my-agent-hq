@@ -1,6 +1,6 @@
 # My Agent HQ (Claude HQ)
 
-An interactive 3D sci-fi office floor of my Claude workspace (UI v1.0.3, Avengers-HUD style):
+An interactive 3D sci-fi office floor of my Claude workspace (UI v1.0.4, Avengers-HUD style):
 
 - **Rooms** = Claude projects (exact project names, one colour per room)
 - **Robots** = chats (exact chat titles). Active (≤ 2 days) work at their desks, roaming (3–14 days) wander the floor and lounge, dormant (15+ days) sleep at their desks.
