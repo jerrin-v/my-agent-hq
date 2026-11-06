@@ -2,6 +2,7 @@
 
 Jerrin's 3D sci-fi "office floor" of his Claude workspace. Rooms = Claude projects (exact names), robots = chats (exact titles).
 UI v1.0.5 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, chamfered corners, no strokes, uniform 8px gaps). v1.0.2 (Oblivion style) is kept as an encrypted backup and published at `versions/v1.0.2-oblivion.html`.
+Themes (camera-bar theme menu, localStorage `hq.view`): **3D floor** (keeps the v1.0.5 chrome) and **Cinematic** (2D canvas `startCine`). The 2D HUD theme was removed in v1.0.18 at Jerrin's request (a stored `2d` now opens Cinematic). Cinematic since v1.0.17: JARVIS-style core (arc-reactor heart, gyroscope particle orbits, light rays, energy arcs) and live data panels — Token load by room, Drift watch (roaming units' days until asleep), Mission log (latest 6 chats), Tokens · 14 days bars. Since v1.0.15 the Cinematic theme also restyles the chrome (top bar, side panels, bottom dock, popup) as a tactical console: blue = lines/rulers/labels, orange = focus/selection/active, red = live/alerts, white = text. All of it is CSS scoped to `html.view-cine` plus `.cx` decorative elements (hidden in other themes); rooms get colours from that mixed family via `data-ci`, and `STATUS[k].color` returns Cinematic colours while that theme is on. Don't let Cinematic styles leak into 3D/HUD.
 
 ## Where things live
 - **Live app (source of truth):** claude.ai artifact https://claude.ai/artifact/Co8EyXDcY3wQyAjimbr4ob
