@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 06 Nov 2026, 21:03:35 UAE<br><sub>Fri 06 Nov 2026, 17:03:35 UTC</sub> | v1.0.18: Cinematic theme (tactical chrome, JARVIS core, live data panels); HUD theme removed | v1.0.18 | [`96cdebb`](https://github.com/jerrin-v/my-agent-hq/commit/96cdebb7d48cfbcb6169b2e6521ab19a5c65fa22) |
 | Fri 06 Nov 2026, 18:37:24 UAE<br><sub>Fri 06 Nov 2026, 14:37:24 UTC</sub> | README: Latest publishes table (last 3 pushes, full timestamps), kept up to date by the publish workflow | v1.0.10 | [`0538d20`](https://github.com/jerrin-v/my-agent-hq/commit/0538d2088ceeae83b682cbcf0a7288b724f62e73) |
 | Fri 06 Nov 2026, 14:16:13 UAE<br><sub>Fri 06 Nov 2026, 10:16:13 UTC</sub> | Chat sync: new floor snapshot | v1.0.10 | [`f4dde68`](https://github.com/jerrin-v/my-agent-hq/commit/f4dde6834050a307cfe6e8e4ddd3bbfd2e39fc7a) |
-| Fri 06 Nov 2026, 14:05:07 UAE<br><sub>Fri 06 Nov 2026, 10:05:07 UTC</sub> | HUD hover card for token figures | v1.0.10 | [`22dd998`](https://github.com/jerrin-v/my-agent-hq/commit/22dd99839a0dff467d8453cecaf51af658fb83e2) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
