@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 06 Nov 2026, 23:52:25 UAE<br><sub>Fri 06 Nov 2026, 19:52:25 UTC</sub> | v1.0.33: 2D motion, simpler sign-in page with a theme switch | v1.0.33 | [`0b0b3a8`](https://github.com/jerrin-v/my-agent-hq/commit/0b0b3a8bead4a133e785f569a13981c345ceeb2d) |
 | Fri 06 Nov 2026, 22:58:19 UAE<br><sub>Fri 06 Nov 2026, 18:58:19 UTC</sub> | v1.0.27: 2D-Head Up Display (renamed Cinematic) and Agent status | v1.0.27 | [`40b0660`](https://github.com/jerrin-v/my-agent-hq/commit/40b066076df3ebf9c86e1e3c230bf9a792ce043d) |
 | Fri 06 Nov 2026, 21:10:30 UAE<br><sub>Fri 06 Nov 2026, 17:10:30 UTC</sub> | v1.0.19: Cinematic room cards as hero (cut corners, gradient edges, light comets, sheen) | v1.0.19 | [`7552505`](https://github.com/jerrin-v/my-agent-hq/commit/7552505511a3ce55398f3a1d9ccc1f5a757fbbf9) |
-| Fri 06 Nov 2026, 21:03:35 UAE<br><sub>Fri 06 Nov 2026, 17:03:35 UTC</sub> | v1.0.18: Cinematic theme (tactical chrome, JARVIS core, live data panels); HUD theme removed | v1.0.18 | [`96cdebb`](https://github.com/jerrin-v/my-agent-hq/commit/96cdebb7d48cfbcb6169b2e6521ab19a5c65fa22) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
