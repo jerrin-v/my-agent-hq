@@ -107,7 +107,7 @@ html.hq-locked #app,html.hq-locked #app *{animation-play-state:paused!important}
       <p class="hql-foot hql-mono">Stays unlocked until this tab is closed</p>
     </div>
   </div>
-  <p class="hql-built hql-mono" id="hqlBuilt" data-t="2026-11-06T04:43:12Z"></p>
+  <p class="hql-built hql-mono" id="hqlBuilt" data-t="2026-11-06T04:51:25Z" data-v="v1.0.2"></p>
 </div>
 
 <script data-roster="../roster.json">
@@ -126,7 +126,7 @@ html.hq-locked #app,html.hq-locked #app *{animation-play-state:paused!important}
   /* small "last published" stamp (build time, shown in local time) */
   const built = document.getElementById('hqlBuilt'), bt = Date.parse(built.dataset.t);
   if (Number.isFinite(bt)) { const d = new Date(bt), p2 = n => String(n).padStart(2, '0');
-    built.textContent = 'Published ' + d.getDate() + ' ' + d.toLocaleString('en-GB', { month:'short' }) + ' ' + d.getFullYear() + ' · ' + p2(d.getHours()) + ':' + p2(d.getMinutes()); }
+    built.textContent = (/^v[\d.]+$/.test(built.dataset.v) ? built.dataset.v + ' · ' : '') + 'Published ' + d.getDate() + ' ' + d.toLocaleString('en-GB', { month:'short' }) + ' ' + d.getFullYear() + ' · ' + p2(d.getHours()) + ':' + p2(d.getMinutes()); }
 
   /* The app asks for roster.json; hold that request until the floor is unlocked, then answer with the decrypted snapshot. */
   let release;

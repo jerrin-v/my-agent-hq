@@ -1,14 +1,14 @@
 # Claude HQ (my-agent-hq) — notes for Claude
 
 Jerrin's 3D sci-fi "office floor" of his Claude workspace. Rooms = Claude projects (exact names), robots = chats (exact titles).
-UI v1.0.4 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, chamfered corners, no strokes, uniform 8px gaps). v1.0.2 (Oblivion style) is kept in `versions/`.
+UI v1.0.5 is Avengers / Jayse Hansen Helicarrier HUD style (glass blur panels, chamfered corners, no strokes, uniform 8px gaps). v1.0.2 (Oblivion style) is kept in `versions/`.
 
 ## Where things live
 - **Live app (source of truth):** claude.ai artifact https://claude.ai/artifact/Co8EyXDcY3wQyAjimbr4ob
   - Capabilities: `db`, `user`, `mcp` (server "Claude Code Remote", tool `fire_trigger`). Publish with the Artifact tool using that `url` (read it first).
   - `src/claude-hq.html` = the artifact page as published (body fragment, no doctype). Edit this, publish it to the artifact, then run `scripts/build.sh` for GitHub.
 - **GitHub Pages copy:** https://jerrin-v.github.io/my-agent-hq/ (branch `main`, root). Read-only snapshot: when `window.claude` has no db, the page loads `roster.json`.
-  - **Locked with a 6-digit site code.** `site/lock.html` (site-only, never published to the artifact) is put in front of each page by `scripts/build.sh`; it holds the app's `fetch('roster.json')` until the code decrypts the snapshot. `roster.json` is AES-GCM encrypted (`scripts/lock-roster.mjs`); the plain copy is `roster.plain.json`, git-ignored. The lock screen shows a small "Published <date · time>" stamp at the bottom: build.sh fills `__BUILT__` with the build time (UTC), shown in the viewer's local time.
+  - **Locked with a 6-digit site code.** `site/lock.html` (site-only, never published to the artifact) is put in front of each page by `scripts/build.sh`; it holds the app's `fetch('roster.json')` until the code decrypts the snapshot. `roster.json` is AES-GCM encrypted (`scripts/lock-roster.mjs`); the plain copy is `roster.plain.json`, git-ignored. The lock screen shows a small "Published <date · time>" stamp at the bottom, "v1.0.x · Published <date · time>": build.sh fills `__VER__` from the `.ver` badge in src and `__BUILT__` with the build time (UTC), shown in the viewer's local time.
   - The code is NOT in the repo (the repo is public). Ask Jerrin for it; never commit it, `roster.plain.json`, or an unencrypted `roster.json` (build.sh refuses to build one).
 - **Scheduled task "Claude HQ chat sync"** (`trig_01GKbukmzeN8PSzkWYcjKkjz`, recreated 2 Nov; every 6 h at :23, runs on Jerrin's computer via the desktop app's built-in browser): reads claude.ai `/api/organizations/{org}/projects` + `chat_conversations`, writes the artifact db. The page's **Sync now** button fires it (meta/sync.triggerId).
 - **Site auto-push (since 3 Nov):** after writing the db, the chat sync also rebuilds and pushes the GitHub site when anything changed (its step 6). The site code lives only in that scheduled task's private prompt, never in the repo. For a manual refresh ("push to git"), follow "Refreshing the GitHub site" below.

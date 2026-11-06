@@ -17,16 +17,17 @@ if ! grep -q '"hq":"locked"' roster.json; then
   exit 1
 fi
 
-wrap() { # $1 = source fragment, $2 = path to roster.json from the built page
+wrap() { # $1 = source fragment, $2 = path to roster.json from the built page, $3 = version shown on the lock screen
   printf '%s\n' '<!doctype html>' '<html lang="en">' '<head>' '<meta charset="utf-8">' \
     '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">' \
     '<meta name="robots" content="noindex,nofollow">' \
     '<style>html,body{margin:0;height:100%;background:#04060A}img{max-width:100%}[hidden]{display:none!important}</style>' \
     '</head>' '<body>'
-  sed -e "s#__ROSTER__#$2#" -e "s#__BUILT__#$BUILT#" site/lock.html
+  sed -e "s#__ROSTER__#$2#" -e "s#__BUILT__#$BUILT#" -e "s#__VER__#$3#" site/lock.html
   cat "$1"; printf '\n%s\n' '</body>' '</html>'
 }
 BUILT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-wrap src/claude-hq.html roster.json > index.html
-wrap src/claude-hq-v1.0.2.html ../roster.json > versions/v1.0.2-oblivion.html
+VER=$(sed -n 's/.*<span class="ver">\(v[0-9.]*\)<\/span>.*/\1/p' src/claude-hq.html | head -n 1)
+wrap src/claude-hq.html roster.json "$VER" > index.html
+wrap src/claude-hq-v1.0.2.html ../roster.json v1.0.2 > versions/v1.0.2-oblivion.html
 echo "built index.html and versions/v1.0.2-oblivion.html (locked)"
