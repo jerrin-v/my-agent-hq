@@ -105,10 +105,18 @@ button,input,select{font:inherit;color:inherit}
 .sync b{font:400 12px/1 var(--f-mono);color:var(--ink-2)}
 .clock{text-align:right}
 .tok{display:grid;gap:5px;align-content:center;padding-left:14px;border-left:1px solid var(--line-2);white-space:nowrap}
-.tok .row{display:flex;gap:12px}
-.tok .c{display:grid;gap:2px}
-.tok .c b{font:600 17px/1 var(--f-cond);letter-spacing:.02em;font-variant-numeric:tabular-nums}
-.tok .c span{font:400 8.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--signal-2)}
+.tok{cursor:pointer;min-width:118px}
+.tok .lbl b{font:inherit;color:var(--signal-2)}
+.tok .val{display:flex;align-items:center;gap:8px;overflow:hidden}
+.tok .val>b{font:600 24px/1 var(--f-cond);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.tok .pips{display:flex;gap:3px}
+.tok .pips i{width:4px;height:4px;background:var(--ink-2);opacity:.3;transition:opacity .3s,background .3s}
+.tok .pips i.on{opacity:1;background:var(--signal)}
+.tok.swap-out .val>b,.tok.swap-out .lbl b{animation:tokOut .32s cubic-bezier(.4,0,1,1) forwards}
+.tok.swap-in .val>b,.tok.swap-in .lbl b{animation:tokIn .45s cubic-bezier(.22,.8,.3,1)}
+@keyframes tokOut{to{opacity:0;transform:translateY(-8px)}}
+@keyframes tokIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .tok.swap-out .val>b,.tok.swap-in .val>b,.tok.swap-out .lbl b,.tok.swap-in .lbl b{animation:none} }
 .top>.tok{animation:fadeUp .9s .95s cubic-bezier(.22,.8,.3,1) backwards}
 .mtok:not([hidden]){display:grid;gap:6px}
 .mtok .row{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
@@ -431,7 +439,7 @@ html.hq-intro .sign .tip-dot{animation:dotIn .6s 1.9s cubic-bezier(.22,.8,.3,1.4
     </div>
     <div class="tape" id="tape"></div>
     <div class="sync" id="syncBox" hidden><div><span class="lbl">Last sync</span><b id="syncTime">—</b></div><button class="btn" id="syncBtn" type="button">Sync now</button></div>
-    <div class="tok" id="tokBox" hidden title="Estimated from the text of your project chats (about 4 characters per token). Files, tool results and Claude's thinking are not counted, so real usage is higher. Windows: today, last 7, 30 and 365 days."><span class="lbl">≈ Tokens · estimate</span><div class="row" id="tokRow"></div></div>
+    <div class="tok" id="tokBox" hidden title="Estimated from the text of your project chats (about 4 characters per token). Files, tool results and Claude's thinking are not counted, so real usage is higher. Windows: today, last 7, 30 and 365 days."><span class="lbl">≈ Tokens · <b id="tokPer">Today</b></span><div class="val"><b id="tokVal">—</b><span class="pips" id="tokPips"><i></i><i></i><i></i><i></i></span></div></div>
     <div class="clock"><span class="lbl"><span id="dateLbl">—</span> · Local time</span><b id="clock">--:--:--</b></div>
     <div class="big"><b id="bigNum">00</b><span>Units online</span></div>
     <button class="btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="roster">Rooms</button>
@@ -693,8 +701,25 @@ function renderTokens() {
   const has = S.agents.some(a => a.tokDays), cells = () => TOK_WINDOWS.map(([l, n]) => el('div', { class:'c', title:n === 1 ? 'Today (UTC)' : 'Last ' + n + ' days' }, el('b', { text:fmtTok(tokWindow(S.agents, n)) }), el('span', { text:l })));
   $('#tokBox').hidden = !has; $('#mTok').hidden = !has || !isPhone();
   if (!has) return;
-  $('#tokRow').replaceChildren(...cells()); $('#mTokRow').replaceChildren(...cells());
+  $('#mTokRow').replaceChildren(...cells());
+  tokVals = TOK_WINDOWS.map(([, n]) => fmtTok(tokWindow(S.agents, n)));
+  tokShow(false);
 }
+/* top bar: one figure at a time, rotating Today → Week → Month → Year every 5 s (click to advance) */
+const TOK_NAMES = ['Today', 'This week', 'This month', 'This year'];
+let tokVals = [], tokIdx = 0, tokT = 0;
+function tokShow(anim) {
+  const box = $('#tokBox'); if (!tokVals.length || box.hidden) return;
+  const put = () => { $('#tokVal').textContent = tokVals[tokIdx]; $('#tokPer').textContent = TOK_NAMES[tokIdx];
+    box.title = '≈ ' + TOK_WINDOWS.map(([l], i) => l + ' ' + tokVals[i]).join(' · ') + '. Estimated from the text of your project chats (about 4 characters per token); real usage is higher. Click to switch.';
+    [...$('#tokPips').children].forEach((p, i) => p.classList.toggle('on', i === tokIdx)); };
+  if (!anim || matchMedia('(prefers-reduced-motion: reduce)').matches) { put(); return; }
+  box.classList.remove('swap-in'); box.classList.add('swap-out');
+  setTimeout(() => { put(); box.classList.remove('swap-out'); void box.offsetWidth; box.classList.add('swap-in'); }, 320);
+}
+function tokNext() { if (!tokVals.length) return; tokIdx = (tokIdx + 1) % tokVals.length; tokShow(true); clearInterval(tokT); tokT = setInterval(tokNext, 5000); }
+tokT = setInterval(tokNext, 5000);
+$('#tokBox').addEventListener('click', tokNext);
 function tokLine(list) {
   if (!list.some(a => a.tokDays || Number.isFinite(a.tokens))) return 'Counted at the next sync';
   const total = list.reduce((s, a) => s + (Number.isFinite(a.tokens) ? a.tokens : 0), 0);
