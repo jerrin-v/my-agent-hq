@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 07 Nov 2026, 08:33:28 UAE<br><sub>Sat 07 Nov 2026, 04:33:28 UTC</sub> | v1.0.47: core heart glow drifts (white/blue/orange, wider soft spread), network globe at the centre | v1.0.47 | [`75a4fba`](https://github.com/jerrin-v/my-agent-hq/commit/75a4fbafe7eb363b58bc5e94e831c22c4c3502f4) |
 | Sat 07 Nov 2026, 07:53:51 UAE<br><sub>Sat 07 Nov 2026, 03:53:51 UTC</sub> | Chat sync: new floor snapshot | v1.0.35 | [`537a912`](https://github.com/jerrin-v/my-agent-hq/commit/537a9125b7fbb264ac0b0ed3cee6551a03980b3b) |
 | Sat 07 Nov 2026, 01:00:38 UAE<br><sub>Fri 06 Nov 2026, 21:00:38 UTC</sub> | Chat sync: new floor snapshot | v1.0.35 | [`fefab96`](https://github.com/jerrin-v/my-agent-hq/commit/fefab966504d6b32412d2ad71e02574b64383591) |
-| Sat 07 Nov 2026, 00:56:57 UAE<br><sub>Fri 06 Nov 2026, 20:56:57 UTC</sub> | v1.0.35: point Sync now and the schedule card at the recreated HQ Sync (Home) | v1.0.35 | [`2795f4d`](https://github.com/jerrin-v/my-agent-hq/commit/2795f4d3599074350741834442abae2047e00f9a) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
