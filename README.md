@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 07 Nov 2026, 10:19:24 UAE<br><sub>Sat 07 Nov 2026, 06:19:24 UTC</sub> | v1.0.50: power pass — vignette + grain as composited layers, unused code removed | v1.0.50 | [`541a9b5`](https://github.com/jerrin-v/my-agent-hq/commit/541a9b58aa418f0593086436c62fa3b9a9d5779c) |
 | Sat 07 Nov 2026, 09:56:13 UAE<br><sub>Sat 07 Nov 2026, 05:56:13 UTC</sub> | v1.0.49: lighter core drawing + big-screen mode (4K TV / AirPlay) | v1.0.49 | [`764bb78`](https://github.com/jerrin-v/my-agent-hq/commit/764bb788491de30fe1a323b66a66908054431428) |
 | Sat 07 Nov 2026, 08:33:28 UAE<br><sub>Sat 07 Nov 2026, 04:33:28 UTC</sub> | v1.0.47: core heart glow drifts (white/blue/orange, wider soft spread), network globe at the centre | v1.0.47 | [`75a4fba`](https://github.com/jerrin-v/my-agent-hq/commit/75a4fbafe7eb363b58bc5e94e831c22c4c3502f4) |
-| Sat 07 Nov 2026, 07:53:51 UAE<br><sub>Sat 07 Nov 2026, 03:53:51 UTC</sub> | Chat sync: new floor snapshot | v1.0.35 | [`537a912`](https://github.com/jerrin-v/my-agent-hq/commit/537a9125b7fbb264ac0b0ed3cee6551a03980b3b) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
