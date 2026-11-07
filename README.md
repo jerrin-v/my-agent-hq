@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 07 Nov 2026, 11:20:13 UAE<br><sub>Sat 07 Nov 2026, 07:20:13 UTC</sub> | Chat sync: new floor snapshot | v1.0.52 | [`071bf54`](https://github.com/jerrin-v/my-agent-hq/commit/071bf541c473ad6f66a6c4e1f0f2dc7da48e2a16) |
 | Sat 07 Nov 2026, 11:15:45 UAE<br><sub>Sat 07 Nov 2026, 07:15:45 UTC</sub> | v1.0.52: Safari speed-up — cached room cards and right column text | v1.0.52 | [`8abd94d`](https://github.com/jerrin-v/my-agent-hq/commit/8abd94de3ef8d9505968eaca605a38d11cd801bb) |
 | Sat 07 Nov 2026, 11:05:52 UAE<br><sub>Sat 07 Nov 2026, 07:05:52 UTC</sub> | v1.0.51: system monitor, right column scroll, room list scroll bar | v1.0.51 | [`14f347f`](https://github.com/jerrin-v/my-agent-hq/commit/14f347f65641e08d97f2059b9c110cdb677d278e) |
-| Sat 07 Nov 2026, 10:19:24 UAE<br><sub>Sat 07 Nov 2026, 06:19:24 UTC</sub> | v1.0.50: power pass — vignette + grain as composited layers, unused code removed | v1.0.50 | [`541a9b5`](https://github.com/jerrin-v/my-agent-hq/commit/541a9b58aa418f0593086436c62fa3b9a9d5779c) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
