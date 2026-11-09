@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Mon 09 Nov 2026, 11:50:41 UAE<br><sub>Mon 09 Nov 2026, 07:50:41 UTC</sub> | v1.0.55: header cards loop + left-card layout, mobile header strip, LIVE DATA panel on narrow screens | v1.0.55 | [`1a0dcbb`](https://github.com/jerrin-v/my-agent-hq/commit/1a0dcbb483236d3d0f93dd3662e81fe6deab486f) |
 | Mon 09 Nov 2026, 10:26:25 UAE<br><sub>Mon 09 Nov 2026, 06:26:25 UTC</sub> | Chat sync: new floor snapshot | v1.0.53 | [`38ace53`](https://github.com/jerrin-v/my-agent-hq/commit/38ace5380cdf8c5f863a4dbdbb0309d09cbe667c) |
 | Mon 09 Nov 2026, 08:57:31 UAE<br><sub>Mon 09 Nov 2026, 04:57:31 UTC</sub> | Chat sync: new floor snapshot | v1.0.53 | [`d0ccaf2`](https://github.com/jerrin-v/my-agent-hq/commit/d0ccaf2292c1302f16bd0b4176f0efbbc6eb4d4f) |
-| Sun 08 Nov 2026, 08:11:53 UAE<br><sub>Sun 08 Nov 2026, 04:11:53 UTC</sub> | v1.0.53: Safari power mode | v1.0.53 | [`cc12a02`](https://github.com/jerrin-v/my-agent-hq/commit/cc12a022dae9e03138f2c29f4bddf73f302ef8b6) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
