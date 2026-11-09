@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Mon 09 Nov 2026, 13:43:40 UAE<br><sub>Mon 09 Nov 2026, 09:43:40 UTC</sub> | Chat sync: new floor snapshot | v1.0.55 | [`43ce832`](https://github.com/jerrin-v/my-agent-hq/commit/43ce83274cdafad77d1e4006d0bd3c281398d224) |
 | Mon 09 Nov 2026, 12:08:56 UAE<br><sub>Mon 09 Nov 2026, 08:08:56 UTC</sub> | Chat sync: new floor snapshot | v1.0.55 | [`0cf8351`](https://github.com/jerrin-v/my-agent-hq/commit/0cf8351d35ec69e132c6750e9a23617854ca074e) |
 | Mon 09 Nov 2026, 11:50:41 UAE<br><sub>Mon 09 Nov 2026, 07:50:41 UTC</sub> | v1.0.55: header cards loop + left-card layout, mobile header strip, LIVE DATA panel on narrow screens | v1.0.55 | [`1a0dcbb`](https://github.com/jerrin-v/my-agent-hq/commit/1a0dcbb483236d3d0f93dd3662e81fe6deab486f) |
-| Mon 09 Nov 2026, 10:26:25 UAE<br><sub>Mon 09 Nov 2026, 06:26:25 UTC</sub> | Chat sync: new floor snapshot | v1.0.53 | [`38ace53`](https://github.com/jerrin-v/my-agent-hq/commit/38ace5380cdf8c5f863a4dbdbb0309d09cbe667c) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
