@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Mon 09 Nov 2026, 16:22:45 UAE<br><sub>Mon 09 Nov 2026, 12:22:45 UTC</sub> | v1.0.61: CLAUDE USAGE / SYSTEM MONITOR accordion; usage block; Office sync reads usage | v1.0.61 | [`4e8a030`](https://github.com/jerrin-v/my-agent-hq/commit/4e8a030f2fe99b66876cfed8c07053cb3a0d0c87) |
 | Mon 09 Nov 2026, 16:03:21 UAE<br><sub>Mon 09 Nov 2026, 12:03:21 UTC</sub> | Chat sync: new floor snapshot | v1.0.59 | [`66a4aca`](https://github.com/jerrin-v/my-agent-hq/commit/66a4aca50a95b8370604608597cc0d93ac077152) |
 | Mon 09 Nov 2026, 15:48:22 UAE<br><sub>Mon 09 Nov 2026, 11:48:22 UTC</sub> | v1.0.59: room-card strip arrows back while looping | v1.0.59 | [`1da82fb`](https://github.com/jerrin-v/my-agent-hq/commit/1da82fbcbd6d1a274de196b3aec870d704e4ea25) |
-| Mon 09 Nov 2026, 14:25:31 UAE<br><sub>Mon 09 Nov 2026, 10:25:31 UTC</sub> | v1.0.58: HUD dropdowns, calendar and hover tips; panel in/out motion; footer note removed in 2D | v1.0.58 | [`89879bd`](https://github.com/jerrin-v/my-agent-hq/commit/89879bd0add6ffa58ce40bcdceb0663dd141032c) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
