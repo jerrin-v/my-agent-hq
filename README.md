@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Mon 09 Nov 2026, 15:48:22 UAE<br><sub>Mon 09 Nov 2026, 11:48:22 UTC</sub> | v1.0.59: room-card strip arrows back while looping | v1.0.59 | [`1da82fb`](https://github.com/jerrin-v/my-agent-hq/commit/1da82fbcbd6d1a274de196b3aec870d704e4ea25) |
 | Mon 09 Nov 2026, 14:25:31 UAE<br><sub>Mon 09 Nov 2026, 10:25:31 UTC</sub> | v1.0.58: HUD dropdowns, calendar and hover tips; panel in/out motion; footer note removed in 2D | v1.0.58 | [`89879bd`](https://github.com/jerrin-v/my-agent-hq/commit/89879bd0add6ffa58ce40bcdceb0663dd141032c) |
 | Mon 09 Nov 2026, 14:05:57 UAE<br><sub>Mon 09 Nov 2026, 10:05:57 UTC</sub> | Chat sync: new floor snapshot | v1.0.56 | [`f059906`](https://github.com/jerrin-v/my-agent-hq/commit/f0599067023413b1735fbac71d55231f24f54c22) |
-| Mon 09 Nov 2026, 14:02:36 UAE<br><sub>Mon 09 Nov 2026, 10:02:36 UTC</sub> | v1.0.56: lighter section headings in the LIVE DATA column and phone panel | v1.0.56 | [`960a780`](https://github.com/jerrin-v/my-agent-hq/commit/960a78046984865bede911d3afb8bf1b54cf7cfb) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
