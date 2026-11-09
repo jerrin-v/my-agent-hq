@@ -1,3 +1,3 @@
-app: Claude HQ v1.0.59 · packed 2026-11-09T11:48:19Z
+app: Claude HQ v1.0.61 · packed 2026-11-09T12:22:28Z
 legacy: Claude HQ v1.0.2 (Oblivion) · packed 2026-11-06T05:39:50Z
-roster: snapshot of 2026-11-09T12:02:51.958Z · packed 2026-11-09T12:03:18Z
+roster: snapshot of 2026-11-09T12:02:51.958Z · packed 2026-11-09T12:22:45Z
