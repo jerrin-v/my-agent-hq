@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Mon 09 Nov 2026, 08:57:31 UAE<br><sub>Mon 09 Nov 2026, 04:57:31 UTC</sub> | Chat sync: new floor snapshot | v1.0.53 | [`d0ccaf2`](https://github.com/jerrin-v/my-agent-hq/commit/d0ccaf2292c1302f16bd0b4176f0efbbc6eb4d4f) |
 | Sun 08 Nov 2026, 08:11:53 UAE<br><sub>Sun 08 Nov 2026, 04:11:53 UTC</sub> | v1.0.53: Safari power mode | v1.0.53 | [`cc12a02`](https://github.com/jerrin-v/my-agent-hq/commit/cc12a022dae9e03138f2c29f4bddf73f302ef8b6) |
 | Sat 07 Nov 2026, 11:20:13 UAE<br><sub>Sat 07 Nov 2026, 07:20:13 UTC</sub> | Chat sync: new floor snapshot | v1.0.52 | [`071bf54`](https://github.com/jerrin-v/my-agent-hq/commit/071bf541c473ad6f66a6c4e1f0f2dc7da48e2a16) |
-| Sat 07 Nov 2026, 11:15:45 UAE<br><sub>Sat 07 Nov 2026, 07:15:45 UTC</sub> | v1.0.52: Safari speed-up — cached room cards and right column text | v1.0.52 | [`8abd94d`](https://github.com/jerrin-v/my-agent-hq/commit/8abd94de3ef8d9505968eaca605a38d11cd801bb) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
