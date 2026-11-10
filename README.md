@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Tue 10 Nov 2026, 14:25:32 UAE<br><sub>Tue 10 Nov 2026, 10:25:32 UTC</sub> | Chat sync: new floor snapshot | v1.0.64 | [`9a0f75f`](https://github.com/jerrin-v/my-agent-hq/commit/9a0f75f5a6cb4522f2c13ff07804c7236a27c67a) |
 | Tue 10 Nov 2026, 14:08:55 UAE<br><sub>Tue 10 Nov 2026, 10:08:55 UTC</sub> | Chat sync: new floor snapshot | v1.0.64 | [`9b43af7`](https://github.com/jerrin-v/my-agent-hq/commit/9b43af7f93a6deb6a127ceab6d094c67ebe04cff) |
 | Tue 10 Nov 2026, 13:04:27 UAE<br><sub>Tue 10 Nov 2026, 09:04:27 UTC</sub> | v1.0.64: twinkling dot grid in the 2D background | v1.0.64 | [`d152c57`](https://github.com/jerrin-v/my-agent-hq/commit/d152c570e8c3bb24ba93be5cfa0f0c134de95c49) |
-| Tue 10 Nov 2026, 12:30:30 UAE<br><sub>Tue 10 Nov 2026, 08:30:30 UTC</sub> | Chat sync: new floor snapshot | v1.0.61 | [`ea5f862`](https://github.com/jerrin-v/my-agent-hq/commit/ea5f8625196601b4ef357341f846c1bb77d6340f) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
