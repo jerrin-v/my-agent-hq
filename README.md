@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Wed 11 Nov 2026, 14:59:54 UAE<br><sub>Wed 11 Nov 2026, 10:59:54 UTC</sub> | Chat sync: new floor snapshot | v1.0.67 | [`ad0a4a9`](https://github.com/jerrin-v/my-agent-hq/commit/ad0a4a9709b631855118d600a2a253519fd1dae0) |
 | Wed 11 Nov 2026, 13:25:26 UAE<br><sub>Wed 11 Nov 2026, 09:25:26 UTC</sub> | Chat sync: new floor snapshot | v1.0.67 | [`7e8d007`](https://github.com/jerrin-v/my-agent-hq/commit/7e8d0070e339f4728b96a8ab5512600d55a56b31) |
 | Wed 11 Nov 2026, 12:26:09 UAE<br><sub>Wed 11 Nov 2026, 08:26:09 UTC</sub> | Chat sync: new floor snapshot | v1.0.67 | [`01d5e0b`](https://github.com/jerrin-v/my-agent-hq/commit/01d5e0ba42796cd5ccefdafae460c03b2ed1e73a) |
-| Wed 11 Nov 2026, 12:06:54 UAE<br><sub>Wed 11 Nov 2026, 08:06:54 UTC</sub> | v1.0.67: 2D frame opens like a box before the rest comes in | v1.0.67 | [`0c4174a`](https://github.com/jerrin-v/my-agent-hq/commit/0c4174a619a18f3e09408982243b4f3b708a6927) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
