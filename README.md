@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Wed 11 Nov 2026, 11:55:14 UAE<br><sub>Wed 11 Nov 2026, 07:55:14 UTC</sub> | v1.0.66: frame lines and chrome in/out motion; segmented level bars | v1.0.66 | [`f7a65c6`](https://github.com/jerrin-v/my-agent-hq/commit/f7a65c69042f0cdb16b6da90da05a0db6428cc21) |
 | Wed 11 Nov 2026, 11:45:10 UAE<br><sub>Wed 11 Nov 2026, 07:45:10 UTC</sub> | v1.0.65: 2D HUD in/out motion (gauges, top band, token graph) | v1.0.65 | [`7aab04b`](https://github.com/jerrin-v/my-agent-hq/commit/7aab04bafbe63004cd95c1a321713981d9b4f9ce) |
 | Wed 11 Nov 2026, 11:28:40 UAE<br><sub>Wed 11 Nov 2026, 07:28:40 UTC</sub> | Chat sync: new floor snapshot | v1.0.64 | [`13a53e2`](https://github.com/jerrin-v/my-agent-hq/commit/13a53e2a0a7772d0502aefcab313323ad6a33c8f) |
-| Wed 11 Nov 2026, 10:27:09 UAE<br><sub>Wed 11 Nov 2026, 06:27:09 UTC</sub> | Chat sync: new floor snapshot | v1.0.64 | [`0ab3e36`](https://github.com/jerrin-v/my-agent-hq/commit/0ab3e36f3abe50405b2d4c3d367c581a43713aa6) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
