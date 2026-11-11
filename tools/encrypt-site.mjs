@@ -5,11 +5,13 @@
 // <unlocked-backup-dir> holds claude-hq.html (the page as published to claude.ai: a body fragment),
 // roster.json (the floor snapshot) and, optionally, claude-hq-v1.0.2.html (the old Oblivion page).
 // Each page is wrapped into a full document and encrypted with AES-256-GCM; roster.json becomes
-// roster.json.enc. The key comes from SITE_PASSWORD through PBKDF2-SHA256 (600 000 rounds) with a fresh
-// random salt on every build, so a new build (or a new password) signs everyone out. The sign-in page is
+// roster.json.enc. The key comes from SITE_PASSWORD through PBKDF2-SHA256 (600 000 rounds). Since v1.0.68 the salt
+// is fixed for a given password (SHA-256 of a label + the password, first 16 bytes), so a new build keeps everyone
+// signed in and an open page can fetch and decrypt the new roster.json.enc by itself (it refreshes after each sync);
+// changing the password still signs everyone out. Every file still gets its own random 12-byte IV. The sign-in page is
 // tools/gate.html: a 6-digit SITE_PASSWORD gets the keypad, anything else gets a password field.
 // The password is read from the environment only and is never printed or written to disk.
-import { createCipheriv, pbkdf2Sync, randomBytes } from 'node:crypto';
+import { createCipheriv, createHash, pbkdf2Sync, randomBytes } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
@@ -21,7 +23,7 @@ if (!codeMode && pw.length < 8) { console.error('SITE_PASSWORD must be a 6-digit
 for (const f of ['claude-hq.html', 'roster.json']) if (!existsSync(join(src, f))) { console.error(`The backup has no ${f}.`); process.exit(1); }
 
 const ITER = 600000;
-const salt = randomBytes(16);
+const salt = createHash('sha256').update('claude-hq site salt v1\u0000' + pw).digest().subarray(0, 16);
 const key = pbkdf2Sync(pw, salt, ITER, 32, 'sha256');
 const enc = buf => { const iv = randomBytes(12); const c = createCipheriv('aes-256-gcm', key, iv); const ct = Buffer.concat([c.update(buf), c.final()]); return Buffer.concat([iv, ct, c.getAuthTag()]); };
 

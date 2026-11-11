@@ -259,7 +259,7 @@
 <script>
 /* Unlock: derive the key from the code (PBKDF2-SHA256), decrypt the page, write it in place.
    A sign-in lasts for this tab (sessionStorage); "Remember me for today" keeps it until local midnight.
-   Add ?signout to the address to sign out. A new build (new salt) or a new password signs everyone out. */
+   Add ?signout to the address to sign out. A new password signs everyone out; new builds keep the same salt (v1.0.68), so a sign-in survives them. */
 (() => {
   'use strict';
   const P = JSON.parse(document.getElementById('hqPayload').textContent);
