@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Thu 12 Nov 2026, 2:59:15 PM UAE<br><sub>Thu 12 Nov 2026, 10:59:15 AM UTC</sub> | 12-hour times with AM/PM everywhere | v1.0.81 | [`68f1ac0`](https://github.com/jerrin-v/my-agent-hq/commit/68f1ac0a36f6117350b2205730213a992a93079c) |
 | Thu 12 Nov 2026, 14:25:20 UAE<br><sub>Thu 12 Nov 2026, 10:25:20 UTC</sub> | Chat sync: new floor snapshot | v1.0.80 | [`b30be0c`](https://github.com/jerrin-v/my-agent-hq/commit/b30be0ce4475a979f7f3dcd8dbb887afd0c5d9ab) |
 | Thu 12 Nov 2026, 13:25:45 UAE<br><sub>Thu 12 Nov 2026, 09:25:45 UTC</sub> | Chat sync: new floor snapshot | v1.0.80 | [`6707ce6`](https://github.com/jerrin-v/my-agent-hq/commit/6707ce690e34b565b2fca0467d17f169de9c3e52) |
-| Thu 12 Nov 2026, 13:22:01 UAE<br><sub>Thu 12 Nov 2026, 09:22:01 UTC</sub> | ACTIVE gauge in the live red | v1.0.80 | [`a4bf3db`](https://github.com/jerrin-v/my-agent-hq/commit/a4bf3dbd2f869188340620a92328586264dcb7d3) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
