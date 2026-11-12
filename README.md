@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Thu 12 Nov 2026, 3:42:35 PM UAE<br><sub>Thu 12 Nov 2026, 11:42:35 AM UTC</sub> | 3D active rooms and robots marked in red | v1.0.86 | [`7855e4a`](https://github.com/jerrin-v/my-agent-hq/commit/7855e4a9637ca390a9c939d1b1b52923112d71b8) |
 | Thu 12 Nov 2026, 3:25:26 PM UAE<br><sub>Thu 12 Nov 2026, 11:25:26 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.82 | [`823f2cb`](https://github.com/jerrin-v/my-agent-hq/commit/823f2cb4c1d8d03bf6ac0b0966944eb03d242b21) |
 | Thu 12 Nov 2026, 3:14:24 PM UAE<br><sub>Thu 12 Nov 2026, 11:14:24 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.82 | [`b2ded54`](https://github.com/jerrin-v/my-agent-hq/commit/b2ded54bf108c4806276f726204c105fabe825f0) |
-| Thu 12 Nov 2026, 3:12:10 PM UAE<br><sub>Thu 12 Nov 2026, 11:12:10 AM UTC</sub> | status gauges centred in the left column | v1.0.82 | [`dd4094b`](https://github.com/jerrin-v/my-agent-hq/commit/dd4094b5aa0f653f0bc8af61fb07c15fdc470de3) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
