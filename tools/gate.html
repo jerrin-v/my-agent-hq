@@ -283,7 +283,7 @@
   /* small "vX · Published <local date · time>" stamp */
   const bt = Date.parse(P.t);
   if (Number.isFinite(bt)) { const d = new Date(bt), p2 = n => String(n).padStart(2, '0');
-    $('hqlBuilt').textContent = (P.v ? P.v + ' · ' : '') + 'Published ' + d.getDate() + ' ' + d.toLocaleString('en-GB', { month:'short' }) + ' ' + d.getFullYear() + ' · ' + p2(d.getHours()) + ':' + p2(d.getMinutes()); }
+    $('hqlBuilt').textContent = (P.v ? P.v + ' · ' : '') + 'Published ' + d.getDate() + ' ' + d.toLocaleString('en-GB', { month:'short' }) + ' ' + d.getFullYear() + ' · ' + (d.getHours() % 12 || 12) + ':' + p2(d.getMinutes()) + ' ' + (d.getHours() < 12 ? 'AM' : 'PM'); }
 
   const ub = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
   const b64 = a => { let s = ''; for (let i = 0; i < a.length; i++) s += String.fromCharCode(a[i]); return btoa(s); };

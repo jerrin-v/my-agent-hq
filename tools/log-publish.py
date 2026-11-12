@@ -31,7 +31,7 @@ if subject.startswith('Refresh site snapshot'): change = 'Chat sync: new floor s
 else: change = re.sub(r'^Publish (v[\d.]+): ', '', subject)
 change = change.replace('|', '\\|')
 
-fmt = lambda d: d.strftime('%a %d %b %Y, %H:%M:%S')
+fmt = lambda d: d.strftime('%a %d %b %Y, ') + d.strftime('%I:%M:%S %p').lstrip('0')  # 12-hour with AM/PM
 row = (f'| {fmt(when.astimezone(UAE))} UAE<br><sub>{fmt(when.astimezone(datetime.timezone.utc))} UTC</sub> '
        f'| {change} | {version} | [`{sha[:7]}`](https://github.com/{REPO}/commit/{sha}) |')
 head = ['| Pushed | Change | Version | Commit |', '| --- | --- | --- | --- |']
