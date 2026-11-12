@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Thu 12 Nov 2026, 10:08:55 UAE<br><sub>Thu 12 Nov 2026, 06:08:55 UTC</sub> | left panel follows the claude.ai pinned project order | v1.0.72 | [`18080fe`](https://github.com/jerrin-v/my-agent-hq/commit/18080fec97b568c2ca2813b07cfb1e69e48c3fd4) |
 | Thu 12 Nov 2026, 10:00:05 UAE<br><sub>Thu 12 Nov 2026, 06:00:05 UTC</sub> | Chat sync: new floor snapshot | v1.0.71 | [`93e198a`](https://github.com/jerrin-v/my-agent-hq/commit/93e198a22b33371ecbc82b1f26ec8497ebf1d4a8) |
 | Thu 12 Nov 2026, 09:33:32 UAE<br><sub>Thu 12 Nov 2026, 05:33:32 UTC</sub> | balanced 3D layout, *Hide* marker, claude.ai list order | v1.0.71 | [`6535baf`](https://github.com/jerrin-v/my-agent-hq/commit/6535baf6f3af371b0627e9974384abf2275c746b) |
-| Thu 12 Nov 2026, 09:25:10 UAE<br><sub>Thu 12 Nov 2026, 05:25:10 UTC</sub> | Chat sync: new floor snapshot | v1.0.68 | [`3f45118`](https://github.com/jerrin-v/my-agent-hq/commit/3f451186ed368af950d90137543bed896e6da353) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
