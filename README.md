@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Thu 12 Nov 2026, 12:22:41 UAE<br><sub>Thu 12 Nov 2026, 08:22:41 UTC</sub> | active rooms in red on the 2D floor | v1.0.79 | [`602f023`](https://github.com/jerrin-v/my-agent-hq/commit/602f02310102c49b79f36512ef4f3a22180b4d63) |
 | Thu 12 Nov 2026, 11:25:45 UAE<br><sub>Thu 12 Nov 2026, 07:25:45 UTC</sub> | Chat sync: new floor snapshot | v1.0.73 | [`2fdd044`](https://github.com/jerrin-v/my-agent-hq/commit/2fdd044acbf9df7ff4c54c55b445bc9d72c28bcb) |
 | Thu 12 Nov 2026, 10:27:20 UAE<br><sub>Thu 12 Nov 2026, 06:27:20 UTC</sub> | Chat sync: new floor snapshot | v1.0.73 | [`e416f94`](https://github.com/jerrin-v/my-agent-hq/commit/e416f9478991327e7e55349427fac3d564f7da54) |
-| Thu 12 Nov 2026, 10:25:17 UAE<br><sub>Thu 12 Nov 2026, 06:25:17 UTC</sub> | left panel entrance plays once on load | v1.0.73 | [`fd63071`](https://github.com/jerrin-v/my-agent-hq/commit/fd63071822d5bba811d8d3af1d7935b0d280718f) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
