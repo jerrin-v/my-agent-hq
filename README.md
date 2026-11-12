@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Thu 12 Nov 2026, 13:25:45 UAE<br><sub>Thu 12 Nov 2026, 09:25:45 UTC</sub> | Chat sync: new floor snapshot | v1.0.80 | [`6707ce6`](https://github.com/jerrin-v/my-agent-hq/commit/6707ce690e34b565b2fca0467d17f169de9c3e52) |
 | Thu 12 Nov 2026, 13:22:01 UAE<br><sub>Thu 12 Nov 2026, 09:22:01 UTC</sub> | ACTIVE gauge in the live red | v1.0.80 | [`a4bf3db`](https://github.com/jerrin-v/my-agent-hq/commit/a4bf3dbd2f869188340620a92328586264dcb7d3) |
 | Thu 12 Nov 2026, 12:25:01 UAE<br><sub>Thu 12 Nov 2026, 08:25:01 UTC</sub> | Chat sync: new floor snapshot | v1.0.79 | [`7858dc1`](https://github.com/jerrin-v/my-agent-hq/commit/7858dc1852955243a4bfca25c78066720cd0aab5) |
-| Thu 12 Nov 2026, 12:22:41 UAE<br><sub>Thu 12 Nov 2026, 08:22:41 UTC</sub> | active rooms in red on the 2D floor | v1.0.79 | [`602f023`](https://github.com/jerrin-v/my-agent-hq/commit/602f02310102c49b79f36512ef4f3a22180b4d63) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
