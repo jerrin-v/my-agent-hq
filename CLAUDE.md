@@ -44,4 +44,4 @@ v1.0.22: Cinematic side columns and top/bottom bands are drawn in front of the f
 ## Refreshing the GitHub site (when Jerrin says "Push")
 1. Page: Artifact `read` the URL above, save it to `src/claude-hq.html`, then `sh tools/pack.sh app`.
 2. Data: export the db (ArtifactData list `rooms`, `agents` with out_dir in a fresh folder, get `meta/sync`) into `roster.plain.json` as `{rooms:{id:data}, agents:{id:data}, meta:{lastSync, chats, source}}`, then `sh tools/pack.sh roster` and delete roster.plain.json.
-3. Commit `backup/` and push to `main`. The "Publish site" workflow republishes in 1–2 minutes.
+3. Commit `backup/` (including `backup/BUILD.txt` — the README's Version column is read from it; on 13 Nov it was left out and the table showed v1.0.86 for three pushes) and push to `main`. The "Publish site" workflow republishes in 1–2 minutes.
