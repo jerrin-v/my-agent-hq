@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 13 Nov 2026, 3:14:51 PM UAE<br><sub>Fri 13 Nov 2026, 11:14:51 AM UTC</sub> | v1.0.96: 2D core ripples — outer range rings animate and share one wave train with the inner shockwave | v1.0.86 | [`7e55302`](https://github.com/jerrin-v/my-agent-hq/commit/7e55302dce52687c75ec385a8b04ae6443b04d77) |
 | Fri 13 Nov 2026, 2:29:21 PM UAE<br><sub>Fri 13 Nov 2026, 10:29:21 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.86 | [`7afdf68`](https://github.com/jerrin-v/my-agent-hq/commit/7afdf68c94e0b9f9fa34d5a6aca30f7997c8c1dc) |
 | Fri 13 Nov 2026, 1:26:01 PM UAE<br><sub>Fri 13 Nov 2026, 9:26:01 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.86 | [`5a58257`](https://github.com/jerrin-v/my-agent-hq/commit/5a582578fc0d1b79398439eb5f43d61addafe13b) |
-| Fri 13 Nov 2026, 12:37:33 PM UAE<br><sub>Fri 13 Nov 2026, 8:37:33 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.86 | [`d574e5b`](https://github.com/jerrin-v/my-agent-hq/commit/d574e5b7eefeea538dec21bc9c3521e1771dd0e5) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
