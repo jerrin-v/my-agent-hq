@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 13 Nov 2026, 3:36:53 PM UAE<br><sub>Fri 13 Nov 2026, 11:36:53 AM UTC</sub> | v1.1.0: animated pixel-X hub logo (orange/blue/red), 2D glass panels test, logo fixes | v1.0.86 | [`698c721`](https://github.com/jerrin-v/my-agent-hq/commit/698c7214a93aae3593d28b8cf7ca3bad6f174410) |
 | Fri 13 Nov 2026, 3:25:46 PM UAE<br><sub>Fri 13 Nov 2026, 11:25:46 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.86 | [`ef89048`](https://github.com/jerrin-v/my-agent-hq/commit/ef8904823dca6923ae9adf29a6b381d94959f7e4) |
 | Fri 13 Nov 2026, 3:14:51 PM UAE<br><sub>Fri 13 Nov 2026, 11:14:51 AM UTC</sub> | v1.0.96: 2D core ripples — outer range rings animate and share one wave train with the inner shockwave | v1.0.86 | [`7e55302`](https://github.com/jerrin-v/my-agent-hq/commit/7e55302dce52687c75ec385a8b04ae6443b04d77) |
-| Fri 13 Nov 2026, 2:29:21 PM UAE<br><sub>Fri 13 Nov 2026, 10:29:21 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.86 | [`7afdf68`](https://github.com/jerrin-v/my-agent-hq/commit/7afdf68c94e0b9f9fa34d5a6aca30f7997c8c1dc) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
