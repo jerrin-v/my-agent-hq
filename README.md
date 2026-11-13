@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 13 Nov 2026, 9:25:50 AM UAE<br><sub>Fri 13 Nov 2026, 5:25:50 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.86 | [`a82ea10`](https://github.com/jerrin-v/my-agent-hq/commit/a82ea10bb27292aa3833bef2b07b24d1a6e51205) |
 | Fri 13 Nov 2026, 9:12:56 AM UAE<br><sub>Fri 13 Nov 2026, 5:12:56 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.86 | [`e3c55a1`](https://github.com/jerrin-v/my-agent-hq/commit/e3c55a14c9a0b2f6ebb35fecb6aadaa2991d9b14) |
 | Fri 13 Nov 2026, 9:06:18 AM UAE<br><sub>Fri 13 Nov 2026, 5:06:18 AM UTC</sub> | Chat sync: new floor snapshot | v1.0.86 | [`a0ad6ad`](https://github.com/jerrin-v/my-agent-hq/commit/a0ad6ad4c6a2ccddaf6c0bed23a969f82e6691b9) |
-| Thu 12 Nov 2026, 4:43:52 PM UAE<br><sub>Thu 12 Nov 2026, 12:43:52 PM UTC</sub> | v1.0.94: 2D frame notch round AGENT STATUS + status key (angle cuts), band line spacing, narrow-screen camera menu, white blinking tag bar | v1.0.86 | [`2d101e4`](https://github.com/jerrin-v/my-agent-hq/commit/2d101e47ddc2b7fcad5c7d46539ec4ed86f584cb) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
