@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 14 Nov 2026, 9:40:17 PM UAE<br><sub>Sat 14 Nov 2026, 5:40:17 PM UTC</sub> | v1.1.1: pixel-X logo everywhere — favicon, 2D top band mark, sign-in page emblem and band mark | v1.1.1 | [`70a78f2`](https://github.com/jerrin-v/my-agent-hq/commit/70a78f2a67b112b5d265ddb173745bb09c33ff21) |
 | Sat 14 Nov 2026, 9:34:09 PM UAE<br><sub>Sat 14 Nov 2026, 5:34:09 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.0 | [`4182768`](https://github.com/jerrin-v/my-agent-hq/commit/418276888d5e97a34bab15e48f1bdf0856d14417) |
 | Fri 13 Nov 2026, 4:25:07 PM UAE<br><sub>Fri 13 Nov 2026, 12:25:07 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.0 | [`803a3b6`](https://github.com/jerrin-v/my-agent-hq/commit/803a3b62cbc86508167f91eb30cd83240ab8469e) |
-| Fri 13 Nov 2026, 3:41:33 PM UAE<br><sub>Fri 13 Nov 2026, 11:41:33 AM UTC</sub> | Publish log: record the page version (v1.1.0) in BUILD.txt and correct the last 3 rows | v1.1.0 | [`0be5c69`](https://github.com/jerrin-v/my-agent-hq/commit/0be5c69fc627c0031e96350571d2521de81754a1) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
