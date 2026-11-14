@@ -12,9 +12,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 14 Nov 2026, 10:25:21 PM UAE<br><sub>Sat 14 Nov 2026, 6:25:21 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.3 | [`6109c51`](https://github.com/jerrin-v/my-agent-hq/commit/6109c51c0d2a0cdaea3a362cd3c8b852e5d25425) |
 | Sat 14 Nov 2026, 9:46:24 PM UAE<br><sub>Sat 14 Nov 2026, 5:46:24 PM UTC</sub> | v1.1.3: smaller favicon X (page + sign-in page) | v1.1.3 | [`f1a0a95`](https://github.com/jerrin-v/my-agent-hq/commit/f1a0a95f164da9c84530b7d0b2a45dcb69e2d0b9) |
 | Sat 14 Nov 2026, 9:44:30 PM UAE<br><sub>Sat 14 Nov 2026, 5:44:30 PM UTC</sub> | v1.1.2: name is My Agent HQ — tab title and sign-in card | v1.1.2 | [`2e983c5`](https://github.com/jerrin-v/my-agent-hq/commit/2e983c5f1eef444330ff26f3b0f7706466c9c015) |
-| Sat 14 Nov 2026, 9:40:17 PM UAE<br><sub>Sat 14 Nov 2026, 5:40:17 PM UTC</sub> | v1.1.1: pixel-X logo everywhere — favicon, 2D top band mark, sign-in page emblem and band mark | v1.1.1 | [`70a78f2`](https://github.com/jerrin-v/my-agent-hq/commit/70a78f2a67b112b5d265ddb173745bb09c33ff21) |
 <!-- latest-publishes:end -->
 
 ## Change the password (works even if you forgot the old one)
