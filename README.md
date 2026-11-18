@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Wed 18 Nov 2026, 9:36:50 AM UAE<br><sub>Wed 18 Nov 2026, 5:36:50 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.58 | [`5ffa16a`](https://github.com/jerrin-v/my-agent-hq/commit/5ffa16a58a949e3de1a83b039ded37fbaab2dd66) |
 | Wed 18 Nov 2026, 9:24:51 AM UAE<br><sub>Wed 18 Nov 2026, 5:24:51 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.58 | [`ff90d7f`](https://github.com/jerrin-v/my-agent-hq/commit/ff90d7f5377eff1730180497c603205543ca12a5) |
 | Wed 18 Nov 2026, 9:16:57 AM UAE<br><sub>Wed 18 Nov 2026, 5:16:57 AM UTC</sub> | My Agent HQ v1.1.58: audit fixes, 2 s tooltips, Node colours, Auto/Block/Node view button | v1.1.58 | [`a406000`](https://github.com/jerrin-v/my-agent-hq/commit/a406000a5a93ad81d465e872b70b61073dcc9ef7) |
-| Wed 18 Nov 2026, 8:45:25 AM UAE<br><sub>Wed 18 Nov 2026, 4:45:25 AM UTC</sub> | My Agent HQ: fresh history (encrypted site files only; notes moved out of the public repo) | v1.1.50 | [`1a3f20f`](https://github.com/jerrin-v/my-agent-hq/commit/1a3f20ffa44a096c40ceaacbbca1ff9f0c5f87e7) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
