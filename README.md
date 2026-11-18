@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Wed 18 Nov 2026, 10:25:53 AM UAE<br><sub>Wed 18 Nov 2026, 6:25:53 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.61 | [`6533655`](https://github.com/jerrin-v/my-agent-hq/commit/65336550722f452e0aa067855bd5607f7856d5e4) |
 | Wed 18 Nov 2026, 10:10:20 AM UAE<br><sub>Wed 18 Nov 2026, 6:10:20 AM UTC</sub> | My Agent HQ v1.1.61: open pages skip the CDN cache when checking for updates | v1.1.61 | [`b5dd10b`](https://github.com/jerrin-v/my-agent-hq/commit/b5dd10bf44a529b65cbe5c3397c20d91365512d2) |
 | Wed 18 Nov 2026, 9:47:35 AM UAE<br><sub>Wed 18 Nov 2026, 5:47:35 AM UTC</sub> | My Agent HQ v1.1.60: Node view 75% grey / 25% lit strands | v1.1.60 | [`ee07afa`](https://github.com/jerrin-v/my-agent-hq/commit/ee07afac4620327ffe6e8a7a5457ab213a11b5cc) |
-| Wed 18 Nov 2026, 9:36:50 AM UAE<br><sub>Wed 18 Nov 2026, 5:36:50 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.58 | [`5ffa16a`](https://github.com/jerrin-v/my-agent-hq/commit/5ffa16a58a949e3de1a83b039ded37fbaab2dd66) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
