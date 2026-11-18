@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Wed 18 Nov 2026, 5:16:05 PM UAE<br><sub>Wed 18 Nov 2026, 1:16:05 PM UTC</sub> | My Agent HQ v1.1.72: top-bar order Tokens → Time → Chats, dead code cleanup | v1.1.72 | [`9602efe`](https://github.com/jerrin-v/my-agent-hq/commit/9602efeb55b9cf17e17adf6caa40c2afdbe07302) |
 | Wed 18 Nov 2026, 4:25:56 PM UAE<br><sub>Wed 18 Nov 2026, 12:25:56 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.68 | [`47551b8`](https://github.com/jerrin-v/my-agent-hq/commit/47551b823cf5b0793839f170f36386f606b82856) |
 | Wed 18 Nov 2026, 3:25:59 PM UAE<br><sub>Wed 18 Nov 2026, 11:25:59 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.68 | [`046a4d4`](https://github.com/jerrin-v/my-agent-hq/commit/046a4d4a5923112317629a77333f599c4f6c9f58) |
-| Wed 18 Nov 2026, 2:25:21 PM UAE<br><sub>Wed 18 Nov 2026, 10:25:21 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.68 | [`a31c50d`](https://github.com/jerrin-v/my-agent-hq/commit/a31c50d67ea288b9ec7c02d09dfb104c19415ab8) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
