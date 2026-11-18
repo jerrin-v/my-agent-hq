@@ -307,7 +307,7 @@
     "function key(){return K||(K=crypto.subtle.importKey('raw',ub(k),'AES-GCM',false,['decrypt']))}" +
     "window.fetch=function(u,o){var s=typeof u==='string'?u:(u&&u.url)||String(u),x;try{x=new URL(s,location.href)}catch(e){return of(u,o)}" +
     "if(x.origin!==location.origin||!/\\.json$/.test(x.pathname))return of(u,o);" +
-    "return of(x.href.split('#')[0].split('?')[0]+'.enc',{cache:'no-store'}).then(function(r){if(!r.ok)return r;return r.arrayBuffer().then(function(b){var a=new Uint8Array(b);" +
+    "return of(x.href.split('#')[0].split('?')[0]+'.enc?_='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)return r;return r.arrayBuffer().then(function(b){var a=new Uint8Array(b);" +
     "return key().then(function(K){return crypto.subtle.decrypt({name:'AES-GCM',iv:a.slice(0,12)},K,a.slice(12))}).then(function(p){return new Response(p,{status:200,headers:{'Content-Type':'application/json'}})})})})};})();<\/script>";
   function show(html, k) { const m = /<head[^>]*>/i.exec(html), b = boot(k);
     html = m ? html.slice(0, m.index + m[0].length) + b + html.slice(m.index + m[0].length) : b + html;
