@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Wed 18 Nov 2026, 9:47:35 AM UAE<br><sub>Wed 18 Nov 2026, 5:47:35 AM UTC</sub> | My Agent HQ v1.1.60: Node view 75% grey / 25% lit strands | v1.1.60 | [`ee07afa`](https://github.com/jerrin-v/my-agent-hq/commit/ee07afac4620327ffe6e8a7a5457ab213a11b5cc) |
 | Wed 18 Nov 2026, 9:36:50 AM UAE<br><sub>Wed 18 Nov 2026, 5:36:50 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.58 | [`5ffa16a`](https://github.com/jerrin-v/my-agent-hq/commit/5ffa16a58a949e3de1a83b039ded37fbaab2dd66) |
 | Wed 18 Nov 2026, 9:24:51 AM UAE<br><sub>Wed 18 Nov 2026, 5:24:51 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.58 | [`ff90d7f`](https://github.com/jerrin-v/my-agent-hq/commit/ff90d7f5377eff1730180497c603205543ca12a5) |
-| Wed 18 Nov 2026, 9:16:57 AM UAE<br><sub>Wed 18 Nov 2026, 5:16:57 AM UTC</sub> | My Agent HQ v1.1.58: audit fixes, 2 s tooltips, Node colours, Auto/Block/Node view button | v1.1.58 | [`a406000`](https://github.com/jerrin-v/my-agent-hq/commit/a406000a5a93ad81d465e872b70b61073dcc9ef7) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
