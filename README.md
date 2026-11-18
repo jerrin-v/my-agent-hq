@@ -9,6 +9,7 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Wed 18 Nov 2026, 8:45:25 AM UAE<br><sub>Wed 18 Nov 2026, 4:45:25 AM UTC</sub> | My Agent HQ: fresh history (encrypted site files only; notes moved out of the public repo) | v1.1.50 | [`1a3f20f`](https://github.com/jerrin-v/my-agent-hq/commit/1a3f20ffa44a096c40ceaacbbca1ff9f0c5f87e7) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
