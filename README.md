@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 20 Nov 2026, 12:44:01 PM UAE<br><sub>Fri 20 Nov 2026, 8:44:01 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.75 | [`9238621`](https://github.com/jerrin-v/my-agent-hq/commit/923862142cb61fb6797258f93fb7250513c0d87d) |
 | Fri 20 Nov 2026, 11:25:52 AM UAE<br><sub>Fri 20 Nov 2026, 7:25:52 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.75 | [`8924f71`](https://github.com/jerrin-v/my-agent-hq/commit/8924f71949ba70966b39c31ec83dd8a67b7b456e) |
 | Fri 20 Nov 2026, 10:32:36 AM UAE<br><sub>Fri 20 Nov 2026, 6:32:36 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.75 | [`7451165`](https://github.com/jerrin-v/my-agent-hq/commit/74511651884404654a5aff4f17a247daef7e91dc) |
-| Fri 20 Nov 2026, 10:26:06 AM UAE<br><sub>Fri 20 Nov 2026, 6:26:06 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.75 | [`253511d`](https://github.com/jerrin-v/my-agent-hq/commit/253511dd37aa4dfd9cf54a08c60e8d0ee9ce28f9) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
