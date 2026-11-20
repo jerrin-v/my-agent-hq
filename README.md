@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 20 Nov 2026, 9:12:37 AM UAE<br><sub>Fri 20 Nov 2026, 5:12:37 AM UTC</sub> | My Agent HQ v1.1.74: same grey for lines to asleep chats in Node view | v1.1.74 | [`9318356`](https://github.com/jerrin-v/my-agent-hq/commit/9318356d07d5f931f65c79b3f19ac2a5bfa149ba) |
 | Fri 20 Nov 2026, 9:07:37 AM UAE<br><sub>Fri 20 Nov 2026, 5:07:37 AM UTC</sub> | My Agent HQ v1.1.73: sharp cut-off on the top-bar block strip | v1.1.73 | [`49d9c98`](https://github.com/jerrin-v/my-agent-hq/commit/49d9c9854b2b0ad5788b41c4866486261490025a) |
 | Fri 20 Nov 2026, 9:01:22 AM UAE<br><sub>Fri 20 Nov 2026, 5:01:22 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.72 | [`5637a8f`](https://github.com/jerrin-v/my-agent-hq/commit/5637a8f6cbc17cc8f86eaead57f9bbb83a35156b) |
-| Wed 18 Nov 2026, 5:16:05 PM UAE<br><sub>Wed 18 Nov 2026, 1:16:05 PM UTC</sub> | My Agent HQ v1.1.72: top-bar order Tokens → Time → Chats, dead code cleanup | v1.1.72 | [`9602efe`](https://github.com/jerrin-v/my-agent-hq/commit/9602efeb55b9cf17e17adf6caa40c2afdbe07302) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
