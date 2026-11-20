@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 20 Nov 2026, 10:25:22 PM UAE<br><sub>Fri 20 Nov 2026, 6:25:22 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.83 | [`ad57570`](https://github.com/jerrin-v/my-agent-hq/commit/ad57570bd32ef58c49cca6f7804210e8458a7101) |
 | Fri 20 Nov 2026, 9:53:06 PM UAE<br><sub>Fri 20 Nov 2026, 5:53:06 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.83 | [`ab97dfc`](https://github.com/jerrin-v/my-agent-hq/commit/ab97dfc5b1072e5acf07dd4688a9b71c8bbaf386) |
 | Fri 20 Nov 2026, 5:26:42 PM UAE<br><sub>Fri 20 Nov 2026, 1:26:42 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.83 | [`60c1aba`](https://github.com/jerrin-v/my-agent-hq/commit/60c1aba344537ea47d8679640e3aa5b0a378053e) |
-| Fri 20 Nov 2026, 5:00:22 PM UAE<br><sub>Fri 20 Nov 2026, 1:00:22 PM UTC</sub> | My Agent HQ v1.1.83: Node view core at 80 % | v1.1.83 | [`df9a843`](https://github.com/jerrin-v/my-agent-hq/commit/df9a843a563621daa58db4c5aeb3d17ae9ad6c10) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
