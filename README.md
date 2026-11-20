@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 20 Nov 2026, 11:43:21 PM UAE<br><sub>Fri 20 Nov 2026, 7:43:21 PM UTC</sub> | My Agent HQ v1.1.89–v1.1.90: full sharpness back on big screens (8.5M px budget) | v1.1.90 | [`a9af960`](https://github.com/jerrin-v/my-agent-hq/commit/a9af9602c0afb08781659347fb6b1e90a3a612df) |
 | Fri 20 Nov 2026, 11:25:27 PM UAE<br><sub>Fri 20 Nov 2026, 7:25:27 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.88 | [`143267f`](https://github.com/jerrin-v/my-agent-hq/commit/143267f8540b4105159f5fdc8c64a9a73551c6d0) |
 | Fri 20 Nov 2026, 11:13:30 PM UAE<br><sub>Fri 20 Nov 2026, 7:13:30 PM UTC</sub> | My Agent HQ v1.1.84–v1.1.87: GPU fixes for big screens (cheap glass blur, no panel backdrop blur, no endless CSS loops, ~4M px / 20 fps on 4K) | v1.1.87 | [`465dbd3`](https://github.com/jerrin-v/my-agent-hq/commit/465dbd3cd73d5c8ab4869b61091d5a0dd15e6ea6) |
-| Fri 20 Nov 2026, 10:25:22 PM UAE<br><sub>Fri 20 Nov 2026, 6:25:22 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.83 | [`ad57570`](https://github.com/jerrin-v/my-agent-hq/commit/ad57570bd32ef58c49cca6f7804210e8458a7101) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
