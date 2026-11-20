@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 20 Nov 2026, 3:35:39 PM UAE<br><sub>Fri 20 Nov 2026, 11:35:39 AM UTC</sub> | My Agent HQ v1.1.82: smooth panel folds (reused canvas layers, stable dots, full-rate canvas while the stage moves, System card fade fix) | v1.1.82 | [`b1a4f92`](https://github.com/jerrin-v/my-agent-hq/commit/b1a4f926462e16d2a88225ca222381117a866f04) |
 | Fri 20 Nov 2026, 3:26:10 PM UAE<br><sub>Fri 20 Nov 2026, 11:26:10 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.81 | [`938cf39`](https://github.com/jerrin-v/my-agent-hq/commit/938cf396a4c9c443e144dac64115c1b7729fffc9) |
 | Fri 20 Nov 2026, 3:23:38 PM UAE<br><sub>Fri 20 Nov 2026, 11:23:38 AM UTC</sub> | My Agent HQ v1.1.78–v1.1.81: folded System card (own rail card, same height, no button, label at top) | v1.1.81 | [`17121e2`](https://github.com/jerrin-v/my-agent-hq/commit/17121e265c27409e02fda9c01d358454909066ff) |
-| Fri 20 Nov 2026, 3:03:07 PM UAE<br><sub>Fri 20 Nov 2026, 11:03:07 AM UTC</sub> | My Agent HQ v1.1.76–v1.1.77: usage card in the status-key slot, system monitor as its own card | v1.1.77 | [`899310b`](https://github.com/jerrin-v/my-agent-hq/commit/899310bffacf6b1c4b8e17108e5ac1e566213e09) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
