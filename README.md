@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Fri 20 Nov 2026, 9:25:49 AM UAE<br><sub>Fri 20 Nov 2026, 5:25:49 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.74 | [`2d8f328`](https://github.com/jerrin-v/my-agent-hq/commit/2d8f328801eb202c2f6ceb7ecef406c3e166791b) |
 | Fri 20 Nov 2026, 9:20:42 AM UAE<br><sub>Fri 20 Nov 2026, 5:20:42 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.74 | [`ed1ae26`](https://github.com/jerrin-v/my-agent-hq/commit/ed1ae26eb00f6540d4408a9f41bfd44b606f55d0) |
 | Fri 20 Nov 2026, 9:18:13 AM UAE<br><sub>Fri 20 Nov 2026, 5:18:13 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.74 | [`9e8bf50`](https://github.com/jerrin-v/my-agent-hq/commit/9e8bf5019bea34048d7513107d74e5a098077e9e) |
-| Fri 20 Nov 2026, 9:12:37 AM UAE<br><sub>Fri 20 Nov 2026, 5:12:37 AM UTC</sub> | My Agent HQ v1.1.74: same grey for lines to asleep chats in Node view | v1.1.74 | [`9318356`](https://github.com/jerrin-v/my-agent-hq/commit/9318356d07d5f931f65c79b3f19ac2a5bfa149ba) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
