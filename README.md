@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 21 Nov 2026, 7:30:48 PM UAE<br><sub>Sat 21 Nov 2026, 3:30:48 PM UTC</sub> | My Agent HQ v1.2.2: full audit fixes (small phones, Node on tiny screens, Grid two-column tablet layout + keyboard/screen reader, hit areas, unused font/CSS removed), README corrections | v1.2.2 | [`89ae30a`](https://github.com/jerrin-v/my-agent-hq/commit/89ae30ae0ab7b4f37af200475790cf4a69c81a9a) |
 | Sat 21 Nov 2026, 6:33:40 PM UAE<br><sub>Sat 21 Nov 2026, 2:33:40 PM UTC</sub> | My Agent HQ v1.2.1: Grid view rework (sections, paging arrows, phone layout, usage ring), mobile fixes | v1.2.1 | [`06ace9e`](https://github.com/jerrin-v/my-agent-hq/commit/06ace9e6a82083ac17043e411dcfd63005e3e726) |
 | Sat 21 Nov 2026, 6:25:59 PM UAE<br><sub>Sat 21 Nov 2026, 2:25:59 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.92 | [`411a931`](https://github.com/jerrin-v/my-agent-hq/commit/411a931ea287559ee87123e8b755abf57d8b4c29) |
-| Sat 21 Nov 2026, 5:54:21 PM UAE<br><sub>Sat 21 Nov 2026, 1:54:21 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.92 | [`8ebe574`](https://github.com/jerrin-v/my-agent-hq/commit/8ebe574e744599fa6bb8d5401bdde5b116b8a8ae) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
