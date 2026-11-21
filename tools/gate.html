@@ -207,6 +207,78 @@
 
 
 
+/* ═════ Grid view look (#hqLock.t-grid, since v1.2.21): matches the floor's Grid view — near-black, 24 px grid, mint hairline rules with end ticks,
+   timing-board boxes with a coloured left edge; green = granted / action, red = error, mint = lines and labels. Rajdhani + Share Tech Mono. ═════ */
+#hqLock.t-grid{color:rgba(220,242,238,.94);-webkit-backdrop-filter:none;backdrop-filter:none;background:
+  linear-gradient(rgba(160,215,210,.05) 1px,transparent 1px) 50% 50%/24px 24px,linear-gradient(90deg,rgba(160,215,210,.05) 1px,transparent 1px) 50% 50%/24px 24px,
+  linear-gradient(rgba(160,215,210,.09) 1px,transparent 1px) 50% 50%/120px 120px,linear-gradient(90deg,rgba(160,215,210,.09) 1px,transparent 1px) 50% 50%/120px 120px,#090B0D}
+#hqLock.t-grid .hql-cx{display:block;position:absolute;inset:0;pointer-events:none;overflow:hidden}
+#hqLock.t-grid .hql-cx::before,#hqLock.t-grid .hql-cx::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,11,13,0),rgba(9,11,13,.85) 50%,rgba(9,11,13,0));opacity:0}
+#hqLock.t-grid .gq-cells{position:absolute;inset:0}
+#hqLock.t-grid .gq-cells i{position:absolute;width:23px;height:23px;background:rgba(127,220,224,.13);opacity:0;animation:gqCell var(--d,6s) ease-in-out var(--o,0s) infinite}
+#hqLock.t-grid .hql-frame{inset:18px 24px;box-shadow:none;background:none}
+#hqLock.t-grid .hql-frame i{display:none}
+#hqLock.t-grid .hql-band{left:24px;right:24px;padding:0;color:rgba(190,240,228,.8);font-size:9px;letter-spacing:.16em}
+#hqLock.t-grid .hql-band.top{top:18px;height:44px;box-shadow:none}
+#hqLock.t-grid .hql-band.bot{bottom:18px;height:30px;box-shadow:none}
+#hqLock.t-grid .hql-band::after{content:"";position:absolute;left:0;right:0;height:1px;background:#BFEFE4;opacity:.85}
+#hqLock.t-grid .hql-band.top::after{bottom:0} #hqLock.t-grid .hql-band.bot::after{top:0}
+#hqLock.t-grid .hql-band::before{content:"";position:absolute;left:0;right:0;height:9px;background:linear-gradient(#BFEFE4,#BFEFE4) left/1px 9px no-repeat,linear-gradient(#BFEFE4,#BFEFE4) right/1px 9px no-repeat,linear-gradient(#BFEFE4,#BFEFE4) center/4px 4px no-repeat}
+#hqLock.t-grid .hql-band.top::before{bottom:-4px} #hqLock.t-grid .hql-band.bot::before{top:-4px}
+#hqLock.t-grid .hql-band .sq{width:11px;height:11px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 5' shape-rendering='crispEdges' fill='%237FDCE0'%3E%3Crect x='0' y='0' width='1' height='1'/%3E%3Crect x='4' y='0' width='1' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='3' y='1' width='1' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='1' y='3' width='1' height='1'/%3E%3Crect x='3' y='3' width='1' height='1'/%3E%3Crect x='0' y='4' width='1' height='1'/%3E%3Crect x='4' y='4' width='1' height='1'/%3E%3C/svg%3E")}
+#hqLock.t-grid .hql-band .t{color:#BFEFE4;font:500 12px/1 Rajdhani,"Barlow Condensed",sans-serif;letter-spacing:.24em}
+#hqLock.t-grid .hql-band .spec{color:rgba(160,215,210,.5)}
+#hqLock.t-grid .hql-band .st{padding:5px 9px 4px 8px;color:#EDE9B4;background:rgba(30,38,41,.92);box-shadow:inset 2px 0 0 #EDE9B4}
+#hqLock.t-grid .hql-band .st::before{background:#EDE9B4;box-shadow:none;border-radius:0;width:5px;height:5px}
+#hqLock.t-grid .hql-band .st.busy{color:#7FDCE0;box-shadow:inset 2px 0 0 #7FDCE0}#hqLock.t-grid .hql-band .st.busy::before{background:#7FDCE0;box-shadow:none}
+#hqLock.t-grid .hql-band .st.ok{color:#3EE882;box-shadow:inset 2px 0 0 #3EE882}#hqLock.t-grid .hql-band .st.ok::before{background:#3EE882;box-shadow:none}
+#hqLock.t-grid .hql-panel{width:min(380px,100%);clip-path:none;background:#090B0D;box-shadow:0 0 0 1px rgba(191,239,228,.16);padding:14px 0;animation:gqIn .7s .15s cubic-bezier(.2,.8,.2,1) backwards}
+#hqLock.t-grid .hql-panel::before,#hqLock.t-grid .hql-panel::after{content:"";position:absolute;left:14px;right:14px;height:9px;background:linear-gradient(#BFEFE4,#BFEFE4) center/100% 1px no-repeat,linear-gradient(#BFEFE4,#BFEFE4) left/1px 9px no-repeat,linear-gradient(#BFEFE4,#BFEFE4) right/1px 9px no-repeat,linear-gradient(#BFEFE4,#BFEFE4) center/4px 4px no-repeat}
+#hqLock.t-grid .hql-panel::before{top:6px} #hqLock.t-grid .hql-panel::after{bottom:6px}
+#hqLock.t-grid .hql-head{background:none;color:#BFEFE4;padding:16px 24px 0;font:500 12px/1 Rajdhani,"Barlow Condensed",sans-serif;letter-spacing:.24em;box-shadow:none}
+#hqLock.t-grid .hql-head span{color:#BFEFE4;font-weight:500;opacity:1}
+#hqLock.t-grid .hql-head i{width:5px;height:5px;transform:none;background:#EDE9B4;animation:hqlPulse 1.1s steps(2,jump-none) infinite alternate}
+#hqLock.t-grid .hql-body{padding:14px 24px 18px}
+#hqLock.t-grid .hql-body>*{animation:gqUp .6s .45s ease-out backwards}
+#hqLock.t-grid .hq-logo{width:24px;height:24px;margin:0 4px 0 0}
+#hqLock.t-grid .hq-logo i{--c:#7FDCE0}#hqLock.t-grid .hq-logo i.b{--c:#BFEFE4}#hqLock.t-grid .hq-logo i.r{--c:#EDE9B4}
+#hqLock.t-grid .hql-brand b{font:500 22px/1 Rajdhani,"Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(220,242,238,.94)}
+#hqLock.t-grid .hql-mono{color:rgba(190,240,228,.8);letter-spacing:.14em}
+#hqLock.t-grid .hql-brand .hql-mono{color:rgba(160,215,210,.5)}
+#hqLock.t-grid .hql-title{margin:22px 0 6px;font:500 19px/1.1 Rajdhani,"Barlow Condensed",sans-serif;letter-spacing:.14em;white-space:nowrap;text-transform:uppercase;color:#BFEFE4;
+  display:flex;align-items:center;gap:10px}
+#hqLock.t-grid .hql-title::after{content:"";flex:1;height:1px;background:rgba(160,215,210,.16)}
+#hqLock.t-grid .hql-cells{gap:5px}
+#hqLock.t-grid .hql-cell{clip-path:none;height:52px;background:rgba(30,38,41,.92);box-shadow:inset 2px 0 0 rgba(191,239,228,.35)}
+#hqLock.t-grid .hql-cell::before{width:9px;height:9px;background:#BFEFE4;transform:scale(0)}
+#hqLock.t-grid .hql-cell.filled::before{transform:scale(1)}
+#hqLock.t-grid .hql-cell.cur{box-shadow:inset 2px 0 0 #3EE882;background:rgba(62,232,130,.07)}
+#hqLock.t-grid .hql-cell.cur::after{background:#3EE882;height:20px;margin-top:-10px}
+#hqLock.t-grid.err .hql-cell{box-shadow:inset 2px 0 0 #FF4A3D;background:rgba(255,74,61,.08)}#hqLock.t-grid.err .hql-cell::before{background:#FF4A3D}
+#hqLock.t-grid.ok .hql-cell{box-shadow:inset 2px 0 0 #3EE882}#hqLock.t-grid.ok .hql-cell::before{background:#3EE882;transform:scale(1)}
+#hqLock.t-grid .hql-status{color:rgba(190,240,228,.8)} #hqLock.t-grid .hql-status.err{color:#FF4A3D} #hqLock.t-grid .hql-status.ok{color:#3EE882}
+#hqLock.t-grid .hql-pad{gap:5px}
+#hqLock.t-grid .hql-pad button{clip-path:none;height:46px;color:rgba(220,242,238,.94);background:rgba(30,38,41,.92);box-shadow:inset 2px 0 0 rgba(191,239,228,.18);font:500 22px/1 Rajdhani,"Barlow Condensed",sans-serif}
+#hqLock.t-grid .hql-pad button svg{color:#BFEFE4}
+#hqLock.t-grid .hql-pad button:hover{background:rgba(50,62,66,.95);box-shadow:inset 2px 0 0 #BFEFE4;color:#fff}
+#hqLock.t-grid .hql-pad button:active{background:rgba(127,220,224,.22);box-shadow:inset 2px 0 0 #7FDCE0}
+#hqLock.t-grid .hql-pad .go,#hqLock.t-grid .hql-pad .go:disabled,#hqLock.t-grid .hql-pwrow button{background:rgba(62,232,130,.14);box-shadow:inset 2px 0 0 #3EE882;color:#3EE882;clip-path:none}
+#hqLock.t-grid .hql-pad .go svg,#hqLock.t-grid .hql-pwrow button svg{color:#3EE882}
+#hqLock.t-grid .hql-pad .go:hover{background:rgba(62,232,130,.26)}
+#hqLock.t-grid .hql-pad button:focus-visible{outline:1px solid #EDE9B4;outline-offset:2px}
+#hqLock.t-grid .hql-pwrow input{clip-path:none;background:rgba(30,38,41,.92);box-shadow:inset 2px 0 0 #3EE882;color:rgba(220,242,238,.94);font:500 20px/1 Rajdhani,"Barlow Condensed",sans-serif;letter-spacing:.12em}
+#hqLock.t-grid .hql-pwrow input::placeholder{color:rgba(160,215,210,.4)}
+#hqLock.t-grid.err .hql-pwrow input{box-shadow:inset 2px 0 0 #FF4A3D}
+#hqLock.t-grid .hql-rem{color:rgba(160,215,210,.6)}
+#hqLock.t-grid .hql-rem input{background:rgba(30,38,41,.92);box-shadow:inset 0 0 0 1px rgba(191,239,228,.4)}
+#hqLock.t-grid .hql-rem input:checked{background:#3EE882;box-shadow:none}
+#hqLock.t-grid .hql-rem input:focus-visible{outline-color:#EDE9B4}
+#hqLock.t-grid .hql-built{color:rgba(160,215,210,.68);bottom:max(30px,env(safe-area-inset-bottom,0px))}
+#hqLock.t-grid .hql-frame,#hqLock.t-grid .hql-band{animation:hqlFade .8s .05s ease-out backwards}
+@keyframes gqIn{from{opacity:0;transform:translateY(10px) scaleY(.96)}}
+@keyframes gqUp{from{opacity:0;transform:translateY(6px)}}
+@keyframes gqCell{0%,100%{opacity:0}50%{opacity:1}}
+@media (max-width:640px){#hqLock.t-grid .hql-band{left:12px;right:12px}#hqLock.t-grid .hql-band .t{font-size:10px;letter-spacing:.16em}}
 @keyframes hqlIn{
   0%{clip-path:polygon(0 0,0 0,0 31px,0 31px,0 31px,0 0);animation-timing-function:cubic-bezier(.65,0,.35,1)}
   36%{clip-path:polygon(16px 0,100% 0,100% 31px,100% 31px,0 31px,0 16px);animation-timing-function:cubic-bezier(.22,.8,.3,1)}
@@ -222,8 +294,9 @@
 <!-- Sign-in page for the GitHub Pages copy of My Agent HQ (built by tools/encrypt-site.mjs).
      The page and its data are AES-256-GCM encrypted with a key derived from the site password
      (PBKDF2-SHA256, 600 000 rounds); nothing readable is served until the right code is entered. -->
-<div id="hqLock" class="t-cine" role="dialog" aria-modal="true" aria-labelledby="hqlTitle">
+<div id="hqLock" class="t-grid" role="dialog" aria-modal="true" aria-labelledby="hqlTitle">
   <div class="hql-cx" aria-hidden="true">
+    <div class="gq-cells" id="gqCells"></div>
     <div class="hql-frame"><i></i><i></i><i></i><i></i></div>
     <div class="hql-band top"><i class="sq"></i><span class="t">My_Agent_HQ // Access control</span><span class="grow"></span><span class="spec">AES-256-GCM · PBKDF2-SHA256 · 600 000 rounds</span><span class="st" id="hqlState">Locked</span></div>
     <div class="hql-band bot"></div>
@@ -274,6 +347,13 @@
 (() => {
   'use strict';
   const P = JSON.parse(document.getElementById('hqPayload').textContent);
+  /* Grid look: a few 24 px background cells fade in and out at random (like the Grid view's background); none with reduced motion */
+  (() => { const box = document.getElementById('gqCells'); if (!box || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const W = innerWidth, H = innerHeight, n = Math.min(70, Math.round(W * H / 14000)), f = document.createDocumentFragment();
+    for (let k = 0; k < n; k++) { const i = document.createElement('i'), ox = (W / 2) % 24, oy = (H / 2) % 24;
+      i.style.left = (ox + 24 * Math.floor(Math.random() * (W / 24)) + 1) + 'px'; i.style.top = (oy + 24 * Math.floor(Math.random() * (H / 24)) + 1) + 'px';
+      i.style.setProperty('--d', (4 + Math.random() * 7).toFixed(2) + 's'); i.style.setProperty('--o', (-Math.random() * 10).toFixed(2) + 's'); f.append(i); }
+    box.append(f); })();
   const SK = 'hq_gh_key', RK = 'hq_gh_rem';
   const $ = id => document.getElementById(id);
   const lock = $('hqLock'), field = $('hqlCode'), cells = [...lock.querySelectorAll('.hql-cell')], status = $('hqlStatus');
