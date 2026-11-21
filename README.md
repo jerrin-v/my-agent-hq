@@ -1,6 +1,6 @@
 # Jerrin Varghese — My Agent HQ (password-protected)
 
-Website: **https://jerrin-v.github.io/my-agent-hq/** — a password-protected copy of My Agent HQ, an interactive sci-fi head-up display of my Claude workspace: every block is a project, every row in it is a chat. The live version is a private claude.ai artifact.
+Website: **https://jerrin-v.github.io/my-agent-hq/** — a password-protected copy of My Agent HQ, an Oblivion-style token board of my Claude workspace: every block is a project, every row in it is a chat. The live version is a private claude.ai artifact.
 
 ## Latest publishes
 
@@ -18,6 +18,7 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 
 - `backup/claude-hq.html.age` — the page, exactly as published on claude.ai, sealed.
 - `backup/roster.json.age` — the snapshot (blocks, chats, activity and token estimates), sealed. The hourly chat sync replaces it after every run.
+- `backup/claude-hq-v1.2.32-hud.html.age` — **safe backup of v1.2.32**, sealed: the last version with the 2D HUD (Block and Node views) next to the Grid view. Kept as a restore point; from v1.2.33 the site is the Grid view only.
 - `backup/claude-hq-v1.0.2.html.age` — the older v1.0.2 (Oblivion) page, sealed, published at `/versions/v1.0.2-oblivion.html`.
 - `backup/BUILD.txt` — which version and which sync each file holds, and when it was packed.
 - `keys/backup-recipient.txt` — the public key the backup is sealed with. It can't open anything.
