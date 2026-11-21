@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 21 Nov 2026, 11:21:49 AM UAE<br><sub>Sat 21 Nov 2026, 7:21:49 AM UTC</sub> | Chat sync: new floor snapshot | v1.1.90 | [`3094af8`](https://github.com/jerrin-v/my-agent-hq/commit/3094af8fd11683a4cffe7dc05e02d0c2cd92d512) |
 | Sat 21 Nov 2026, 12:26:24 AM UAE<br><sub>Fri 20 Nov 2026, 8:26:24 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.90 | [`a334769`](https://github.com/jerrin-v/my-agent-hq/commit/a3347695b20adb9cc273352b682cc986d7f6b589) |
 | Fri 20 Nov 2026, 11:43:21 PM UAE<br><sub>Fri 20 Nov 2026, 7:43:21 PM UTC</sub> | My Agent HQ v1.1.89–v1.1.90: full sharpness back on big screens (8.5M px budget) | v1.1.90 | [`a9af960`](https://github.com/jerrin-v/my-agent-hq/commit/a9af9602c0afb08781659347fb6b1e90a3a612df) |
-| Fri 20 Nov 2026, 11:25:27 PM UAE<br><sub>Fri 20 Nov 2026, 7:25:27 PM UTC</sub> | Chat sync: new floor snapshot | v1.1.88 | [`143267f`](https://github.com/jerrin-v/my-agent-hq/commit/143267f8540b4105159f5fdc8c64a9a73551c6d0) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
