@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sun 22 Nov 2026, 1:21:41 AM UAE<br><sub>Sat 21 Nov 2026, 9:21:41 PM UTC</sub> | My Agent HQ v1.2.46: Grid intro animation (elements load in random order, token columns build brick by brick from the bottom), 28 px figures, 18 px title, agent-link pulses run from the hub out to active chats | v1.2.46 | [`9173e78`](https://github.com/jerrin-v/my-agent-hq/commit/9173e78f4bfd5141995b4b741273930f38a29052) |
 | Sun 22 Nov 2026, 1:15:58 AM UAE<br><sub>Sat 21 Nov 2026, 9:15:58 PM UTC</sub> | Chat sync: new floor snapshot | v1.2.34 | [`83a2141`](https://github.com/jerrin-v/my-agent-hq/commit/83a21413451e93c64cd20e56d1c2b713c9b731fb) |
 | Sun 22 Nov 2026, 12:26:38 AM UAE<br><sub>Sat 21 Nov 2026, 8:26:38 PM UTC</sub> | Chat sync: new floor snapshot | v1.2.34 | [`efa49bc`](https://github.com/jerrin-v/my-agent-hq/commit/efa49bc55a26d788d3b0316153575ba2863d9118) |
-| Sun 22 Nov 2026, 12:04:22 AM UAE<br><sub>Sat 21 Nov 2026, 8:04:22 PM UTC</sub> | My Agent HQ v1.2.34: the Grid view is the whole site (2D HUD removed, code rebuilt 384 KB → 86 KB) and a LOCK button that signs out to the lock screen; README notes v1.2.32 as the safe HUD backup | v1.2.34 | [`1b62016`](https://github.com/jerrin-v/my-agent-hq/commit/1b62016d9aeae5a77d1f43d386d79ffdab5fd8bb) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
