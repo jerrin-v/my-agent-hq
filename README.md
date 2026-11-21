@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sun 22 Nov 2026, 2:54:17 AM UAE<br><sub>Sat 21 Nov 2026, 10:54:17 PM UTC</sub> | My Agent HQ v1.2.68: version box in the header (board + sign-in page), taller token-signal wave, fill-only hover/selection, scan bar without edge lines | v1.2.68 | [`5ceea1b`](https://github.com/jerrin-v/my-agent-hq/commit/5ceea1b7353aeb2079dfbdb956c0b905f84f3513) |
 | Sun 22 Nov 2026, 2:38:21 AM UAE<br><sub>Sat 21 Nov 2026, 10:38:21 PM UTC</sub> | My Agent HQ v1.2.63: last-active radar heading back above the radar | v1.2.63 | [`c8a2b0b`](https://github.com/jerrin-v/my-agent-hq/commit/c8a2b0b839a222decfc498d51e1b91251a47b9c9) |
 | Sun 22 Nov 2026, 2:33:10 AM UAE<br><sub>Sat 21 Nov 2026, 10:33:10 PM UTC</sub> | My Agent HQ v1.2.62: today and 7 days above the token rings; signal wave and rings stay on one centre line | v1.2.62 | [`539f6cf`](https://github.com/jerrin-v/my-agent-hq/commit/539f6cf24d43cc03e129338480d37801af500145) |
-| Sun 22 Nov 2026, 2:27:06 AM UAE<br><sub>Sat 21 Nov 2026, 10:27:06 PM UTC</sub> | My Agent HQ v1.2.61: local time without leading zero, date inside the clock box, steady clock size, usage % like the token figures, signal and estimate swapped and centred on one line; sign-in header rules match the logo + title width | v1.2.61 | [`bdb4381`](https://github.com/jerrin-v/my-agent-hq/commit/bdb438161718ad6a26933b85f392b1248f7b679c) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
