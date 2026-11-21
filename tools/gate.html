@@ -413,7 +413,7 @@
         L.runs.forEach(o => { const pos = Math.floor((tt * o.sp + o.ph) % (L.nc + o.len + 6)); for (let q = 0; q < o.len; q++) { const col = o.dir > 0 ? pos - q : L.nc - 1 - pos + q; if (col < 0 || col >= L.nc) continue; c.globalAlpha = Math.max(.02, .17 - q * .035); c.fillRect(col * BC + 1, o.r * BC + 1, BC - 1, BC - 1); } });
         c.globalAlpha = 1; }
       /* header: rules trace out from their centre, then the logo box and the title box open from the left, the title types on */
-      const X = L.HX, P = L.PAD, w = L.HW, by = P + 9, bh = 24, lw = 26; rule(c, X, P, w, seg(t, .05, .55)); rule(c, X, P + 42, w, seg(t, .15, .55));
+      const X = L.HX, P = L.PAD, by = P + 9, bh = 24, lw = 26; c.font = '500 18px ' + FR; c.letterSpacing = '2px'; const w = lw + 5 + c.measureText('MY AGENT HQ').width - 2 + 18; /* rules as wide as logo + title */ c.letterSpacing = '0px'; rule(c, X, P, w, seg(t, .05, .55)); rule(c, X, P + 42, w, seg(t, .15, .55));
       const pl = seg(t, .45, .3); if (pl > 0) { c.fillStyle = 'rgba(30,38,41,.92)'; c.fillRect(X, by, lw * pl, bh); }
       c.font = '500 18px ' + FR; c.letterSpacing = '2px'; const label = 'MY AGENT HQ', tw = c.measureText(label).width - 2, tx0 = X + lw + 5, pt = seg(t, .6, .3);
       if (pt > 0) { c.fillStyle = 'rgba(30,38,41,.92)'; c.fillRect(tx0, by, (tw + 18) * pt, bh); }
