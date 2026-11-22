@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sun 22 Nov 2026, 12:03:43 PM UAE<br><sub>Sun 22 Nov 2026, 8:03:43 AM UTC</sub> | My Agent HQ v1.2.84: lock outro (sections fold out before the lock screen) | v1.2.84 | [`807a78f`](https://github.com/jerrin-v/my-agent-hq/commit/807a78fe908aa3ba689250f40fec279eb8e8ce13) |
 | Sun 22 Nov 2026, 11:00:12 AM UAE<br><sub>Sun 22 Nov 2026, 7:00:12 AM UTC</sub> | My Agent HQ v1.2.83: estimate sync-row rule + spacing, coloured scan readout, smaller version box (board + sign-in page) | v1.2.83 | [`11370db`](https://github.com/jerrin-v/my-agent-hq/commit/11370db0e6a3f66622770a24d3cd58203cc1854b) |
 | Sun 22 Nov 2026, 10:29:16 AM UAE<br><sub>Sun 22 Nov 2026, 6:29:16 AM UTC</sub> | My Agent HQ v1.2.74: estimate left, signal right; thinner signal line with strip-colour fill | v1.2.74 | [`66e8a2d`](https://github.com/jerrin-v/my-agent-hq/commit/66e8a2d9f2b345d085a980c8cb31b1309af72e53) |
-| Sun 22 Nov 2026, 3:14:55 AM UAE<br><sub>Sat 21 Nov 2026, 11:14:55 PM UTC</sub> | My Agent HQ v1.2.72: token signal without its own grid lines | v1.2.72 | [`9f04fab`](https://github.com/jerrin-v/my-agent-hq/commit/9f04fabd4573d2d6aa1ff427d896a40b6180587d) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
