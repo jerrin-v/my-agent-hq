@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sun 22 Nov 2026, 12:24:20 PM UAE<br><sub>Sun 22 Nov 2026, 8:24:20 AM UTC</sub> | Publish site: retry the Pages deploy up to three times | v1.2.84 | [`9feb02d`](https://github.com/jerrin-v/my-agent-hq/commit/9feb02d66e4c02a4432ff2a72703b1b7103a73b5) |
 | Sun 22 Nov 2026, 12:21:50 PM UAE<br><sub>Sun 22 Nov 2026, 8:21:50 AM UTC</sub> | Chat sync: new floor snapshot | v1.2.84 | [`2573876`](https://github.com/jerrin-v/my-agent-hq/commit/2573876c23f8bb1b1cc1d5fe23ec6c95c230ed68) |
 | Sun 22 Nov 2026, 12:15:06 PM UAE<br><sub>Sun 22 Nov 2026, 8:15:06 AM UTC</sub> | Chat sync: new floor snapshot | v1.2.84 | [`974863d`](https://github.com/jerrin-v/my-agent-hq/commit/974863dd0533ce66e543c2638588174f9c7abb54) |
-| Sun 22 Nov 2026, 12:03:43 PM UAE<br><sub>Sun 22 Nov 2026, 8:03:43 AM UTC</sub> | My Agent HQ v1.2.84: lock outro (sections fold out before the lock screen) | v1.2.84 | [`807a78f`](https://github.com/jerrin-v/my-agent-hq/commit/807a78fe908aa3ba689250f40fec279eb8e8ce13) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
