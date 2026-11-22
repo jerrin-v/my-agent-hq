@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sun 22 Nov 2026, 12:21:50 PM UAE<br><sub>Sun 22 Nov 2026, 8:21:50 AM UTC</sub> | Chat sync: new floor snapshot | v1.2.84 | [`2573876`](https://github.com/jerrin-v/my-agent-hq/commit/2573876c23f8bb1b1cc1d5fe23ec6c95c230ed68) |
 | Sun 22 Nov 2026, 12:15:06 PM UAE<br><sub>Sun 22 Nov 2026, 8:15:06 AM UTC</sub> | Chat sync: new floor snapshot | v1.2.84 | [`974863d`](https://github.com/jerrin-v/my-agent-hq/commit/974863dd0533ce66e543c2638588174f9c7abb54) |
 | Sun 22 Nov 2026, 12:03:43 PM UAE<br><sub>Sun 22 Nov 2026, 8:03:43 AM UTC</sub> | My Agent HQ v1.2.84: lock outro (sections fold out before the lock screen) | v1.2.84 | [`807a78f`](https://github.com/jerrin-v/my-agent-hq/commit/807a78fe908aa3ba689250f40fec279eb8e8ce13) |
-| Sun 22 Nov 2026, 11:00:12 AM UAE<br><sub>Sun 22 Nov 2026, 7:00:12 AM UTC</sub> | My Agent HQ v1.2.83: estimate sync-row rule + spacing, coloured scan readout, smaller version box (board + sign-in page) | v1.2.83 | [`11370db`](https://github.com/jerrin-v/my-agent-hq/commit/11370db0e6a3f66622770a24d3cd58203cc1854b) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
