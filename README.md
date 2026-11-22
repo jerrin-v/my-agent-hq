@@ -9,9 +9,9 @@ The last 3 pushes that went live, newest first. Updated by the **Publish site** 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sun 22 Nov 2026, 10:29:16 AM UAE<br><sub>Sun 22 Nov 2026, 6:29:16 AM UTC</sub> | My Agent HQ v1.2.74: estimate left, signal right; thinner signal line with strip-colour fill | v1.2.74 | [`66e8a2d`](https://github.com/jerrin-v/my-agent-hq/commit/66e8a2d9f2b345d085a980c8cb31b1309af72e53) |
 | Sun 22 Nov 2026, 3:14:55 AM UAE<br><sub>Sat 21 Nov 2026, 11:14:55 PM UTC</sub> | My Agent HQ v1.2.72: token signal without its own grid lines | v1.2.72 | [`9f04fab`](https://github.com/jerrin-v/my-agent-hq/commit/9f04fabd4573d2d6aa1ff427d896a40b6180587d) |
 | Sun 22 Nov 2026, 3:02:01 AM UAE<br><sub>Sat 21 Nov 2026, 11:02:01 PM UTC</sub> | My Agent HQ v1.2.70: token signal as a step trace with intro animation | v1.2.70 | [`43d68f6`](https://github.com/jerrin-v/my-agent-hq/commit/43d68f6f62cc85fef49ac92840e6bd06691d9838) |
-| Sun 22 Nov 2026, 2:54:17 AM UAE<br><sub>Sat 21 Nov 2026, 10:54:17 PM UTC</sub> | My Agent HQ v1.2.68: version box in the header (board + sign-in page), taller token-signal wave, fill-only hover/selection, scan bar without edge lines | v1.2.68 | [`5ceea1b`](https://github.com/jerrin-v/my-agent-hq/commit/5ceea1b7353aeb2079dfbdb956c0b905f84f3513) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
