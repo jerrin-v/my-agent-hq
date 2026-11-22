@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-24.04
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy1.outputs.page_url || steps.deploy2.outputs.page_url || steps.deploy3.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -76,7 +76,25 @@ jobs:
         with:
           path: _site
 
-      - id: deploy
+      # GitHub sometimes can't find the just-uploaded artifact ("No artifacts named github-pages",
+      # "Fetching artifact metadata failed"); a later try works, so deploy up to three times.
+      - id: deploy1
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - if: steps.deploy1.outcome == 'failure'
+        run: sleep 30
+
+      - id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        run: sleep 90
+
+      - id: deploy3
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
         uses: actions/deploy-pages@v4
 
       - name: Note this publish in the README
