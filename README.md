@@ -4,14 +4,14 @@ Website: **https://jerrin-v.github.io/my-agent-hq/** — a password-protected co
 
 ## Latest publishes
 
-The last 3 pushes that went live, newest first. Updated by the **Publish site** workflow after each successful publish.
+The last 3 releases that went live, newest first. Updated by the **Publish site** workflow after each successful release; the hourly chat-sync snapshots are not listed.
 
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
-| Mon 23 Nov 2026, 10:25:32 AM UAE<br><sub>Mon 23 Nov 2026, 6:25:32 AM UTC</sub> | Chat sync: new floor snapshot | v1.2.84 | [`5aac300`](https://github.com/jerrin-v/my-agent-hq/commit/5aac3003f16af5c0aeafd0958eabb3e0fd2e9848) |
-| Mon 23 Nov 2026, 9:51:20 AM UAE<br><sub>Mon 23 Nov 2026, 5:51:20 AM UTC</sub> | Chat sync: new floor snapshot | v1.2.84 | [`ee60524`](https://github.com/jerrin-v/my-agent-hq/commit/ee60524fcda258649602a338c1cf4aee41ee82a6) |
-| Mon 23 Nov 2026, 9:26:17 AM UAE<br><sub>Mon 23 Nov 2026, 5:26:17 AM UTC</sub> | Chat sync: new floor snapshot | v1.2.84 | [`0554999`](https://github.com/jerrin-v/my-agent-hq/commit/055499993ca4d7b7f56d1dc91529f6d592ad9a1d) |
+| Sun 22 Nov 2026, 12:03:43 PM UAE<br><sub>Sun 22 Nov 2026, 8:03:43 AM UTC</sub> | Lock outro (sections fold out before the lock screen) | v1.2.84 | [`807a78f`](https://github.com/jerrin-v/my-agent-hq/commit/807a78fe908aa3ba689250f40fec279eb8e8ce13) |
+| Sun 22 Nov 2026, 11:00:12 AM UAE<br><sub>Sun 22 Nov 2026, 7:00:12 AM UTC</sub> | Estimate sync-row rule + spacing, coloured scan readout, smaller version box (board + sign-in page) | v1.2.83 | [`11370db`](https://github.com/jerrin-v/my-agent-hq/commit/11370db0e6a3f66622770a24d3cd58203cc1854b) |
+| Sun 22 Nov 2026, 10:29:16 AM UAE<br><sub>Sun 22 Nov 2026, 6:29:16 AM UTC</sub> | Estimate left, signal right; thinner signal line with strip-colour fill | v1.2.74 | [`66e8a2d`](https://github.com/jerrin-v/my-agent-hq/commit/66e8a2d9f2b345d085a980c8cb31b1309af72e53) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai

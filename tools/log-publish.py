@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Adds the publish that just went live to the "Latest publishes" table in README.md.
 
-Run by the Publish site workflow after a successful deploy. Keeps the newest 3 rows; a commit that is
-already listed (a manual re-run) is not added twice. Times are the push (commit) time, shown in
+Run by the Publish site workflow after a successful deploy. Only release pushes are listed (commits
+named "My Agent HQ vX.Y.Z: ...", made when Jerrin says "Push"); the hourly chat-sync snapshots and other
+repo commits are left out. Keeps the newest 3 rows; a commit that is already listed (a re-run) is not
+added twice. Times are the push (commit) time, shown in
 UAE time and UTC.
 """
 import datetime, os, re, subprocess, sys
@@ -26,9 +28,10 @@ def build_line(key):
         if line.startswith(key + ':'): return line.split(':', 1)[1].strip()
     return ''
 
-version = (re.search(r'v\d+(?:\.\d+)+', build_line('app')) or [''])[0]
-if subject.startswith('Refresh site snapshot'): change = 'Chat sync: new floor snapshot'
-else: change = re.sub(r'^Publish (v[\d.]+): ', '', subject)
+m = re.match(r'^My Agent HQ (v\d+(?:\.\d+)+):\s*(.*)', subject)
+if not m: print('Not a release push, not listed:', subject); sys.exit(0)  # chat-sync snapshots etc.
+version, change = m.group(1), (m.group(2) or 'release')
+change = change[:1].upper() + change[1:]
 change = change.replace('|', '\\|')
 
 fmt = lambda d: d.strftime('%a %d %b %Y, ') + d.strftime('%I:%M:%S %p').lstrip('0')  # 12-hour with AM/PM
