@@ -9,9 +9,9 @@ The last 3 releases that went live, newest first. Updated by the **Publish site*
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Mon 23 Nov 2026, 4:41:14 PM UAE<br><sub>Mon 23 Nov 2026, 12:41:14 PM UTC</sub> | Sync row moved to the left bottom, bigger token estimate rings | v1.2.89 | [`3a935df`](https://github.com/jerrin-v/my-agent-hq/commit/3a935dfb92700629cb9fb1ff9d8b60b515d0d948) |
 | Mon 23 Nov 2026, 4:32:49 PM UAE<br><sub>Mon 23 Nov 2026, 12:32:49 PM UTC</sub> | Local time moved to the top right, latest chat removed | v1.2.87 | [`4482340`](https://github.com/jerrin-v/my-agent-hq/commit/4482340a2055cd5be7d8220e3226c4b21979c00f) |
 | Mon 23 Nov 2026, 10:53:37 AM UAE<br><sub>Mon 23 Nov 2026, 6:53:37 AM UTC</sub> | Active red, asleep green across the board | v1.2.86 | [`8b55554`](https://github.com/jerrin-v/my-agent-hq/commit/8b55554b60cf0a6aa4581cbf22e4329dc821ec69) |
-| Sun 22 Nov 2026, 12:03:43 PM UAE<br><sub>Sun 22 Nov 2026, 8:03:43 AM UTC</sub> | Lock outro (sections fold out before the lock screen) | v1.2.84 | [`807a78f`](https://github.com/jerrin-v/my-agent-hq/commit/807a78fe908aa3ba689250f40fec279eb8e8ce13) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
