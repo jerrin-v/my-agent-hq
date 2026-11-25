@@ -9,9 +9,9 @@ The last 3 releases that went live, newest first. Updated by the **Publish site*
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Wed 25 Nov 2026, 10:27:00 AM UAE<br><sub>Wed 25 Nov 2026, 6:27:00 AM UTC</sub> | Every section on the background grid with equal margins (board + lock screen) | v1.2.97 | [`3fe0674`](https://github.com/jerrin-v/my-agent-hq/commit/3fe0674145346030f3068ba6798fc41aea1590c6) |
 | Tue 24 Nov 2026, 10:04:25 AM UAE<br><sub>Tue 24 Nov 2026, 6:04:25 AM UTC</sub> | Local Time clock box back to dark green (v1.2.94 look) | v1.2.96 | [`f770c8d`](https://github.com/jerrin-v/my-agent-hq/commit/f770c8d1748207ded171f5506fdf9d6da980c52c) |
 | Mon 23 Nov 2026, 4:53:55 PM UAE<br><sub>Mon 23 Nov 2026, 12:53:55 PM UTC</sub> | Reverted to the v1.2.86 layout | v1.2.91 | [`8e7a175`](https://github.com/jerrin-v/my-agent-hq/commit/8e7a175e099b5945e68ae6be046a4acbce62ee37) |
-| Mon 23 Nov 2026, 4:48:24 PM UAE<br><sub>Mon 23 Nov 2026, 12:48:24 PM UTC</sub> | Reverted to the v1.2.87 layout | v1.2.90 | [`dafde3e`](https://github.com/jerrin-v/my-agent-hq/commit/dafde3e944d37f7d431ffac2382fe29ac0c42440) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
