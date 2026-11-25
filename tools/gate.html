@@ -386,11 +386,13 @@
     const hh = (a, c) => { const v = Math.sin(a * 127.1 + c * 311.7) * 43758.5453; return v - Math.floor(v); }, gfr = v => { const q = Math.sin(v) * 43758.5453; return q - Math.floor(q); };
     let L = null, t0 = performance.now();
     function build() { const W = innerWidth, H = innerHeight, DPR = Math.min(2, devicePixelRatio || 1), mob = W < 760 || H < 560 || W / H < 1.15, nCol = mob && W >= 700 ? 2 : 1;
-      const s = mob ? Math.min(W / (nCol * 328 + (nCol + 1) * 16 + (nCol > 1 ? 8 : 0)), Math.max(1, H / 420), 1.6) : Math.max(.3, Math.min(W / 1600, H / 900)), GW = W / s, GH = H / s, PAD = mob ? 16 : 24, MW = 328;
-      const HX = mob ? Math.max(PAD, (GW - nCol * MW - (nCol - 1) * 24) / 2) : PAD, HW = mob ? MW : 300, nc = Math.ceil(GW / BC), nr = Math.ceil(GH / BC);
+      let s = mob ? Math.min(W / (nCol * 312 + (nCol + 1) * 24), Math.max(1, H / 420), 1.6) : Math.max(.3, Math.min(W / 1600, H / 900)), PAD = 24; const MW = 312; /* same grid fit as the board: equal margin on all sides, margins on grid lines */
+      if (!mob && W > H) { const k = Math.ceil((W - H) / (BC * s)); s = (W - H) / (BC * k); PAD = (W / s - Math.floor((W / s - 48) / BC) * BC) / 2; } if (mob) PAD = (W / s - nCol * MW - (nCol - 1) * BC) / 2;
+      const GW = W / s, GH = H / s, GO = ((PAD % BC) + BC) % BC, ox = GO - BC;
+      const HX = PAD, HW = MW, nc = Math.ceil(GW / BC) + 2, nr = Math.ceil(GH / BC) + 2;
       cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
       const bg = document.createElement('canvas'); bg.width = cv.width; bg.height = cv.height; const b = bg.getContext('2d'), bgc = [], runs = [];
-      b.fillStyle = BG; b.fillRect(0, 0, bg.width, bg.height); b.setTransform(DPR * s, 0, 0, DPR * s, 0, 0);
+      b.fillStyle = BG; b.fillRect(0, 0, bg.width, bg.height); b.setTransform(DPR * s, 0, 0, DPR * s, ox * DPR * s, ox * DPR * s);
       for (let c = 0; c < nc; c++) for (let r = 0; r < nr; r++) { const n = hh(Math.floor(c / 4) + 3, Math.floor(r / 3) + 7) * .6 + hh(Math.floor(c / 2) + 11, Math.floor(r / 2) + 5) * .4, k = hh(c, r);
         if (n > .62) { b.fillStyle = 'rgba(120,170,175,' + (.025 + .035 * k * (n - .62) / .38 * 2).toFixed(3) + ')'; b.fillRect(c * BC, r * BC, BC, BC); }
         else if (n < .22) { b.fillStyle = 'rgba(0,0,0,' + (.18 + .2 * k).toFixed(3) + ')'; b.fillRect(c * BC, r * BC, BC, BC); }
@@ -399,21 +401,21 @@
       b.lineWidth = 1; for (let c = 0; c <= nc; c++) { b.strokeStyle = c % 5 ? 'rgba(160,215,210,.035)' : 'rgba(160,215,210,.07)'; b.beginPath(); b.moveTo(c * BC + .5, 0); b.lineTo(c * BC + .5, GH); b.stroke(); }
       for (let r = 0; r <= nr; r++) { b.strokeStyle = r % 5 ? 'rgba(160,215,210,.035)' : 'rgba(160,215,210,.07)'; b.beginPath(); b.moveTo(0, r * BC + .5); b.lineTo(GW, r * BC + .5); b.stroke(); }
       b.fillStyle = 'rgba(190,240,228,.22)'; for (let c = 0; c <= nc; c += 5) for (let r = 0; r <= nr; r += 5) b.fillRect(c * BC - 1, r * BC - 1, 2, 2);
-      L = { W, H, DPR, s, bg, bgc, runs, nc, nr, HX, HW, PAD, mob };
-      const lock = document.getElementById('hqLock'); if (lock) lock.style.paddingTop = mob ? Math.ceil((PAD + 42 + 14) * s) + 'px' : ''; }
+      L = { W, H, DPR, s, bg, bgc, runs, nc, nr, HX, HW, PAD, mob, ox };
+      const lock = document.getElementById('hqLock'); if (lock) lock.style.paddingTop = mob ? Math.ceil((PAD + 48 + 14) * s) + 'px' : ''; }
     const ease = q => 1 - Math.pow(1 - Math.min(1, Math.max(0, q)), 3), seg = (t, a, d) => RM ? 1 : ease((t - a) / d);
-    function rule(c, a, y, w, p) { const m = a + w / 2, h = w / 2 * p; c.lineWidth = 1; c.strokeStyle = DIM; c.beginPath(); c.moveTo(m - h, y + .5); c.lineTo(m + h, y + .5); c.stroke();
-      if (p > .97) { c.strokeStyle = MINT; c.beginPath(); c.moveTo(a + .5, y - 3); c.lineTo(a + .5, y + 4); c.moveTo(a + w - .5, y - 3); c.lineTo(a + w - .5, y + 4); c.stroke(); }
+    function rule(c, a, y, w, p) { const m = a + w / 2, h = w / 2 * p; c.lineWidth = 1; c.strokeStyle = DIM; c.beginPath(); c.moveTo(m - h, y + .5); c.lineTo(m + h + (p > .97 ? 1 : 0), y + .5); c.stroke();
+      if (p > .97) { c.strokeStyle = MINT; c.beginPath(); c.moveTo(a + .5, y - 3); c.lineTo(a + .5, y + 4); c.moveTo(a + w + .5, y - 3); c.lineTo(a + w + .5, y + 4); c.stroke(); }
       const q = Math.min(1, p * 1.3); c.strokeStyle = 'rgba(160,215,210,.55)'; c.beginPath(); c.moveTo(m - w * .08 * q, y + 3.5); c.lineTo(m + w * .08 * q, y + 3.5); c.stroke(); c.fillStyle = MINT; c.fillRect(m - 1, y - 1, 2, 3); }
     function frame(now) { if (!L) build(); const tt = now / 1000, t = (now - t0) / 1000, c = cx, s = L.s;
-      c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; c.drawImage(L.bg, 0, 0); c.setTransform(L.DPR * s, 0, 0, L.DPR * s, 0, 0);
+      c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; c.drawImage(L.bg, 0, 0); c.setTransform(L.DPR * s, 0, 0, L.DPR * s, L.ox * L.DPR * s, L.ox * L.DPR * s);
       if (!RM) { c.fillStyle = 'rgb(140,200,205)';
         L.bgc.forEach(([x, y, k, ph]) => { const a = Math.pow(Math.max(0, Math.sin(tt * (.3 + k * .8) + ph * 6.283)), 6); if (a > .02) { c.globalAlpha = a * (.06 + .12 * ph); c.fillRect(x + 1, y + 1, BC - 1, BC - 1); } });
         const sl = Math.floor(tt * 6); for (let k = 0; k < 18; k++) { c.globalAlpha = .04 + .1 * gfr(sl * 1.9 + k * 5.1); c.fillRect(Math.floor(gfr(sl * 7.13 + k * 91.7) * L.nc) * BC + 1, Math.floor(gfr(sl * 3.71 + k * 17.3) * L.nr) * BC + 1, BC - 1, BC - 1); }
         L.runs.forEach(o => { const pos = Math.floor((tt * o.sp + o.ph) % (L.nc + o.len + 6)); for (let q = 0; q < o.len; q++) { const col = o.dir > 0 ? pos - q : L.nc - 1 - pos + q; if (col < 0 || col >= L.nc) continue; c.globalAlpha = Math.max(.02, .17 - q * .035); c.fillRect(col * BC + 1, o.r * BC + 1, BC - 1, BC - 1); } });
-        c.globalAlpha = 1; }
+        c.globalAlpha = 1; } c.setTransform(L.DPR * s, 0, 0, L.DPR * s, 0, 0);
       /* header: rules trace out from their centre, then the logo box and the title box open from the left, the title types on */
-      const X = L.HX, P = L.PAD, by = P + 9, bh = 24, lw = 26; c.font = '500 18px ' + FR; c.letterSpacing = '2px'; const w0 = lw + 5 + c.measureText('MY AGENT HQ').width - 2 + 18; c.font = '500 8.64px ' + FR; c.letterSpacing = '1.08px'; const vW = GVER ? c.measureText(GVER).width - 1.08 + 10.08 : 0, w = w0 + (GVER ? 5 + vW : 0); /* rules as wide as logo + title + version */ c.letterSpacing = '0px'; rule(c, X, P, w, seg(t, .05, .55)); rule(c, X, P + 42, w, seg(t, .15, .55));
+      const X = L.HX, P = L.PAD, by = P + 12, bh = 24, lw = 26; c.font = '500 18px ' + FR; c.letterSpacing = '2px'; const w0 = lw + 5 + c.measureText('MY AGENT HQ').width - 2 + 18; c.font = '500 8.64px ' + FR; c.letterSpacing = '1.08px'; const vW = GVER ? c.measureText(GVER).width - 1.08 + 10.08 : 0, w = Math.ceil((w0 + (GVER ? 5 + vW : 0) + 8) / BC) * BC; /* rules as wide as logo + title + version */ c.letterSpacing = '0px'; rule(c, X, P, w, seg(t, .05, .55)); rule(c, X, P + 48, w, seg(t, .15, .55));
       const pl = seg(t, .45, .3); if (pl > 0) { c.fillStyle = 'rgba(30,38,41,.92)'; c.fillRect(X, by, lw * pl, bh); }
       c.font = '500 18px ' + FR; c.letterSpacing = '2px'; const label = 'MY AGENT HQ', tw = c.measureText(label).width - 2, tx0 = X + lw + 5, pt = seg(t, .6, .3);
       if (pt > 0) { c.fillStyle = 'rgba(30,38,41,.92)'; c.fillRect(tx0, by, (tw + 18) * pt, bh); }
