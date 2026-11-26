@@ -1,4 +1,4 @@
 app: My Agent HQ v1.3.10 · packed 2026-11-25T12:16:57Z
 hud: My Agent HQ v1.2.32 (last version with the HUD Block + Node views and the Grid view) · packed 2026-11-21T19:47:16Z
 legacy: My Agent HQ v1.0.2 (Oblivion) · packed 2026-11-06T05:39:50Z
-roster: snapshot of 2026-11-26T06:59:19.629Z · packed 2026-11-26T06:59:52Z
+roster: snapshot of 2026-11-26T07:25:58.068Z · packed 2026-11-26T07:26:16Z
