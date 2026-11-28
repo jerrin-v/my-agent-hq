@@ -9,9 +9,9 @@ The last 3 releases that went live, newest first. Updated by the **Publish site*
 <!-- latest-publishes:start -->
 | Pushed | Change | Version | Commit |
 | --- | --- | --- | --- |
+| Sat 28 Nov 2026, 4:40:27 PM UAE<br><sub>Sat 28 Nov 2026, 12:40:27 PM UTC</sub> | Favicon in brand yellow | v1.3.12 | [`b02a312`](https://github.com/jerrin-v/my-agent-hq/commit/b02a312eb8059a8ccbe1076127d92103ee72e78f) |
 | Fri 27 Nov 2026, 11:35:23 AM UAE<br><sub>Fri 27 Nov 2026, 7:35:23 AM UTC</sub> | Usage limits above 75% shown in red | v1.3.11 | [`e842a11`](https://github.com/jerrin-v/my-agent-hq/commit/e842a11b8c12648c2bee1d0c7118fe7dc9cb6edb) |
 | Wed 25 Nov 2026, 4:16:57 PM UAE<br><sub>Wed 25 Nov 2026, 12:16:57 PM UTC</sub> | Particle view for Tokens by block, Block & Node theme button, glass group panel | v1.3.10 | [`c720dde`](https://github.com/jerrin-v/my-agent-hq/commit/c720dde7d4848a99d4cae68f40975fd04264010c) |
-| Wed 25 Nov 2026, 1:02:26 PM UAE<br><sub>Wed 25 Nov 2026, 9:02:26 AM UTC</sub> | SWITCH button opens the 2D HUD (Block + Node views) | v1.2.98 | [`2f3eddb`](https://github.com/jerrin-v/my-agent-hq/commit/2f3eddbdd9cc02c35e8132b1dd0aac631cdfcfff) |
 <!-- latest-publishes:end -->
 
 ## Full backup — works without claude.ai
